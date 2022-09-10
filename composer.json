@@ -7,13 +7,23 @@
         "php": ">=8.0.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "api-platform/core": "^2.6",
+        "arkounay/ux-collection": "^2.2",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
+        "easycorp/easyadmin-bundle": "^4.3",
+        "friendsofsymfony/jsrouting-bundle": "^3.2",
+        "gesdinet/jwt-refresh-token-bundle": "^1.1",
+        "knplabs/knp-paginator-bundle": "^5.9",
+        "liip/imagine-bundle": "^2.8",
+        "nelmio/cors-bundle": "^2.2",
+        "nesbot/carbon": "^2.62",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.8",
         "sensio/framework-extra-bundle": "^6.1",
+        "stof/doctrine-extensions-bundle": "^1.7",
         "symfony/asset": "6.0.*",
         "symfony/console": "6.0.*",
         "symfony/doctrine-messenger": "6.0.*",
@@ -38,11 +48,21 @@
         "symfony/string": "6.0.*",
         "symfony/translation": "6.0.*",
         "symfony/twig-bundle": "6.0.*",
+        "symfony/ux-autocomplete": "^2.4",
+        "symfony/ux-dropzone": "^2.4",
+        "symfony/ux-lazy-image": "^2.4",
+        "symfony/ux-live-component": "^2.4",
+        "symfony/ux-react": "^2.4",
+        "symfony/ux-twig-component": "^2.4",
         "symfony/validator": "6.0.*",
         "symfony/web-link": "6.0.*",
+        "symfony/webpack-encore-bundle": "^1.15",
         "symfony/yaml": "6.0.*",
+        "symfonycasts/reset-password-bundle": "^1.14",
+        "symfonycasts/verify-email-bundle": "^1.11",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "vich/uploader-bundle": "^1.21"
     },
     "config": {
         "allow-plugins": {
@@ -91,7 +111,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "6.0.*"
         }
     },
