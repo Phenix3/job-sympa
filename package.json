@@ -1,6 +1,7 @@
 {
     "devDependencies": {
         "@arkounay/ux-collection": "file:vendor/arkounay/ux-collection/Resources/assets",
+        "@babel/preset-react": "^7.0.0",
         "@hotwired/stimulus": "^3.0.0",
         "@symfony/stimulus-bridge": "^3.2.0",
         "@symfony/ux-autocomplete": "file:vendor/symfony/ux-autocomplete/assets",
@@ -10,9 +11,12 @@
         "@symfony/ux-react": "file:vendor/symfony/ux-react/Resources/assets",
         "@symfony/webpack-encore": "^3.0.0",
         "core-js": "^3.23.0",
+        "popper.js": "^1.16.1",
         "react": "^18.0",
         "react-dom": "^18.0",
         "regenerator-runtime": "^0.13.9",
+        "sass": "^1.54.9",
+        "sass-loader": "^13.0.0",
         "sortablejs": "^1.14.0",
         "tom-select": "^2.0.1",
         "webpack-notifier": "^1.15.0"
@@ -24,5 +28,13 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "bootstrap": "^4.6.2",
+        "jquery": "^3.6.1",
+        "lightbox2": "^2.11.3",
+        "node-snackbar": "^0.1.16",
+        "slick-carousel": "^1.8.1",
+        "snackbar": "^1.1.0"
     }
 }
