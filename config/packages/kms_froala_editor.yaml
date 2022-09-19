@@ -1,0 +1,4 @@
+kms_froala_editor:
+  language: '%app.locale%'
+  toolbarInline: true
+  tableColors: [ "#FFFFFF", "#FF0000" ]

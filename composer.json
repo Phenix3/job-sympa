@@ -78,7 +78,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "KMS\\FroalaEditorBundle\\": "lib/froala/KMSFroalaEditorBundle/src/"
         }
     },
     "autoload-dev": {
