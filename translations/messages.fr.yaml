@@ -1,0 +1,18 @@
+ui:
+  login: Connexion
+  lost_password: Mot de passe oublier ?
+  form:
+    username: Nom d'utilisateur
+    email: Adresse mail
+    password: Mot de passe
+    remember_me: Se souvenir de moi
+    type_password: Taper votre mot de passe
+    confirm_password: Confirmez votre mot de passe
+    agreeTerms: Accepter les conditions
+    account_type: Type de compte
+    candidate: Candidat
+    employer: Employeur
+  already_registered: Vous avez deja un compte ?
+  buttons:
+    dashboard: Tableau de board
+    logout: Deconnexion

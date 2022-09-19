@@ -1,0 +1,105 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+    <!-- ======================= Login Detail ======================== -->
+    <section class="middle">
+        <div class="container">
+            <div class="row align-items-start justify-content-between">
+
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 mx-auto">
+                    <form class="border p-3 rounded" method="post" action="{{ path('app_login') }}">
+                        <h2>Connexion</h2>
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        {% if error %}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <p>
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </p>
+                        </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="email">{{ 'ui.form.email'|trans }}</label>
+                            <input type="email" name="email" id="email" class="form-control" value="{{ last_username }}" placeholder="Email*">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">{{ 'ui.form.password'|trans }}</label>
+                            <input type="password" id="password" class="form-control" placeholder="Password*">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="flex-1">
+                                    <input id="dd" class="checkbox-custom" name="_remember_me" type="checkbox">
+                                    <label for="dd" class="checkbox-custom-label">{{ 'ui.form.remember_me'|trans }}</label>
+                                </div>
+                                <div class="eltio_k2">
+                                    <a href="#">{{ 'ui.lost_password'|trans }}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-md full-width theme-bg text-light fs-md ft-medium">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======================= Login End ======================== -->
+    <!-- Log In Modal -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
+        <div class="modal-dialog modal-xl login-pop-form" role="document">
+            <div class="modal-content" id="loginmodal">
+                <div class="modal-headers">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="ti-close"></span>
+                    </button>
+                </div>
+
+                <div class="modal-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="m-0 ft-regular">Login</h2>
+                    </div>
+
+                    <form>
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" class="form-control" placeholder="Username*">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password*">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="flex-1">
+                                    <input id="dd" class="checkbox-custom" name="dd" type="checkbox">
+                                    <label for="dd" class="checkbox-custom-label">Remember Me</label>
+                                </div>
+                                <div class="eltio_k2">
+                                    <a href="#" class="theme-cl">Lost Your Password?</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-md full-width theme-bg text-light fs-md ft-medium">Login</button>
+                        </div>
+
+                        <div class="form-group text-center mb-0">
+                            <p class="extra">Not a member?<a href="#et-register-wrap" class="text-dark"> Register</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+{% endblock %}

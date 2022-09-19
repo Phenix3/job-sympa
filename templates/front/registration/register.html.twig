@@ -1,0 +1,56 @@
+{%  extends 'front/base.html.twig' %}
+{% block body %}
+    <section class="middle">
+        <div class="container">
+            <div class="row align-items-start justify-content-between">
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 mx-auto">
+                    <div class="border theme-cl p-3 rounded">
+                        {% for flash_error in app.flashes('verify_email_error') %}
+                            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                        {% endfor %}
+
+                        <h1>Register</h1>
+
+                        {{ form_start(registrationForm) }}
+                        {{ form_row(registrationForm._token) }}
+{#                        {{ form_row(registrationForm.account_type) }}#}
+{#                        {{ dump(registrationForm.account_type) }}#}
+                        <fieldset class="form-group">
+                            {{ form_label(registrationForm.account_type) }}
+                            <div id="{{ registrationForm.account_type.vars.id }}">
+                                {% for i, type in registrationForm.account_type.vars.choices %}
+                                    <div class="form-check btn theme-btn-light">
+                                        <input type="radio" id="{{ registrationForm.account_type.vars.id ~ '_' ~ i }}" value="{{ type.value }}" name="{{ registrationForm.account_type.vars.full_name }}" class="form-check-input" />
+                                        <label for="{{ registrationForm.account_type.vars.id ~ '_' ~ i }}" class="form-check-label required">{{ type.label|trans }}</label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </fieldset>
+                        {{ form_row(registrationForm.username) }}
+                        {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.plainPassword, {
+                            label: 'Password'
+                        }) }}
+                        <div class="form-group">
+
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="flex-1">
+                                    {{ form_label(registrationForm.agreeTerms, null, {
+                                        label_attr: {'class': 'checkbox-custom-label'}
+                                    }) }}
+                                    {{ form_widget(registrationForm.agreeTerms, { attr: {class: 'checkbox-custom'}}) }}
+                                </div>
+                                <div class="eltio_k2">
+                                    <a href="{{ path('app_login') }}">{{ 'ui.already_registered'|trans }}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-md full-width theme-bg text-light">Register</button>
+                        {{ form_end(registrationForm, {render_rest: false}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
