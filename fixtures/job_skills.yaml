@@ -1,0 +1,34 @@
+App\Entity\Job\Skill:
+  job_skills_1:
+    name: Joomla
+    description: <paragraphs(2, true)>
+  job_skills_2:
+    name: WordPress
+    description: <paragraphs(2, true)>
+  job_skills_3:
+    name: Javascript
+    description: <paragraphs(2, true)>
+  job_skills_4:
+    name: PHP
+    description: <paragraphs(2, true)>
+  job_skills_5:
+    name: HTML5
+    description: <paragraphs(2, true)>
+  job_skills_6:
+    name: MS SQL
+    description: <paragraphs(2, true)>
+  job_skills_7:
+    name: SQL Development
+    description: <paragraphs(2, true)>
+  job_skills_8:
+    name: Dynamod
+    description: <paragraphs(2, true)>
+  job_skills_9:
+    name: Database
+    description: <paragraphs(2, true)>
+  job_skills_10:
+    name: PostgreSQL
+    description: <paragraphs(2, true)>
+  job_skills_11:
+    name: Neo4j
+    description: <paragraphs(2, true)>

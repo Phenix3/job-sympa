@@ -16,6 +16,7 @@
         "easycorp/easyadmin-bundle": "^4.3",
         "friendsofsymfony/jsrouting-bundle": "^3.2",
         "gesdinet/jwt-refresh-token-bundle": "^1.1",
+        "hautelook/alice-bundle": "^2.11",
         "knplabs/knp-paginator-bundle": "^5.9",
         "liip/imagine-bundle": "^2.8",
         "nelmio/cors-bundle": "^2.2",
@@ -118,6 +119,7 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "mbezhanov/faker-provider-collection": "^2.0",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "6.0.*",
         "symfony/css-selector": "6.0.*",

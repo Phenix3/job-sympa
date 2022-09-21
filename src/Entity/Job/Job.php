@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
 #[ORM\Table("job_job")]
@@ -23,8 +24,12 @@ class Job
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Gedmo\Slug(fields: ['title'])]
+    private ?string $slug = null;
+
     #[ORM\ManyToMany(targetEntity: Category::class)]
-    #[ORM\JoinTable(name: 'job_category_pivot')]
+    #[ORM\JoinTable(name: 'job_job_job_category')]
     private Collection $categories;
 
     #[ORM\ManyToOne]
@@ -33,16 +38,16 @@ class Job
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::JSON)]
     private ?string $responsibilities = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::JSON)]
     private ?string $education = null;
 
     #[ORM\Column(length: 255)]
     private ?string $location = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(type: Types::JSON, nullable: true)]
     private ?string $otherBenefits = null;
 
     #[ORM\Column(nullable: true)]
@@ -57,7 +62,7 @@ class Job
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $deadline = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::JSON)]
     private ?string $requirements = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
@@ -72,9 +77,15 @@ class Job
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fullAddress = null;
 
+    #[ORM\ManyToMany(targetEntity: Skill::class)]
+    #[ORM\JoinTable(name: 'job_job_job_skill')]
+    private Collection $requiredSkills;
+
+    
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->requiredSkills = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -294,6 +305,42 @@ class Job
     public function setFullAddress(?string $fullAddress): self
     {
         $this->fullAddress = $fullAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Skill>
+     */
+    public function getRequiredSkills(): Collection
+    {
+        return $this->requiredSkills;
+    }
+
+    public function addRequiredSkill(Skill $requiredSkill): self
+    {
+        if (!$this->requiredSkills->contains($requiredSkill)) {
+            $this->requiredSkills[] = $requiredSkill;
+        }
+
+        return $this;
+    }
+
+    public function removeRequiredSkill(Skill $requiredSkill): self
+    {
+        $this->requiredSkills->removeElement($requiredSkill);
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

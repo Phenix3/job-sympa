@@ -1,1 +1,2 @@
 import './WysiwygEditor';
+import './SelectSelectize';

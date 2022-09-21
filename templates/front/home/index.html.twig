@@ -3,286 +3,37 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-        <!-- ======================= Home Banner ======================== -->
-        <div class="home-banner margin-bottom-0" style="background:#28b661 url(https://via.placeholder.com/1920x900) no-repeat;" data-overlay="4">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="banner_caption text-center mb-5">
-                            <h1 class="banner_title ft-bold mb-1">The Most Exciting Jobs</h1>
-                            <p class="fs-md ft-medium">Your Dream Jobs is Waiting</p>
-                        </div>
-
-                        <form class="bg-white rounded p-1">
-                            <div class="row no-gutters">
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                    <div class="form-group mb-0 position-relative">
-                                        <input type="text" class="form-control lg left-ico" placeholder="Job Title, Keyword or Company" />
-                                        <i class="bnc-ico lni lni-search-alt"></i>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                    <div class="form-group mb-0 position-relative">
-                                        <input type="text" class="form-control lg left-ico" placeholder="Location or Zip Code" />
-                                        <i class="bnc-ico lni lni-target"></i>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                    <div class="form-group mb-0 position-relative">
-                                        <select class="custom-select lg b-0">
-                                            <option value="1">Choose Categories</option>
-                                            <option value="2">Information Technology</option>
-                                            <option value="3">Cloud Computing</option>
-                                            <option value="4">Engineering Services</option>
-                                            <option value="5">Healthcare/Pharma</option>
-                                            <option value="6">Telecom/ Internet</option>
-                                            <option value="7">Finance/Insurance</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
-                                    <div class="form-group mb-0 position-relative">
-                                        <button class="btn full-width custom-height-lg theme-bg text-white fs-md" type="button">Find Job</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
+    <!-- ======================= Home Banner ======================== -->
+    <div class="home-banner margin-bottom-0" style="background:#eff6f2 url(https://via.placeholder.com/1920x900) no-repeat;">
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-xl-6 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="banner_caption text-left mb-4">
+                        <h1 class="banner_title ft-bold mb-1">Get The <span class="theme-cl">Right Jobs</span><br>On Killore</h1>
+                        <p class="fs-md ft-regular">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
                     </div>
+                </div>
+                <div class="col-xl-9 col-lg-11 col-md-12 col-sm-12 col-12">
+
+                    {{ component('home_search') }}
+
+                    <div class="top-searches-key">
+                        <ul class="p-0 mt-4 align-items-center d-flex">
+                            <li><span class="text-dark ft-medium medium">Top Searches:</span></li>
+                            <li><a href="javascript:void(0);" class="">WordPress</a></li>
+                            <li><a href="javascript:void(0);" class="">Magento</a></li>
+                            <li><a href="javascript:void(0);" class="">HTML5</a></li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <!-- ======================= Home Banner ======================== -->
+    </div>
+    <!-- ======================= Home Banner ======================== -->
 
-        <!-- ======================= Job List ======================== -->
-        <section class="middle">
-            <div class="container">
-
-                <div class="row justify-content-center">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <div class="sec_title position-relative text-center mb-5">
-                            <h6 class="text-muted mb-0">Trending Jobs</h6>
-                            <h2 class="ft-bold">All Popular Listed jobs</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- row -->
-                <div class="row align-items-center">
-
-                    <!-- Single -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="job_grid border rounded ">
-                            <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
-                            <div class="position-absolute ab-right"><span class="medium theme-cl theme-bg-light px-2 py-1 rounded">Full Time</span></div>
-                            <div class="job_grid_thumb mb-2 pt-5 px-3">
-                                <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
-                            </div>
-                            <div class="job_grid_caption text-center pb-3 px-3">
-                                <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
-                                <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
-                            </div>
-                            <div class="job_grid_footer pb-4 px-3">
-                                <ul class="p-0 skills_tag text-center">
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-                                    <li><span class="px-2 py-1 medium theme-bg rounded text-light">+3 More</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="job_grid border rounded ">
-                            <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
-                            <div class="position-absolute ab-right"><span class="medium bg-light-warning text-warning px-2 py-1 rounded">Part Time</span></div>
-                            <div class="job_grid_thumb mb-2 pt-5 px-3">
-                                <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
-                            </div>
-                            <div class="job_grid_caption text-center pb-3 px-3">
-                                <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
-                                <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
-                            </div>
-                            <div class="job_grid_footer pb-4 px-3">
-                                <ul class="p-0 skills_tag text-center">
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-                                    <li><span class="px-2 py-1 medium theme-bg rounded text-light">+3 More</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="job_grid border rounded ">
-                            <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
-                            <div class="position-absolute ab-right"><span class="medium bg-light-purple text-purple px-2 py-1 rounded">Contract</span></div>
-                            <div class="job_grid_thumb mb-2 pt-5 px-3">
-                                <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
-                            </div>
-                            <div class="job_grid_caption text-center pb-3 px-3">
-                                <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
-                                <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
-                            </div>
-                            <div class="job_grid_footer pb-4 px-3">
-                                <ul class="p-0 skills_tag text-center">
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-                                    <li><span class="px-2 py-1 medium theme-bg rounded text-light">+3 More</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="job_grid border rounded ">
-                            <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
-                            <div class="position-absolute ab-right"><span class="medium bg-light-danger text-danger px-2 py-1 rounded">Enternship</span></div>
-                            <div class="job_grid_thumb mb-2 pt-5 px-3">
-                                <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
-                            </div>
-                            <div class="job_grid_caption text-center pb-3 px-3">
-                                <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
-                                <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
-                            </div>
-                            <div class="job_grid_footer pb-4 px-3">
-                                <ul class="p-0 skills_tag text-center">
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-                                    <li><span class="px-2 py-1 medium theme-bg rounded text-light">+3 More</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="job_grid border rounded ">
-                            <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
-                            <div class="position-absolute ab-right"><span class="medium bg-light-purple text-purple px-2 py-1 rounded">Contract</span></div>
-                            <div class="job_grid_thumb mb-2 pt-5 px-3">
-                                <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
-                            </div>
-                            <div class="job_grid_caption text-center pb-3 px-3">
-                                <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
-                                <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
-                            </div>
-                            <div class="job_grid_footer pb-4 px-3">
-                                <ul class="p-0 skills_tag text-center">
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-                                    <li><span class="px-2 py-1 medium theme-bg rounded text-light">+3 More</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="job_grid border rounded ">
-                            <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
-                            <div class="position-absolute ab-right"><span class="medium theme-cl theme-bg-light px-2 py-1 rounded">Full Time</span></div>
-                            <div class="job_grid_thumb mb-2 pt-5 px-3">
-                                <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
-                            </div>
-                            <div class="job_grid_caption text-center pb-3 px-3">
-                                <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
-                                <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
-                            </div>
-                            <div class="job_grid_footer pb-4 px-3">
-                                <ul class="p-0 skills_tag text-center">
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-                                    <li><span class="px-2 py-1 medium theme-bg rounded text-light">+3 More</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="job_grid border rounded ">
-                            <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
-                            <div class="position-absolute ab-right"><span class="medium bg-light-danger text-danger px-2 py-1 rounded">Enternship</span></div>
-                            <div class="job_grid_thumb mb-2 pt-5 px-3">
-                                <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
-                            </div>
-                            <div class="job_grid_caption text-center pb-3 px-3">
-                                <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
-                                <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
-                            </div>
-                            <div class="job_grid_footer pb-4 px-3">
-                                <ul class="p-0 skills_tag text-center">
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-                                    <li><span class="px-2 py-1 medium theme-bg rounded text-light">+3 More</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="job_grid border rounded ">
-                            <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
-                            <div class="position-absolute ab-right"><span class="medium bg-light-warning text-warning px-2 py-1 rounded">Part Time</span></div>
-                            <div class="job_grid_thumb mb-2 pt-5 px-3">
-                                <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
-                            </div>
-                            <div class="job_grid_caption text-center pb-3 px-3">
-                                <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
-                                <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
-                            </div>
-                            <div class="job_grid_footer pb-4 px-3">
-                                <ul class="p-0 skills_tag text-center">
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-                                    <li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-                                    <li><span class="px-2 py-1 medium theme-bg rounded text-light">+3 More</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- row -->
-
-                <div class="row justify-content-center">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <div class="position-relative text-center">
-                            <a href="job-search-v1.html" class="btn btn-md theme-bg rounded text-white hover-theme">Explore More Jobs<i class="lni lni-arrow-right-circle ml-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
+    <!-- ======================= Job List ======================== -->
+        {{ component('popular_jobs') }}
         <!-- ======================= Job List ======================== -->
 
         <!-- ======================= All category ======================== -->

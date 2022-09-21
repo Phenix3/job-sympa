@@ -1,0 +1,91 @@
+<div {{ attributes }}>
+    {{ form_start(form, {
+        attr: {
+            'data-action': 'live#action',
+            'data-action-name': 'prevent|search',
+            'class': "bg-white rounded p-1"
+        }}) }}
+        <div class="row no-gutters">
+            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
+                <div class="form-group mb-0 position-relative">
+                    {{ form_widget(form.query) }}
+                    <i class="bnc-ico lni lni-search-alt"></i>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-4 col-md-4 col-sm-12 col-12">
+                {{ form_widget(form.categories, {attr: {is: 'select-selectize', 'data-max-items': 2}}) }}
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12 col-12">
+                <div class="form-group mb-0 position-relative">
+                    <button
+                            class="btn full-width custom-height-lg theme-bg text-white fs-md"
+                            type="submit"
+                            data-action="live#update"
+                            data-toggle="modal"
+                            data-target="#searchModal"
+                    >
+                        Find Job
+                    </button>
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+
+<!-- Log In Modal -->
+<div class="modal fade" id="searchModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="searchModalContent" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content" id="searchModalContent">
+            <div class="modal-headers">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="ti-close"></span>
+                </button>
+            </div>
+
+            <div class="modal-body p-5">
+                <div class="d-flex justify-content-center" data-loading>
+                    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <div class="row align-items-center justify-content-between mx-0 bg-white rounded py-2 mb-4">
+                            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+                                <h6 class="mb-0 ft-medium fs-sm">{{ this.filteredJobs|length }} New Jobs Found</h6>
+                            </div>
+
+                            <div class="col-xl-9 col-lg-8 col-md-7 col-sm-12">
+                                <div class="filter_wraps elspo_wrap d-flex align-items-center justify-content-end">
+                                    <div class="single_fitres mr-2 br-right">
+                                        <select class="custom-select simple">
+                                            <option value="1" selected="">Default Sorting</option>
+                                            <option value="2">Recent jobs</option>
+                                            <option value="3">Featured jobs</option>
+                                            <option value="4">Trending Jobs</option>
+                                            <option value="5">Premium jobs</option>
+                                        </select>
+                                    </div>
+                                    <div class="single_fitres">
+                                        <a href="job-search-v2.html" class="simple-button active theme-cl mr-1"><i class="ti-layout-grid2"></i></a>
+                                        <a href="job-list-v2.html" class="simple-button"><i class="ti-view-list"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% for job in this.filteredJobs %}
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        {{ component('job_card_horizontal', {
+                            job: job
+                        }) }}
+                    </div>
+                {% else %}
+                    <h3 class="h1">No jobs found!</h3>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->

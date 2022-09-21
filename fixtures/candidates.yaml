@@ -1,0 +1,8 @@
+App\Entity\Candidate:
+  candidate_{1..50}:
+    username: <username()>
+    email: <safeEmail()>
+    password: <password('123456')>
+    about: <paragraphs(3, true)>
+    isVerified: true
+    address: <address()>

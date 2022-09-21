@@ -2,18 +2,15 @@
 
 namespace App\Entity\Job;
 
-use App\Repository\Job\CategoryRepository;
+use App\Repository\Job\SkillRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
 
-#[ORM\Entity(repositoryClass: CategoryRepository::class)]
-#[ORM\Table("job_category")]
-class Category
+#[ORM\Entity(repositoryClass: SkillRepository::class)]
+#[ORM\Table('job_skill')]
+class Skill
 {
-    use TimestampableEntity;
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column()]
@@ -26,11 +23,8 @@ class Category
     #[Gedmo\Slug(fields: ['name'], updatable: true)]
     private ?string $slug = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $icon = null;
 
     public function __toString(): string
     {
@@ -71,21 +65,9 @@ class Category
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getIcon(): ?string
-    {
-        return $this->icon;
-    }
-
-    public function setIcon(string $icon): self
-    {
-        $this->icon = $icon;
 
         return $this;
     }

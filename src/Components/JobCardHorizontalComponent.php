@@ -5,10 +5,8 @@ namespace App\Components;
 use App\Entity\Job\Job;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent('job_card')]
-class JobCardComponent
+#[AsTwigComponent("job_card_horizontal")]
+class JobCardHorizontalComponent
 {
-
     public Job $job;
-
 }

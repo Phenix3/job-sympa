@@ -1,0 +1,32 @@
+<section class="middle">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="sec_title position-relative text-center mb-5">
+                    <h6 class="text-muted mb-0">Trending Jobs</h6>
+                    <h2 class="ft-bold">All Popular Listed jobs</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- row -->
+        <div class="row align-items-center">
+
+            {% for job in this.jobs %}
+                {{ component('job_card', {job: job}) }}
+            {% endfor %}
+
+        </div>
+        <!-- row -->
+
+        <div class="row justify-content-center">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="position-relative text-center">
+                    <a href="job-search-v1.html" class="btn btn-md theme-bg rounded text-white hover-theme">Explore More Jobs<i class="lni lni-arrow-right-circle ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

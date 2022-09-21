@@ -16,3 +16,12 @@ ui:
   buttons:
     dashboard: Tableau de board
     logout: Deconnexion
+  job_requirements: Exigences
+  job_description: description du job
+  skills_required: Competences requises
+  home: Accueil
+  employment_type: Type d'emploi
+  years_of_experience: Années d'expérience
+  industry_type: Type d'industrie
+  functional_area: Domaine fonctionnel
+  role_category: Catégorie de fonctions

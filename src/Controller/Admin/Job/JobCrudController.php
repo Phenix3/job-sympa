@@ -5,6 +5,7 @@ namespace App\Controller\Admin\Job;
 use App\Entity\Job\Job;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -19,15 +20,15 @@ class JobCrudController extends AbstractCrudController
     }
 
 
-    /*public function configureFields(string $pageName): iterable
+    public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
-    }
+        $fields = parent::configureFields($pageName);
 
+        return array_merge($fields, [
+            AssociationField::new('requiredSkills')
+        ]);
+    }
+/*
     public function configureAssets(Assets $assets): Assets
     {
         return $assets

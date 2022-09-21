@@ -4,6 +4,7 @@ namespace App\Repository\Job;
 
 use App\Entity\Job\Job;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,28 +40,51 @@ class JobRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Job[] Returns an array of Job objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('j')
-//            ->andWhere('j.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('j.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function getPopularJobs(int $limit = 8): ?array
+    {
+        return $this
+            ->createQueryBuilder('j')
+            ->orderBy('j.publishedAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
-//    public function findOneBySomeField($value): ?Job
-//    {
-//        return $this->createQueryBuilder('j')
-//            ->andWhere('j.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @param int $id
+     * @return float|int|mixed|string
+     * @throws NonUniqueResultException
+     */
+    public function findJobWithRelations(int $id): mixed
+    {
+        return $this->createQueryBuilder('j')
+            ->leftJoin('j.categories', 'categories')
+            ->leftJoin('j.requiredSkills', 'requiredSkills')
+            ->where("j.id = :id")
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
+    public function searchJobs(?\App\Dto\JobSearchData $jobSearchData): \Doctrine\ORM\Query
+    {
+
+        $query =  $this
+            ->createQueryBuilder('j')
+            ->leftJoin('j.categories', 'c')
+            ->leftJoin('j.requiredSkills', 'requiredSkills')
+            ;
+
+        if ($jobSearchData->query) {
+            $query = $query->where("j.title LIKE :title")->setParameter('title', "%{$jobSearchData->query}%");
+        }
+
+        if (!empty($jobSearchData->categories)) {
+            $query = $query->andWhere("c IN (:categories)")->setParameter('categories', $jobSearchData->categories);
+        }
+
+        return $query->getQuery();
+    }
 }

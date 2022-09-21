@@ -1,0 +1,254 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+    <!-- ======================= Searchbar Banner ======================== -->
+    <div class="bg-light rounded py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                    <div class="jbd-01 d-flex align-items-center justify-content-between">
+                        <div class="jbd-flex d-flex align-items-center justify-content-start">
+                            <div class="jbd-01-thumb">
+                                <img src="https://via.placeholder.com/120x120" class="img-fluid" width="100" alt="" />
+                            </div>
+                            <div class="jbd-01-caption pl-3">
+                                <div class="tbd-title"><h4 class="mb-0 ft-medium fs-md">{{ job.title }}<img src="assets/img/verify.svg" class="ml-1" width="12" alt=""></h4></div>
+                                <div class="jbl_location mb-3">
+                                    <span><i class="lni lni-map-marker mr-1"></i>{{ job.location }}, {{ job.country }}</span>
+                                    <span class="ml-3"><i class="lni lni-briefcase mr-1"></i>InVision</span>
+                                    <span class="ml-3"><i class="lni lni-money-protection mr-1"></i>{{ job.salaryMin }} FCFA - {{ job.salaryMax }} FCFA</span>
+                                </div>
+                                <div class="jbl_info01">
+                                    <span class="px-2 py-1 ft-medium medium text-light bg-warning rounded mr-2">{{ job.type.name }}</span>
+                                    <span class="px-2 py-1 ft-medium medium text-light bg-purple rounded">Urgent</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jbd-01-right text-right">
+                            <div class="jbl_button mb-2"><a href="javascript:void(0);" class="btn btn-md rounded theme-bg-light theme-cl fs-sm ft-medium">Apply This Job</a></div>
+                            <div class="jbl_button"><a href="javascript:void(0);" class="btn btn-md rounded bg-white border fs-sm ft-medium">View Company</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ======================= Searchbar Banner ======================== -->
+
+    <!-- ============================ Job Details Start ================================== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                    <div class="rounded mb-4">
+                        <div class="jbd-01 pr-3">
+                            <div class="jbd-details mb-4">
+                                <h5 class="ft-medium fs-md">{{ 'ui.job_description'|trans }}</h5>
+                                {{ job.description|raw }}
+                            </div>
+
+                            <div class="jbd-details mb-3">
+                                <h5>{{ 'ui.job_requirements'|trans }}:</h5>
+                                <div class="position-relative row">
+                                    <div class="col-lg-12 col-md-12 col-12">
+                                        {% for requirement in job.requirements %}
+                                            {% include 'front/job/_job_requirement.html.twig' with {label: requirement} only %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="jbd-details mb-4">
+{#                                <h5 class="ft-medium fs-md">Skills Required</h5>#}
+                                <div class="other-details">
+                                    <div class="details ft-medium"><label class="text-muted">{{ 'ui.years_of_experience'|trans }}</label><span class="text-dark">{{ job.experience }}</span></div>
+                                    <div class="details ft-medium"><label class="text-muted">{{ 'ui.industry_type'|trans }}</label><span class="text-dark">Advertising & Marketing</span></div>
+                                    <div class="details ft-medium"><label class="text-muted">{{ 'ui.functional_area'|trans }}</label><span class="text-dark">Engineering - Software</span></div>
+                                    <div class="details ft-medium"><label class="text-muted">{{ 'ui.employment_type'|trans }}</label><span class="text-dark">{{ job.type.name }}</span></div>
+                                    <div class="details ft-medium"><label class="text-muted">{{ 'ui.role_category'|trans }}</label><span class="text-dark">
+                                            {% for category in job.categories %}
+                                                <li><span class="px-2 py-1 medium bg-blue rounded text-light">{{ category.name }}</span></li>
+                                            {% endfor %}
+                                        </span></div>
+                                </div>
+                            </div>
+
+                            <div class="jbd-details mb-1">
+                                <h5 class="ft-medium fs-md">{{ 'ui.skills_required'|trans }}</h5>
+                                <ul class="p-0 skills_tag text-left">
+                                    {% for skill in job.requiredSkills %}
+                                        <li><span class="px-2 py-1 medium skill-bg rounded text-dark">{{ skill.name }}</span></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="jbd-02 pt-4 pr-3">
+                            <div class="jbd-02-flex d-flex align-items-center justify-content-between">
+                                <div class="jbl_button mb-2">
+                                    <a href="#" class="btn btn-md rounded gray fs-sm ft-medium mr-2">Save This Job</a>
+                                    <a href="#" class="btn btn-md rounded theme-bg text-light fs-sm ft-medium">Apply Job</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="jb-apply-form bg-white shadow rounded py-3 px-4 box-static">
+                        <h4 class="ft-medium fs-md mb-3">Intrested in this job?</h4>
+
+                        <form class="_apply_form_form">
+
+                            <div class="form-group">
+                                <label class="text-dark mb-1 ft-medium medium">First Name</label>
+                                <input type="text" class="form-control" placeholder="First Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-dark mb-1 ft-medium medium">Your Email</label>
+                                <input type="email" class="form-control" placeholder="themezhub@gmail.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-dark mb-1 ft-medium medium">Phone Number:</label>
+                                <input type="text" class="form-control" placeholder="+91 245 256 2548">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-dark mb-1 ft-medium medium">Upload Resume:<small class="medium ft-medium">pdf, doc, docx</small></label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="terms_con">
+                                    <input id="aa3" class="checkbox-custom" name="Coffee" type="checkbox">
+                                    <label for="aa3" class="checkbox-custom-label">I agree to pirvacy policy</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="button" class="btn btn-md rounded theme-bg text-light ft-medium fs-sm full-width">Apply For This Job</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============================ Job Details End ================================== -->
+
+    <!-- ======================= Related Jobs ======================== -->
+    <section class="space min gray">
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="sec_title position-relative text-center mb-5">
+                        <h6 class="text-muted mb-0">Related Jobs</h6>
+                        <h2 class="ft-bold">All Related Listed jobs</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- row -->
+            <div class="row align-items-center">
+
+                <!-- Single -->
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="job_grid border rounded ">
+                        <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
+                        <div class="position-absolute ab-right"><span class="medium theme-cl theme-bg-light px-2 py-1 rounded">Full Time</span></div>
+                        <div class="job_grid_thumb mb-3 pt-5 px-3">
+                            <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
+                        </div>
+                        <div class="job_grid_caption text-center pb-5 px-3">
+                            <h6 class="mb-0 lh-1 ft-medium medium"><a href="employer-detail.html" class="text-muted medium">Google Inc</a></h6>
+                            <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
+                            <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
+                        </div>
+                        <div class="job_grid_footer pb-4 px-3 d-flex align-items-center justify-content-between">
+                            <div class="df-1 text-muted"><i class="lni lni-wallet mr-1"></i>$50k - $80k PA.</div>
+                            <div class="df-1 text-muted"><i class="lni lni-timer mr-1"></i>3 days ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single -->
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="job_grid border rounded ">
+                        <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
+                        <div class="position-absolute ab-right"><span class="medium bg-light-warning text-warning px-2 py-1 rounded">Part Time</span></div>
+                        <div class="job_grid_thumb mb-3 pt-5 px-3">
+                            <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
+                        </div>
+                        <div class="job_grid_caption text-center pb-5 px-3">
+                            <h6 class="mb-0 lh-1 ft-medium medium"><a href="employer-detail.html" class="text-muted medium">Google Inc</a></h6>
+                            <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
+                            <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
+                        </div>
+                        <div class="job_grid_footer pb-4 px-3 d-flex align-items-center justify-content-between">
+                            <div class="df-1 text-muted"><i class="lni lni-wallet mr-1"></i>$50k - $80k PA.</div>
+                            <div class="df-1 text-muted"><i class="lni lni-timer mr-1"></i>3 days ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single -->
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="job_grid border rounded ">
+                        <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
+                        <div class="position-absolute ab-right"><span class="medium bg-light-purple text-purple px-2 py-1 rounded">Contract</span></div>
+                        <div class="job_grid_thumb mb-3 pt-5 px-3">
+                            <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
+                        </div>
+                        <div class="job_grid_caption text-center pb-5 px-3">
+                            <h6 class="mb-0 lh-1 ft-medium medium"><a href="employer-detail.html" class="text-muted medium">Google Inc</a></h6>
+                            <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
+                            <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
+                        </div>
+                        <div class="job_grid_footer pb-4 px-3 d-flex align-items-center justify-content-between">
+                            <div class="df-1 text-muted"><i class="lni lni-wallet mr-1"></i>$50k - $80k PA.</div>
+                            <div class="df-1 text-muted"><i class="lni lni-timer mr-1"></i>3 days ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single -->
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="job_grid border rounded ">
+                        <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
+                        <div class="position-absolute ab-right"><span class="medium bg-light-danger text-danger px-2 py-1 rounded">Enternship</span></div>
+                        <div class="job_grid_thumb mb-3 pt-5 px-3">
+                            <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
+                        </div>
+                        <div class="job_grid_caption text-center pb-5 px-3">
+                            <h6 class="mb-0 lh-1 ft-medium medium"><a href="employer-detail.html" class="text-muted medium">Google Inc</a></h6>
+                            <h4 class="mb-0 ft-medium medium"><a href="job-detail.html" class="text-dark fs-md">UI/UX Web Designer</a></h4>
+                            <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div>
+                        </div>
+                        <div class="job_grid_footer pb-4 px-3 d-flex align-items-center justify-content-between">
+                            <div class="df-1 text-muted"><i class="lni lni-wallet mr-1"></i>$50k - $80k PA.</div>
+                            <div class="df-1 text-muted"><i class="lni lni-timer mr-1"></i>3 days ago</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- row -->
+
+        </div>
+    </section>
+    <!-- ======================= Related Jobs ======================== -->
+
+{% endblock %}
+

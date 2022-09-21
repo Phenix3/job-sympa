@@ -1,0 +1,20 @@
+App\Entity\Job\Job:
+  job_jobs_{1..100}:
+    type: '@job_types_*'
+    categories: '3x @job_categories_*'
+    title: <jobTitle()>
+    description: <paragraphs(5, true)>
+    responsibilities: <paragraphs(2, true)>
+    education: <paragraphs(2, true)>
+    location: <sentence()>
+    otherBenefits: <paragraphs(2, true)>
+    experience: <numberBetween(1, 5)>
+    salaryMin: <numberBetween(1500, 2000)>
+    salaryMax: <numberBetween(5000, 10000)>
+    deadline: <dateTime()>
+    requirements: <paragraphs(3, true)>
+    publishedAt: <dateTime()>
+    country: <country()>
+    city: <city()>
+    fullAddress: <address()>
+    requiredSkills: '3x @job_skills_*'

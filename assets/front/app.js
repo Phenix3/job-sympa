@@ -1,3 +1,5 @@
+import '../elements/SelectSelectize';
+
 import $ from 'jquery';
 const  Popper = require('popper.js').default;
 
