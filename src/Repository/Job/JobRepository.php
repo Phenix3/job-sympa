@@ -68,14 +68,19 @@ class JobRepository extends ServiceEntityRepository
             ;
     }
 
-    public function searchJobs(?\App\Dto\JobSearchData $jobSearchData): \Doctrine\ORM\Query
+    public function searchJobs(?\App\Dto\JobSearchData $jobSearchData = null): \Doctrine\ORM\Query
     {
 
         $query =  $this
             ->createQueryBuilder('j')
             ->leftJoin('j.categories', 'c')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
+            ->addSelect('j', 'c', 'requiredSkills')
             ;
+
+        if (null === $jobSearchData) {
+            return $query->getQuery();
+        }
 
         if ($jobSearchData->query) {
             $query = $query->where("j.title LIKE :title")->setParameter('title', "%{$jobSearchData->query}%");

@@ -1,0 +1,33 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+
+    <!-- ============================================================== -->
+    <!-- Top header  -->
+    <!-- ============================================================== -->
+
+    <!-- ======================= Top Breadcrubms ======================== -->
+    <div class="bg-title py-5" data-overlay="0">
+        <div class="ht-30"></div>
+        <div class="container">
+            <div class="row">
+                <div class="colxl-12 col-lg-12 col-md-12">
+                    <h1 class="ft-medium">Job Search Style 3</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="text-light">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="text-light">Job</a></li>
+                            <li class="breadcrumb-item active theme-cl" aria-current="page">Job Search</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="ht-30"></div>
+    </div>
+    <!-- ======================= Top Breadcrubms ======================== -->
+
+    {{ component('full_search', {jobSearchData: jobSearchData}) }}
+
+{% endblock %}
+

@@ -32,7 +32,7 @@ class Job
     #[ORM\JoinTable(name: 'job_job_job_category')]
     private Collection $categories;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(fetch: "EAGER")]
     private ?Type $type = null;
 
     #[ORM\Column(type: Types::TEXT)]

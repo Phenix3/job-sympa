@@ -4,9 +4,11 @@ namespace App\Components;
 
 use App\Dto\JobSearchData;
 use App\Form\SearchType;
+use App\Repository\Job\CategoryRepository;
 use App\Repository\Job\JobRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
@@ -21,32 +23,35 @@ class HomeSearchComponent extends AbstractController
     use DefaultActionTrait;
     use ComponentWithFormTrait;
 
-    public ?JobSearchData $jobSearchData = null;
-
-    #[LiveProp(writable: true)]
-    public ?array $jobs = [];
-
-    public function __construct(private JobRepository $jobRepository)
+    public function __construct(private JobRepository $jobRepository, private CategoryRepository $categoryRepository)
     {
         $this->jobSearchData = new JobSearchData();
     }
 
-
-    #[LiveAction()]
-    public function search()
-    {
-        $this->submitForm();
-        $this->jobSearchData = $this->getFormInstance()->getData();
-//        $this->jobs = $this->jobRepository->searchJobs($this->jobSearchData)->getResult();
-    }
+    #[LiveProp(writable: true, exposed: ['query', 'categories'])]
+    public ?JobSearchData $jobSearchData;
 
     public function getFilteredJobs()
     {
         return $this->jobRepository->searchJobs($this->jobSearchData)->getResult();
     }
 
+    #[LiveAction]
+    public function search(): RedirectResponse
+    {
+        $this->submitForm();
+        return $this->redirectToRoute('app_front_job_search', ['searchData' => $this->jobSearchData]);
+    }
+
+    public function getCategories(): array
+    {
+        return $this->categoryRepository->findAll();
+    }
+
     protected function instantiateForm(): FormInterface
     {
-        return $this->createForm(SearchType::class, $this->jobSearchData);
+        return $this->createForm(SearchType::class, $this->jobSearchData, [
+            'method' => 'POST'
+        ]);
     }
 }
