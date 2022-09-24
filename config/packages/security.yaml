@@ -1,7 +1,12 @@
 security:
+    enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: auto
+        App\Entity\Candidate:
+            algorithm: auto
+        App\Entity\Employer:
+            algorithm: auto
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         app_candidate_provider:
@@ -26,7 +31,7 @@ security:
                 - App\Security\AppCandidateAuthenticator
                 - App\Security\AppEmployerAuthenticator
 
-            entry_point: App\Security\AppCandidateAuthenticator
+            entry_point: App\Security\AppEmployerAuthenticator
 
             remember_me:
                 secret: '%kernel.secret%'

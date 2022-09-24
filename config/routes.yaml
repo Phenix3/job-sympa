@@ -6,6 +6,6 @@ kernel:
     resource: ../src/Kernel.php
     type: annotation
 
-kms_froala_editor:
-    resource: "@KMSFroalaEditorBundle/Resources/config/routing.yml"
-    prefix:   /froalaeditor
+# kms_froala_editor:
+#     resource: "@KMSFroalaEditorBundle/Resources/config/routing.yml"
+#     prefix:   /froalaeditor

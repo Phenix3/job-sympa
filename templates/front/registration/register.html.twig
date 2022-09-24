@@ -10,16 +10,17 @@
                         {% endfor %}
 
                         <h1>Register</h1>
+                        <hr /> 
 
                         {{ form_start(registrationForm) }}
                         {{ form_row(registrationForm._token) }}
 {#                        {{ form_row(registrationForm.account_type) }}#}
 {#                        {{ dump(registrationForm.account_type) }}#}
                         <fieldset class="form-group">
-                            {{ form_label(registrationForm.account_type) }}
+                            {# {{ form_label(registrationForm.account_type) }} #}
                             <div id="{{ registrationForm.account_type.vars.id }}">
                                 {% for i, type in registrationForm.account_type.vars.choices %}
-                                    <div class="form-check btn theme-btn-light">
+                                    <div class="form-check btn theme-btn-light {% if i == 1 %} float-right {% endif %}">
                                         <input type="radio" id="{{ registrationForm.account_type.vars.id ~ '_' ~ i }}" value="{{ type.value }}" name="{{ registrationForm.account_type.vars.full_name }}" class="form-check-input" />
                                         <label for="{{ registrationForm.account_type.vars.id ~ '_' ~ i }}" class="form-check-label required">{{ type.label|trans }}</label>
                                     </div>

@@ -10,7 +10,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
 
 class JobCrudController extends AbstractCrudController
 {

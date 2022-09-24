@@ -10,8 +10,8 @@ ui:
     confirm_password: Confirmez votre mot de passe
     agreeTerms: Accepter les conditions
     account_type: Type de compte
-    candidate: Candidat
-    employer: Employeur
+    candidate: Je suis candidat
+    employer: Je suis employeur
   already_registered: Vous avez deja un compte ?
   buttons:
     dashboard: Tableau de board
