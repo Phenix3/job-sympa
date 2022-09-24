@@ -2,23 +2,25 @@
 
 namespace App\Controller;
 
-use App\Entity\Candidate;
 use App\Entity\Employer;
-use App\Form\RegistrationFormType;
-use App\Repository\CandidateRepository;
-use App\Security\AppCandidateAuthenticator;
+use App\Entity\Candidate;
 use App\Security\EmailVerifier;
+use App\Form\RegistrationFormType;
+use Symfony\Component\Mime\Address;
+use App\Repository\EmployerRepository;
+use App\Repository\CandidateRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Security\AppCandidateAuthenticator;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -57,8 +59,10 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $verifyEmailRouteName = ($user instanceof Candidate) ? 'app_verify_candidate_email' : 'app_verify_employer_email';
+
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation($verifyEmailRouteName, $user,
                 (new TemplatedEmail())
                     ->from(new Address('no-reply@job-sympa.com', 'Contact'))
                     ->to($user->getEmail())
@@ -79,8 +83,8 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator, CandidateRepository $candidateRepository): Response
+    #[Route('/verify/candidate/email', name: 'app_verify_candidate_email')]
+    public function verifyCandidateEmail(Request $request, TranslatorInterface $translator, CandidateRepository $candidateRepository): Response
     {
         $id = $request->get('id');
 
@@ -93,7 +97,29 @@ class RegistrationController extends AbstractController
         if (null === $user) {
             return $this->redirectToRoute('app_register');
         }
+        return $this->verifyUserEmail($user, $request, $translator);
+    }
 
+    #[Route('/verify/employer/email', name: 'app_verify_employer_email')]
+    public function verifyEmployerEmail(Request $request, TranslatorInterface $translator, EmployerRepository $employerRepository): Response
+    {
+        $id = $request->get('id');
+
+        if (null === $id) {
+            return $this->redirectToRoute('app_register');
+        }
+
+        $user = $employerRepository->find($id);
+
+        if (null === $user) {
+            return $this->redirectToRoute('app_register');
+        }
+
+        return $this->verifyUserEmail($user, $request, $translator);
+    }
+
+    private function verifyUserEmail(UserInterface $user, Request $request, TranslatorInterface $translator)
+    {
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $user);
