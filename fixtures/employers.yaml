@@ -1,4 +1,4 @@
-App\Entity\Employer:
+App\Entity\User\Employer:
   employers_{1..50}:
     username: <username()>
     email: <safeEmail()>

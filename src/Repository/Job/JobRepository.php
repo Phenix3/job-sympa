@@ -61,6 +61,7 @@ class JobRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('j')
             ->leftJoin('j.categories', 'categories')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
+            ->addSelect('requiredSkills', 'categories')
             ->where("j.id = :id")
             ->setParameter('id', $id)
             ->getQuery()
@@ -75,7 +76,7 @@ class JobRepository extends ServiceEntityRepository
             ->createQueryBuilder('j')
             ->leftJoin('j.categories', 'c')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
-            ->addSelect('j', 'c', 'requiredSkills')
+            ->addSelect('c', 'requiredSkills')
             ;
 
         if (null === $jobSearchData) {

@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Employer;
+use App\Entity\User\Employer;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class EmployerCrudController extends AbstractCrudController

@@ -1,4 +1,4 @@
-App\Entity\Candidate:
+App\Entity\User\Candidate:
   candidate_{1..50}:
     username: <username()>
     email: <safeEmail()>

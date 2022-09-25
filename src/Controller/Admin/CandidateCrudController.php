@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Candidate;
+use App\Entity\User\Candidate;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class CandidateCrudController extends AbstractCrudController

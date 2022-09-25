@@ -33,9 +33,6 @@
                         <a href="{{ path('app_home') }}"><i class="lni lni-home"></i> {{ 'ui.home'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('app_login') }}"><i class="lni lni-lock"></i> {{ 'ui.login'|trans }}</a>
-                    </li>
-                    <li>
                         <a href="{{ path('app_front_job_search') }}"> <i class="lni lni-search"></i> {{ 'ui.search'|trans }}</a>
                     </li>
 
@@ -57,6 +54,11 @@
                         <li>
                             <a href="{{ path('app_register') }}" class="theme-cl ft-medium">
                                 <i class="lni lni-user mr-2"></i>Sign In
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_login') }}" class="theme-cl ft-medium">
+                                <i class="lni lni-unlock"></i> {{ 'ui.login'|trans }}
                             </a>
                         </li>
                     {% endif %}

@@ -15,8 +15,9 @@ class AlertComponent
     {
         return match ($this->type) {
             'success' => 'fa fa-circle-check',
-            'danger' => 'fa fa-circle-exclamation',
+            'danger' => 'fa fa-circle-times',
             'info' => 'fa fa-circle-info',
+            'warning' => 'fa fa-circle-exclamation',
         };
     }
 }

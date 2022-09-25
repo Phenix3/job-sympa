@@ -41,18 +41,7 @@ class JobController extends AbstractController
     #[Route("/search", name: 'search')]
     public function searchJobs(Request $request, PaginatorInterface $paginator, ?JobSearchData $jobSearchData = null): Response
     {
-        $form = $this->createForm(SearchType::class, $jobSearchData, [
-            'csrf_protection' => false,
-            'method' => 'POST'
-        ]);
-        $form->handleRequest($request);
-
-        $jobs = $paginator->paginate(
-            $this->jobRepository->searchJobs($jobSearchData),
-            (int)$request->get('page', 1)
-        );
-
 //        dump($jobSearchData);
-        return $this->renderForm('front/job/search.html.twig', compact('jobs', 'form', 'jobSearchData'));
+        return $this->render('front/job/search.html.twig', compact('jobSearchData'));
     }
 }

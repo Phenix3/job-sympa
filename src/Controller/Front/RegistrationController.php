@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Front;
 
-use App\Entity\Employer;
-use App\Entity\Candidate;
+use App\Entity\User\Employer;
+use App\Entity\User\Candidate;
 use App\Security\EmailVerifier;
 use App\Form\RegistrationFormType;
 use Symfony\Component\Mime\Address;
-use App\Repository\EmployerRepository;
-use App\Repository\CandidateRepository;
+use App\Repository\User\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Security\AppCandidateAuthenticator;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -59,10 +58,10 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $verifyEmailRouteName = ($user instanceof Candidate) ? 'app_verify_candidate_email' : 'app_verify_employer_email';
+            // $verifyEmailRouteName = ($user instanceof Candidate) ? 'app_verify_candidate_email' : 'app_verify_employer_email';
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation($verifyEmailRouteName, $user,
+            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('no-reply@job-sympa.com', 'Contact'))
                     ->to($user->getEmail())
@@ -83,8 +82,8 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verify/candidate/email', name: 'app_verify_candidate_email')]
-    public function verifyCandidateEmail(Request $request, TranslatorInterface $translator, CandidateRepository $candidateRepository): Response
+    #[Route('/verify/email', name: 'app_verify_email')]
+    public function verifyCandidateEmail(Request $request, TranslatorInterface $translator, UserRepository $userRepository): Response
     {
         $id = $request->get('id');
 
@@ -92,7 +91,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        $user = $candidateRepository->find($id);
+        $user = $userRepository->find($id);
 
         if (null === $user) {
             return $this->redirectToRoute('app_register');
@@ -100,23 +99,23 @@ class RegistrationController extends AbstractController
         return $this->verifyUserEmail($user, $request, $translator);
     }
 
-    #[Route('/verify/employer/email', name: 'app_verify_employer_email')]
-    public function verifyEmployerEmail(Request $request, TranslatorInterface $translator, EmployerRepository $employerRepository): Response
-    {
-        $id = $request->get('id');
+    // #[Route('/verify/employer/email', name: 'app_verify_employer_email')]
+    // public function verifyEmployerEmail(Request $request, TranslatorInterface $translator, EmployerRepository $employerRepository): Response
+    // {
+    //     $id = $request->get('id');
 
-        if (null === $id) {
-            return $this->redirectToRoute('app_register');
-        }
+    //     if (null === $id) {
+    //         return $this->redirectToRoute('app_register');
+    //     }
 
-        $user = $employerRepository->find($id);
+    //     $user = $employerRepository->find($id);
 
-        if (null === $user) {
-            return $this->redirectToRoute('app_register');
-        }
+    //     if (null === $user) {
+    //         return $this->redirectToRoute('app_register');
+    //     }
 
-        return $this->verifyUserEmail($user, $request, $translator);
-    }
+    //     return $this->verifyUserEmail($user, $request, $translator);
+    // }
 
     private function verifyUserEmail(UserInterface $user, Request $request, TranslatorInterface $translator)
     {

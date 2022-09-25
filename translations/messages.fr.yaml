@@ -12,10 +12,27 @@ ui:
     account_type: Type de compte
     candidate: Je suis candidat
     employer: Je suis employeur
+
+    help:
+      send_password_reset_email: Enter votre E-mail et nous vous enverons un lien pour recuperer votre mot de passe
+
   already_registered: Vous avez deja un compte ?
+
   buttons:
     dashboard: Tableau de board
     logout: Deconnexion
+    send_password_reset_email: Envoyer le lien de recuperation du mot de passe
+    change_password: Changer mon mot de passe
+
+  alerts:
+    already_logged_in: Vous etes deja connecte.
+
+  validator:
+    type_email: Veuillez saisir une adresse E-mail
+    type_password: Veuillez saisir un mot de passe
+    must_match: Les champs ne correspondent pas
+    password_min: Votre mot de passe doit contenir au moins {{ limit }} caracteres
+
   job_requirements: Exigences
   job_description: description du job
   skills_required: Competences requises
@@ -26,3 +43,4 @@ ui:
   functional_area: Domaine fonctionnel
   role_category: Catégorie de fonctions
   search: Rechercher
+  reset_your_password: Reinitialiser votre mot de passe

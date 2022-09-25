@@ -2,7 +2,7 @@
 
 namespace App\Faker;
 
-use App\Entity\Candidate;
+use App\Entity\User\Candidate;
 use Faker\Generator;
 use Faker\Provider\Base;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;

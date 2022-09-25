@@ -1,24 +1,30 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\User;
 
-use App\Repository\EmployerRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\User\UserRepository;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-/**
- *
- */
-#[ORM\Entity(repositoryClass: EmployerRepository::class)]
-#[UniqueEntity(fields: ['email', 'username'], message: 'There is already an account with this value')]
-class Employer implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\InheritanceType('JOINED')]
+#[ORM\DiscriminatorColumn(name: 'type')]
+#[ORM\DiscriminatorMap([
+    'candidate' => Candidate::class,
+    'employer' => Employer::class
+])]
+#[UniqueEntity(fields: ['email', 'username'])]
+#[Vich\Uploadable()]
+abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    /**
-     * @var int|null
-     */
+    private ?string $type = '';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column()]
@@ -28,6 +34,8 @@ class Employer implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string|null
      */
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank()]
+    #[Assert\Email()]
     private ?string $email = null;
 
     /**
@@ -40,12 +48,14 @@ class Employer implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string|null The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotBlank()]
     private ?string $password = null;
 
     /**
      * @var string|null
      */
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
     private ?string $username = null;
 
     /**
@@ -69,6 +79,12 @@ class Employer implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
 
+    #[Vich\UploadableField(mapping: 'avatars', fileNameProperty: 'avatarName')]
+    private ?File $avatarFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $avatarName = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,26 +102,9 @@ class Employer implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
-    }
-
-    /**
-     * @see UserInterface
-     */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_EMPLOYER';
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
     public function setRoles(array $roles): self
@@ -115,10 +114,7 @@ class Employer implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -128,15 +124,6 @@ class Employer implements UserInterface, PasswordAuthenticatedUserInterface
         $this->password = $password;
 
         return $this;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
 
     public function getUsername(): ?string
@@ -156,7 +143,7 @@ class Employer implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->address;
     }
 
-    public function setAddress(string $address): self
+    public function setAddress(?string $address): self
     {
         $this->address = $address;
 
@@ -187,21 +174,47 @@ class Employer implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isVerified(): bool
+    public function isIsVerified(): ?bool
     {
         return $this->isVerified;
     }
 
-    /**
-     * @param bool $isVerified
-     * @return Employer
-     */
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getAvatarName(): ?string
+    {
+        return $this->avatarName;
+    }
+
+    public function setAvatarName(?string $avatarName): self
+    {
+        $this->avatarName = $avatarName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of avatarFile
+     */ 
+    public function getAvatarFile(): ?File
+    {
+        return $this->avatarFile;
+    }
+
+    /**
+     * Set the value of avatarFile
+     *
+     * @return  self
+     */ 
+    public function setAvatarFile(?File $avatarFile)
+    {
+        $this->avatarFile = $avatarFile;
+
         return $this;
     }
 }
