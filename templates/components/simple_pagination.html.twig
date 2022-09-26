@@ -1,0 +1,32 @@
+{{ dump(paginable.paginationData) }}
+<div {{ attributes }}>
+    {% if paginable.pageCount > 1 %}
+    <nav>
+        {% set classAlign = (align is not defined) ? '' : align=='center' ? ' justify-content-center' : (align=='right' ? ' justify-content-end' : '') %}
+        {% set classSize = (size is not defined) ? '' : size=='large' ? ' pagination-lg' : (size=='small' ? ' pagination-sm' : '') %}
+        <ul class="pagination{{ classAlign }}{{ classSize }}">
+
+            {% if paginable.paginationData.previous is defined %}
+                <li class="page-item">
+                    <a class="page-link" data-action="live#action" data-action-name="prevent|prev" rel="prev" href="{{ path(paginable.route, query|merge({(pageParameterName): paginable.paginationData.previous})) }}">&laquo;&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">&laquo;&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</span>
+                </li>
+            {% endif %}
+
+
+            {% if paginable.paginationData.next is defined %}
+                <li class="page-item">
+                    <a class="page-link" data-action="live#action" data-action-name="prevent|next" rel="next" href="{{ path(paginable.route, paginable.query|merge({(paginable.paginatorOption('pageParameterName')): paginable.paginationData.next})) }}">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</a>
+                </li>
+            {% else %}
+                <li  class="page-item disabled">
+                    <span class="page-link">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</span>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}
+</div>

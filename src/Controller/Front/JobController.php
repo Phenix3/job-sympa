@@ -41,7 +41,7 @@ class JobController extends AbstractController
     #[Route("/search", name: 'search')]
     public function searchJobs(Request $request, PaginatorInterface $paginator, ?JobSearchData $jobSearchData = null): Response
     {
-//        dump($jobSearchData);
+        // $jobSearchData = $jobSearchData ?: new JobSearchData();
         return $this->render('front/job/search.html.twig', compact('jobSearchData'));
     }
 }
