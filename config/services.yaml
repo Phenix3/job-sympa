@@ -25,3 +25,10 @@ services:
     App\Uploader\PropertyGroupedDirectoryNamer:
         public: true      # Automatically
 
+    App\Doctrine\EntityListener\CandidateSkillListener:
+        tags:
+            - { name: doctrine.orm.entity_listener, event: prePersist, entity: App\Entity\User\CandidateSkill}
+
+    App\Doctrine\EntityListener\CandidateCvListener:
+        tags:
+            - { name: doctrine.orm.entity_listener, event: prePersist, entity: App\Entity\User\CandidateCvs}

@@ -1,0 +1,12 @@
+<tr>
+    <td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">{{ resume.title }}</h4></div></td>
+    <td><span class="ft-medium">{{ resume.jobTitle }}</span></td>
+    <td>
+        <div class="dash-action">
+            {% set downloadLink = vich_uploader_asset(resume.file, 'file') %}
+            <a href="{{ downloadLink }}" target="_blank" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-download"></i></a>
+            <a href="javascript:void(0);" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center"><i class="lni lni-pencil"></i></a>
+            <action-button data-method="DELETE" data-csrf-token="{{ csrf_token('delete'~resume.id) }}" data-uri="{{ path('app_front_candidate_delete_resume', {id: resume.id}) }}" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></action-button>
+        </div>
+    </td>
+</tr>

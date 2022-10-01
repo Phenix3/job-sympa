@@ -1,0 +1,74 @@
+{% extends 'front/user/base.html.twig' %}
+
+{% block content %}
+    <div class="dashboard-widg-bar d-block">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="mb-4 tbl-lg rounded overflow-hidden">
+                    <div class="table-responsive bg-white">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">{{ 'ui.resume_title'|trans }}</th>
+                                <th scope="col">{{ 'ui.job_title'|trans }}</th>
+                                <th scope="col">
+                                    <a href="#" class="btn btn-link text-light" data-target="#newresume" data-toggle="modal">
+                                        <i class="fa fa-plus"></i> Add new resume
+                                    </a>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for resume in resumes %}
+                                    {% include 'front/user/candidate/_resume_row.html.twig' with {resume: resume} only %}
+                                {% else %}
+                                    {{ component('alert', {
+                                        type: 'warning',
+                                        message: 'ui.alerts.no_resume_to_manage'
+                                    }) }}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block extra %}
+
+
+<!-- Log In Modal -->
+<div class="modal fade" id="newresume" role="dialog" tabindex="-1" aria-labelledby="newresumemodal" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content" id="newresumemodal">
+            <div class="modal-headers">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="ti-close"></span>
+                </button>
+            </div>
+
+            <div class="modal-body p-5">
+                <div class="text-center mb-4">
+                    <h2 class="m-0 ft-regular">Create resume</h2>
+                </div>
+
+
+                {{ form_start(resumeForm) }}
+                {{ form_widget(resumeForm) }}
+
+                <div class="form-group">
+                    <button class="btn theme-bg text-light full-width">
+                        <i class="fa fa-save"></i> {{ 'ui.buttons.save'|trans }}
+                    </button>
+                </div>
+                {{ form_end(resumeForm) }}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+{% endblock %}

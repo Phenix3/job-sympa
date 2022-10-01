@@ -1,0 +1,31 @@
+<div class="_dashboard_content bg-white rounded mb-4" {{ attributes }}>
+    <div class="_dashboard_content_header br-bottom py-3 px-3">
+        <div class="_dashboard__header_flex">
+            <h4 class="mb-0 ft-medium fs-md"><i class="ti-facebook mr-1 theme-cl fs-sm"></i>User Skills</h4>
+        </div>
+    </div>
+
+    <div class="_dashboard_content_body py-3 px-3" data-loading="addClass(opacity-50)">
+        {{ form_start(form, {
+            attr: {
+                'data-action': 'live#action',
+                'data-action-name': 'prevent|save',
+                'class': 'row'
+            }
+        }) }}
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                {{ form_row(form.skills) }}
+            </div>
+        </div>
+        <div class="col-xl-12 col-lg-12">
+            <div class="form-group">
+                <button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">
+                    <i class="lni lni-save"></i> {{ 'ui.buttons.save'|trans }}
+                </button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

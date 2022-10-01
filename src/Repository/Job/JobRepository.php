@@ -2,9 +2,13 @@
 
 namespace App\Repository\Job;
 
+use App\Dto\JobSearchData;
 use App\Entity\Job\Job;
+use Carbon\Carbon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -51,6 +55,14 @@ class JobRepository extends ServiceEntityRepository
             ;
     }
 
+    public function activeJobsBuilder(?string $alias = 'j'): QueryBuilder
+    {
+        return $this->createQueryBuilder($alias)
+//            ->andWhere($alias.'.deadline <= '. Carbon::now()->toDateString())
+            ->orderBy("$alias.createdAt", 'DESC')
+            ;
+    }
+
     /**
      * @param int $id
      * @return float|int|mixed|string
@@ -58,7 +70,7 @@ class JobRepository extends ServiceEntityRepository
      */
     public function findJobWithRelations(int $id): mixed
     {
-        return $this->createQueryBuilder('j')
+        return $this->activeJobsBuilder()
             ->leftJoin('j.categories', 'categories')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
             ->addSelect('requiredSkills', 'categories')
@@ -69,11 +81,11 @@ class JobRepository extends ServiceEntityRepository
             ;
     }
 
-    public function searchJobs(?\App\Dto\JobSearchData $jobSearchData = null): \Doctrine\ORM\Query
+    public function searchJobs(?JobSearchData $jobSearchData = null): Query
     {
 
         $query =  $this
-            ->createQueryBuilder('j')
+            ->activeJobsBuilder()
             ->leftJoin('j.categories', 'c')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
             ->addSelect('c', 'requiredSkills')

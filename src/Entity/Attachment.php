@@ -5,13 +5,18 @@ namespace App\Entity;
 use App\Repository\AttachmentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: AttachmentRepository::class)]
-#[Vich\Uploadable()]
+/**
+ * @Vich\Uploadable()
+ */
 class Attachment
 {
+    use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column()]
@@ -23,11 +28,11 @@ class Attachment
     #[ORM\Column(options: ['unsigned' => true])]
     private int $fileSize = 0;
 
-    #[Vich\UploadableField(mapping: 'attachments', fileNameProperty: 'fileName', size: 'fileSize')]
+    /**
+     * @var File|null
+     * @Vich\UploadableField(mapping="attachments", fileNameProperty="fileName", size="fileSize")
+     */
     private ?File $file = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private \DateTimeInterface $createdAt;
 
     public function getId(): ?int
     {

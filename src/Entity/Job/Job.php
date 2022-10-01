@@ -3,6 +3,7 @@
 namespace App\Entity\Job;
 
 use App\Repository\Job\JobRepository;
+use Carbon\Carbon;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -86,6 +87,11 @@ class Job
     {
         $this->categories = new ArrayCollection();
         $this->requiredSkills = new ArrayCollection();
+    }
+
+    public function isActive(): bool
+    {
+        return Carbon::now()->gte($this->deadline);
     }
 
     public function getId(): ?int
