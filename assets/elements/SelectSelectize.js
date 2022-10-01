@@ -1,7 +1,7 @@
 import '@selectize/selectize';
 import '@selectize/selectize/dist/css/selectize.css';
 
-class SelectSelectize extends HTMLSelectElement {
+export default class SelectSelectize extends HTMLSelectElement {
 
     connectedCallback() {
         const options = {};
@@ -14,5 +14,3 @@ class SelectSelectize extends HTMLSelectElement {
     }
 
 }
-
-customElements.define('select-selectize', SelectSelectize, {extends: 'select'});

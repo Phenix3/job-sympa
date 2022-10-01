@@ -41,9 +41,15 @@
                 <ul class="nav-menu nav-menu-social align-to-right">
                     {% if app.user %}
                         <li class="add-listing">
-                            <a href="dashboard-post-job.html" >
-                                <i class="lni lni-dashboard mr-1"></i> {{ 'ui.buttons.dashboard'|trans }}
-                            </a>
+                            {% if is_granted('ROLE_CANDIDATE') %}
+                                <a href="{{ path('app_front_candidate_dashboard') }}" >
+                                    <i class="lni lni-dashboard mr-1"></i> {{ 'ui.buttons.dashboard'|trans }}
+                                </a>
+                            {% elseif is_granted('ROLE_EMPLOYER') %}
+                                <a href="{{ path('app_front_candidate_dashboard') }}" >
+                                    <i class="lni lni-dashboard mr-1"></i> {{ 'ui.buttons.dashboard'|trans }}
+                                </a>
+                            {% endif %}
                         </li>
                         <li class="add-listing">
                             <a href="{{ path('app_logout') }}" >

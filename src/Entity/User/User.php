@@ -2,9 +2,11 @@
 
 namespace App\Entity\User;
 
+use App\Entity\Job\Category;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\User\UserRepository;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -20,9 +22,13 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
     'employer' => Employer::class
 ])]
 #[UniqueEntity(fields: ['email', 'username'])]
-#[Vich\Uploadable()]
+/**
+ * @Vich\Uploadable()
+ */
 abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    use TimestampableEntity;
+
     private ?string $type = '';
 
     #[ORM\Id]
@@ -79,11 +85,30 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
 
-    #[Vich\UploadableField(mapping: 'avatars', fileNameProperty: 'avatarName')]
+    /**
+     * @var File|null
+     * @Vich\UploadableField(mapping="avatars", fileNameProperty="avatarName")
+     */
     private ?File $avatarFile = null;
 
     #[ORM\Column(nullable: true)]
     private ?string $avatarName = null;
+
+    #[ORM\ManyToOne]
+    private ?Category $category = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $country = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $city = null;
+
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $birth = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?array $socialAccounts = [];
 
     public function getId(): ?int
     {
@@ -209,11 +234,73 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Set the value of avatarFile
      *
+     * @param File|null $avatarFile
      * @return  self
-     */ 
-    public function setAvatarFile(?File $avatarFile)
+     */
+    public function setAvatarFile(?File $avatarFile): self
     {
         $this->avatarFile = $avatarFile;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+
+    public function getBirth(): ?\DateTimeInterface
+    {
+        return $this->birth;
+    }
+
+    public function setBirth(?\DateTimeInterface $birth): self
+    {
+        $this->birth = $birth;
+
+        return $this;
+    }
+
+    public function getSocialAccounts(): array
+    {
+        return $this->socialAccounts;
+    }
+
+    public function setSocialAccounts(?array $socialAccounts): self
+    {
+        $this->socialAccounts = $socialAccounts;
 
         return $this;
     }

@@ -1,0 +1,30 @@
+{% extends 'front/user/base.html.twig' %}
+
+{% block content %}
+    <div class="dashboard-widg-bar d-block">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                {{ component('user_profile_account', {
+                    user: user
+                }) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                {{ component('user_profile_social', {
+                    user: user
+                }) }}
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+                {{ component('user_profile_contact', {
+                    user: user
+                }) }}
+            </div>
+        </div>
+{#        {{ form_end(form) }}#}
+    </div>
+{% endblock %}
+
+

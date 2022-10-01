@@ -2,7 +2,7 @@
     "controllers": {
         "@arkounay/ux-collection": {
             "collection": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "eager",
                 "autoimport": {
                     "@arkounay/ux-collection/src/style.css": true,
@@ -12,7 +12,7 @@
         },
         "@symfony/ux-autocomplete": {
             "autocomplete": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "eager",
                 "autoimport": {
                     "tom-select/dist/css/tom-select.default.css": true
@@ -30,7 +30,7 @@
         },
         "@symfony/ux-lazy-image": {
             "lazy-image": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "eager"
             }
         },

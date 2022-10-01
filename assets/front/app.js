@@ -1,4 +1,4 @@
-import '../elements/SelectSelectize';
+import '../elements/index';
 import {CookieBanner} from 'headless-elements';
 
 import $ from 'jquery';

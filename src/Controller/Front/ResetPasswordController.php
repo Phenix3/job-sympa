@@ -28,8 +28,7 @@ class ResetPasswordController extends AbstractController
     public function __construct(
         private ResetPasswordHelperInterface $resetPasswordHelper,
         private EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     /**
      * Display & process form to request a password reset.

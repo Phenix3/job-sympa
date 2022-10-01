@@ -7,6 +7,7 @@ use App\Form\SearchType;
 use App\Repository\Job\JobRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\PaginatorInterface;
+use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/job', name: 'app_front_job_')]
 class JobController extends AbstractController
 {
-    public function __construct(private JobRepository $jobRepository)
+    public function __construct(private JobRepository $jobRepository, private BasicSeoGenerator $seoGenerator)
     {
     }
 
@@ -41,6 +42,11 @@ class JobController extends AbstractController
     #[Route("/search", name: 'search')]
     public function searchJobs(Request $request, PaginatorInterface $paginator, ?JobSearchData $jobSearchData = null): Response
     {
+        $this->seoGenerator
+            ->setTitle("")
+            ->setDescription("")
+            ->setKeywords("")
+        ;
         // $jobSearchData = $jobSearchData ?: new JobSearchData();
         return $this->render('front/job/search.html.twig', compact('jobSearchData'));
     }

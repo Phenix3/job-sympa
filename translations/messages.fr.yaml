@@ -15,6 +15,7 @@ ui:
 
     help:
       send_password_reset_email: Enter votre E-mail et nous vous enverons un lien pour recuperer votre mot de passe
+      email_change: Vous devez confirmez votre E-mail si vous le changer!
 
   already_registered: Vous avez deja un compte ?
 
@@ -23,9 +24,11 @@ ui:
     logout: Deconnexion
     send_password_reset_email: Envoyer le lien de recuperation du mot de passe
     change_password: Changer mon mot de passe
+    save: Sauvegarder
 
   alerts:
-    already_logged_in: Vous etes deja connecte.
+    already_logged_in: Vous étes déjà connecté.
+    profile_updated: Votre profile a bien été mis à jour.
 
   validator:
     type_email: Veuillez saisir une adresse E-mail

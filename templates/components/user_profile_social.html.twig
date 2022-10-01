@@ -1,0 +1,45 @@
+<div class="_dashboard_content bg-white rounded mb-4" {{ attributes }}>
+    <div class="_dashboard_content_header br-bottom py-3 px-3">
+        <div class="_dashboard__header_flex">
+            <h4 class="mb-0 ft-medium fs-md"><i class="ti-facebook mr-1 theme-cl fs-sm"></i>Social Accounts</h4>
+        </div>
+    </div>
+
+    <div class="_dashboard_content_body py-3 px-3">
+        {{ form_start(form, {attr: {class: 'row'}}) }}
+            {{ form_row(form.socialAccounts) }}
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="text-dark ft-medium">Facebook</label>
+                    <input type="text" class="form-control rounded" placeholder="https://www.facebook.com/">
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="text-dark ft-medium">Twitter</label>
+                    <input type="text" class="form-control rounded" placeholder="https://www.twitter.com/">
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="text-dark ft-medium">LinkedIn</label>
+                    <input type="text" class="form-control rounded" placeholder="https://www.linkedin.com/">
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="text-dark ft-medium">GooglePlus</label>
+                    <input type="text" class="form-control rounded" placeholder="https://www.gplus.com/">
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">
+                        <i class="lni lni-save"></i> {{ 'ui.buttons.save'|trans }}
+                    </button>
+                </div>
+            </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>
