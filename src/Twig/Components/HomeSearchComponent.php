@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components;
+namespace App\Twig\Components;
 
 use App\Dto\JobSearchData;
 use App\Form\SearchType;
@@ -14,8 +14,6 @@ use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\ComponentWithFormTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
-use Symfony\UX\TwigComponent\Attribute\PreMount;
-use function Symfony\Component\Translation\t;
 
 #[AsLiveComponent('home_search')]
 class HomeSearchComponent extends AbstractController

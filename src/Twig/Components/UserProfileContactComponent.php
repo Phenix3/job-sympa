@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components;
+namespace App\Twig\Components;
 
 use App\Entity\User\User;
 use App\Form\Type\UserContactType;

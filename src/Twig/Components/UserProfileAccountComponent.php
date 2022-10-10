@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components;
+namespace App\Twig\Components;
 
 use App\Entity\User\Candidate;
 use App\Entity\User\User;

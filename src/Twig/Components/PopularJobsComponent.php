@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components;
+namespace App\Twig\Components;
 
 use App\Repository\Job\JobRepository;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
