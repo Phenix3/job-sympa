@@ -2,6 +2,7 @@
 
 namespace App\Entity\Job;
 
+use App\Entity\User\Employer;
 use App\Repository\Job\JobRepository;
 use Carbon\Carbon;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -82,11 +83,18 @@ class Job
     #[ORM\JoinTable(name: 'job_job_job_skill')]
     private Collection $requiredSkills;
 
+    #[ORM\OneToMany(mappedBy: 'job', targetEntity: Application::class)]
+    private Collection $applications;
+
+    #[ORM\ManyToOne(inversedBy: 'jobs')]
+    private ?Employer $company = null;
+
     
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->requiredSkills = new ArrayCollection();
+        $this->applications = new ArrayCollection();
     }
 
     public function isActive(): bool
@@ -347,6 +355,48 @@ class Job
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Application>
+     */
+    public function getApplications(): Collection
+    {
+        return $this->applications;
+    }
+
+    public function addApplication(Application $application): self
+    {
+        if (!$this->applications->contains($application)) {
+            $this->applications[] = $application;
+            $application->setJob($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplication(Application $application): self
+    {
+        if ($this->applications->removeElement($application)) {
+            // set the owning side to null (unless already changed)
+            if ($application->getJob() === $this) {
+                $application->setJob(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCompany(): ?Employer
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Employer $company): self
+    {
+        $this->company = $company;
 
         return $this;
     }

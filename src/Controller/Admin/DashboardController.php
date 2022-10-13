@@ -47,8 +47,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Types', 'fa fa-list', Entity\Job\Type::class);
         yield MenuItem::linkToCrud('Jobs', 'fa fa-list', Entity\Job\Job::class);
         yield MenuItem::section('Users', 'fa fa-users');
-        yield MenuItem::linkToCrud('Candidates', 'fa fa-users', Entity\Candidate::class);
-        yield MenuItem::linkToCrud('Employers', 'fa fa-companies', Entity\Employer::class);
+        yield MenuItem::linkToCrud('Candidates', 'fa fa-users', Entity\User\Candidate::class);
+        yield MenuItem::linkToCrud('Employers', 'fa fa-companies', Entity\User\Employer::class);
 
     }
 }

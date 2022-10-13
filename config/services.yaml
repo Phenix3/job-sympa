@@ -6,6 +6,8 @@
 parameters:
     app.locale: fr
     app.social_networks: ['facebook', 'linkedin', 'twitter']
+    container.dumper.inline_factories: true
+    container.dumper.inline_class_loader: true
 
 services:
     # default configuration for services in *this* file
@@ -32,3 +34,4 @@ services:
     App\Doctrine\EntityListener\CandidateCvListener:
         tags:
             - { name: doctrine.orm.entity_listener, event: prePersist, entity: App\Entity\User\CandidateCvs}
+

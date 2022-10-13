@@ -1,0 +1,23 @@
+{% import 'includes/ui.html.twig' as ui %}
+<tr>
+    <td>
+        <div class="cats-box rounded bg-white d-flex align-items-center">
+            <div class="text-center"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="55" alt=""></div>
+            <div class="cats-box-caption px-2">
+                <h4 class="fs-md mb-0 ft-medium">{{ application.job.title }}</h4>
+                <div class="d-block mb-2 position-relative">
+                    <span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i>{{ application.job.location }}</span>
+                    <span class="muted medium ml-2 text-warning"><i class="lni lni-briefcase mr-1"></i>{{ application.job.type.name }}</span>
+                </div>
+            </div>
+        </div>
+    </td>
+    <td><span class="text-info">{{ ui.badge(application.status, application.status) }}</span></td>
+    <td>{{ application.createdAt|format_date }}</td>
+    <td>
+        <div class="dash-action">
+            <a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
+            <action-button data-method="DELETE" data-csrf-token="{{ csrf_token('delete'~application.id) }}" data-uri="{{ path('app_front_candidate_application_delete', {id: application.id}) }}" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></action-button>
+        </div>
+    </td>
+</tr>

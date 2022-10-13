@@ -26,7 +26,9 @@
                         </div>
                         <div class="jbd-01-right text-right">
                             <div class="jbl_button mb-2"><a href="javascript:void(0);" class="btn btn-md rounded theme-bg-light theme-cl fs-sm ft-medium">Apply This Job</a></div>
-                            <div class="jbl_button"><a href="javascript:void(0);" class="btn btn-md rounded bg-white border fs-sm ft-medium">View Company</a></div>
+                            {% if job.company %}
+                                <div class="jbl_button"><a href="javascript:void(0);" class="btn btn-md rounded bg-white border fs-sm ft-medium">View Company</a></div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -99,33 +101,21 @@
 
                 <!-- Sidebar -->
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <div class="jb-apply-form bg-white shadow rounded py-3 px-4 box-static">
-                        <h4 class="ft-medium fs-md mb-3">Intrested in this job?</h4>
+                    {#{{ component('application_form', {
+                        application: application.id ? application : null,
+                        job: job
+                    }) }}#}
+                    <div class="jb-apply-form bg-white rounded py-3 px-4 box-static">
+                        <turbo-frame  id="applied_stream">
+                            <h4 class="ft-medium fs-md mb-3">Intrested in this job?</h4>
 
-                        <form class="_apply_form_form">
-
-                            <div class="form-group">
-                                <label class="text-dark mb-1 ft-medium medium">First Name</label>
-                                <input type="text" class="form-control" placeholder="First Name">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="text-dark mb-1 ft-medium medium">Your Email</label>
-                                <input type="email" class="form-control" placeholder="themezhub@gmail.com">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="text-dark mb-1 ft-medium medium">Phone Number:</label>
-                                <input type="text" class="form-control" placeholder="+91 245 256 2548">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="text-dark mb-1 ft-medium medium">Upload Resume:<small class="medium ft-medium">pdf, doc, docx</small></label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                </div>
-                            </div>
+                            {{ form_start(applicationForm, {
+                                attr: {
+                                    class: "_apply_form_form"
+                                }
+                            }) }}
+                            {{ form_errors(applicationForm) }}
+                            {{ form_rest(applicationForm) }}
 
                             <div class="form-group">
                                 <div class="terms_con">
@@ -135,10 +125,11 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="button" class="btn btn-md rounded theme-bg text-light ft-medium fs-sm full-width">Apply For This Job</button>
+                                <button type="submit" class="btn btn-md rounded theme-bg text-light ft-medium fs-sm full-width">{{ 'ui.buttons.apply_for_job'|trans }}</button>
                             </div>
 
-                        </form>
+                            {{ form_end(applicationForm) }}
+                        </turbo-frame>
                     </div>
                 </div>
 

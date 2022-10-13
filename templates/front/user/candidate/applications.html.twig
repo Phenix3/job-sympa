@@ -1,0 +1,75 @@
+{% extends 'front/user/base.html.twig' %}
+
+{% block content %}
+    <div class="dashboard-widg-bar d-block">
+        <div class="row">
+            <div class="col-xl-12 col-md-12 col-sm-12">
+                <div class="cl-justify">
+
+                    <div class="cl-justify-first">
+                        <p class="m-0 p-0 ft-sm">You have applied <span class="text-dark ft-medium">{{ applications|length }}</span> jobs</p>
+                    </div>
+
+                    <div class="cl-justify-last">
+                        <div class="d-flex align-items-center justify-content-left">
+                            <div class="dlc-list">
+                                <select class="form-control sm rounded">
+                                    <option>All Jobs</option>
+                                    <option>Full Time</option>
+                                    <option>Part Time</option>
+                                    <option>Freelancing</option>
+                                    <option>Internship</option>
+                                    <option>Contract</option>
+                                </select>
+                            </div>
+                            <div class="dlc-list ml-2">
+                                <select class="form-control sm rounded">
+                                    <option>Show 20</option>
+                                    <option>Show 30</option>
+                                    <option>Show 40</option>
+                                    <option>Show 50</option>
+                                    <option>Show 100</option>
+                                    <option>Show 250</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="mb-4 tbl-lg rounded overflow-hidden">
+                    <div class="table-responsive bg-white">
+                        <table class="table table-responsive table-responsive-lg">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Job Title</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Applied Date</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for application in applications %}
+                                {% include 'front/user/candidate/_application_row.html.twig' with {application: application} only %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                {{ knp_pagination_render(applications) }}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block extra %}
+
+{% endblock %}
+

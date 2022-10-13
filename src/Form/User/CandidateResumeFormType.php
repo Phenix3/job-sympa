@@ -15,7 +15,9 @@ class CandidateResumeFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('isDefault', CheckboxType::class)
+            ->add('isDefault', CheckboxType::class, [
+                'required' => false
+            ])
             ->add('title', TextType::class)
             ->add('jobTitle', TextType::class)
             ->add('file', AttachmentType::class, [

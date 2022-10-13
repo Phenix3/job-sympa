@@ -19,6 +19,16 @@
                 }
             }
         },
+        "@symfony/ux-cropperjs": {
+            "cropper": {
+                "enabled": true,
+                "fetch": "eager",
+                "autoimport": {
+                    "cropperjs/dist/cropper.min.css": true,
+                    "@symfony/ux-cropperjs/src/style.css": true
+                }
+            }
+        },
         "@symfony/ux-dropzone": {
             "dropzone": {
                 "enabled": true,
@@ -45,6 +55,12 @@
         },
         "@symfony/ux-react": {
             "react": {
+                "enabled": true,
+                "fetch": "eager"
+            }
+        },
+        "@symfony/ux-turbo": {
+            "turbo-core": {
                 "enabled": true,
                 "fetch": "eager"
             }

@@ -1,0 +1,18 @@
+<div class="jb-apply-form bg-white shadow rounded py-3 px-4 box-static" {{ attributes }}>
+    <h4 class="ft-medium fs-md mb-3">Intrested in this job?</h4>
+
+
+    {{ form_start(form, {
+        attr: {
+            class: "_apply_form_form",
+            'data-action': 'live#action',
+            'data-action-name': "prevent|save"
+        }
+    }) }}
+        {{ form_widget(form) }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-md rounded theme-bg text-light ft-medium fs-sm full-width">{{ 'ui.buttons.apply_for_job'|trans }}</button>
+        </div>
+    {{ form_end(form) }}
+
+</div>

@@ -27,18 +27,21 @@ ui:
     change_password: Changer mon mot de passe
     save: Sauvegarder
     add_skill: Ajouter une competence
+    apply_for_job: Postuler pour le poste
 
   alerts:
     already_logged_in: Vous étes déjà connecté.
     profile_updated: Votre profile a bien été mis à jour.
     no_resume_to_manage: Vous n'avez encore ajouter aucun CV
     resume_created: Votre CV a bien été crée
+    application_posted: Votre candidature à bien été postée.
 
   validator:
     type_email: Veuillez saisir une adresse E-mail
     type_password: Veuillez saisir un mot de passe
     must_match: Les champs ne correspondent pas
     password_min: Votre mot de passe doit contenir au moins {{ limit }} caracteres
+    already_applied_for_job: Vous avez déjà postuler à ce poste
 
   job_requirements: Exigences
   job_description: description du job
@@ -51,6 +54,7 @@ ui:
   role_category: Catégorie de fonctions
   search: Rechercher
   reset_your_password: Reinitialiser votre mot de passe
-  manage_resume: 'messages'
-  job_title: 'messages'
-  resume_title: 'messages'
+  manage_resume: Gérer mes CV
+  job_title: Titre du poste
+  resume_title: Titre du CV
+  applied_jobs: Mes candidatures

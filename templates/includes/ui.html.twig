@@ -1,0 +1,4 @@
+{% macro badge(type, label, size = 'md') %}
+    {% set type = type == 'pending' ? 'warning' : 'info' %}
+    <span class="badge badge-{{ type }} badge-{{ size }} text-light">{{ label }}</span>
+{% endmacro %}

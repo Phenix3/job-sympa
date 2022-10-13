@@ -2,6 +2,7 @@
 
 namespace App\Entity\User;
 
+use App\Entity\Job\Application;
 use App\Entity\Job\Type;
 use App\Entity\User\User;
 use App\Repository\User\CandidateRepository;
@@ -36,10 +37,14 @@ class Candidate extends User
     #[ORM\OneToMany(mappedBy: 'candidate', targetEntity: CandidateCvs::class, orphanRemoval: true)]
     private Collection $cvs;
 
+    #[ORM\OneToMany(mappedBy: 'candidate', targetEntity: Application::class)]
+    private Collection $applications;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
         $this->cvs = new ArrayCollection();
+        $this->applications = new ArrayCollection();
     }
 
 
@@ -162,6 +167,36 @@ class Candidate extends User
             // set the owning side to null (unless already changed)
             if ($cv->getCandidate() === $this) {
                 $cv->setCandidate(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Application>
+     */
+    public function getApplications(): Collection
+    {
+        return $this->applications;
+    }
+
+    public function addApplication(Application $application): self
+    {
+        if (!$this->applications->contains($application)) {
+            $this->applications[] = $application;
+            $application->setCandidate($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplication(Application $application): self
+    {
+        if ($this->applications->removeElement($application)) {
+            // set the owning side to null (unless already changed)
+            if ($application->getCandidate() === $this) {
+                $application->setCandidate(null);
             }
         }
 

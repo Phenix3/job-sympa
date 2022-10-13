@@ -39,6 +39,21 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
+
+    /**
+     * @param int|null $limit
+     * @return float|int|mixed|string
+     */
+    public function findLatest(?int $limit = 12): mixed
+    {
+        return $this->createQueryBuilder('category')
+            ->orderBy('category.id', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */

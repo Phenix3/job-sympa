@@ -6,6 +6,7 @@ use App\Entity\User\Candidate;
 use App\Entity\User\CandidateCvs;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -43,14 +44,24 @@ class CandidateCvsRepository extends ServiceEntityRepository
 
     /**
      * @param Candidate $candidate
-     * @return Query
+     * @return QueryBuilder
      */
-    public function findForCandidateQuery(Candidate $candidate): Query
+    public function findForCandidateBuilder(Candidate $candidate): QueryBuilder
     {
         return $this->createQueryBuilder('cc')
             ->where('cc.candidate = :candidate')
             ->orderBy('cc.id', 'DESC')
             ->setParameter('candidate', $candidate)
+            ;
+    }
+
+    /**
+     * @param Candidate $candidate
+     * @return Query
+     */
+    public function findForCandidateQuery(Candidate $candidate): Query
+    {
+        return $this->findForCandidateBuilder($candidate)
             ->getQuery()
             ;
     }
