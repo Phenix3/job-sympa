@@ -50,7 +50,7 @@ class CandidateCvsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('cc')
             ->where('cc.candidate = :candidate')
-            ->orderBy('cc.id', 'DESC')
+            ->orderBy('cc.createdAt', 'DESC')
             ->setParameter('candidate', $candidate)
             ;
     }

@@ -4,17 +4,13 @@ namespace App\Controller\Front\User;
 
 use App\Controller\BaseController;
 use App\Entity\Job\Application;
-use App\Entity\User\Candidate;
 use App\Entity\User\CandidateCvs;
 use App\Form\User\CandidateResumeFormType;
-use App\Repository\User\CandidateCvsRepository;
-use App\Repository\User\CandidateRepository;
 use App\Service\JobApplicationService;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

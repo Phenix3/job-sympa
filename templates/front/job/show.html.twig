@@ -105,10 +105,10 @@
                         application: application.id ? application : null,
                         job: job
                     }) }}#}
-                    <div class="jb-apply-form bg-white rounded py-3 px-4 box-static">
+                    <div class="jb-apply-form bg-white rounded py-3 px-4 box-static shadow">
+                        {% if is_granted('ROLE_USER') %}
                         <turbo-frame  id="applied_stream">
                             <h4 class="ft-medium fs-md mb-3">Intrested in this job?</h4>
-
                             {{ form_start(applicationForm, {
                                 attr: {
                                     class: "_apply_form_form"
@@ -130,6 +130,10 @@
 
                             {{ form_end(applicationForm) }}
                         </turbo-frame>
+                        {% else %}
+                            <p class="lead">{{ 'ui.alerts.unable_to_post_application_not_logged_in'|trans }}</p>
+                            <p><a href="{{ path('app_login') }}" class="btn btn-link theme-btn-light">{{ 'ui.buttons.login'|trans }}</a> ou <a href="{{ path('app_login') }}" class="btn btn-link theme-btn-light">{{ 'ui.buttons.register'|trans }}</a></p>
+                        {% endif %}
                     </div>
                 </div>
 

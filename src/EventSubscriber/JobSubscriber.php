@@ -47,6 +47,7 @@ class JobSubscriber implements EventSubscriberInterface
             'candidate' => $candidate
         ])
             ->to($candidate->getEmail())
+            ->subject('SahelJob :: Notification')
         ;
 
         $this->mailerService->sendNow($email);

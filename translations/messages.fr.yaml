@@ -22,12 +22,14 @@ ui:
 
   buttons:
     dashboard: Tableau de board
-    logout: Deconnexion
+    logout: Déconnexion
     send_password_reset_email: Envoyer le lien de recuperation du mot de passe
     change_password: Changer mon mot de passe
     save: Sauvegarder
     add_skill: Ajouter une competence
     apply_for_job: Postuler pour le poste
+    login: Connexion
+    register: Créer un compte
 
   alerts:
     already_logged_in: Vous étes déjà connecté.
@@ -35,6 +37,7 @@ ui:
     no_resume_to_manage: Vous n'avez encore ajouter aucun CV
     resume_created: Votre CV a bien été crée
     application_posted: Votre candidature à bien été postée.
+    unable_to_post_application_not_logged_in: Vous dévez etre connecté pour postuler à une offre.
 
   validator:
     type_email: Veuillez saisir une adresse E-mail

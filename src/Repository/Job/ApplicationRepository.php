@@ -45,6 +45,7 @@ class ApplicationRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('application')
             ->where('application.candidate = :candidate')
+            ->orderBy('application.createdAt', 'DESC')
             ->setParameter('candidate', $candidate)
             ->getQuery()
             ;

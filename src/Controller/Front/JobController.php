@@ -51,6 +51,7 @@ class JobController extends AbstractController
         $applicationForm = $this->createForm(ApplicationType::class, $application);
         $applicationForm->handleRequest($request);
         if ($applicationForm->isSubmitted() && $applicationForm->isValid()) {
+            $this->denyAccessUnlessGranted('ROLE_USER');
             $applicationService->create($application);
             if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
