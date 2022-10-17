@@ -31,7 +31,6 @@ class CandidateController extends BaseController
     }
 
     #[Route('/dashboard', name: 'dashboard')]
-    #[IsGranted('ROLE_CANDIDATE')]
     public function dashboard(): Response
     {
         $this->seoGenerator

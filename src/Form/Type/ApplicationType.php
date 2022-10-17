@@ -20,19 +20,15 @@ class ApplicationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('message', TextareaType::class);
+            ->add('message', TextareaType::class)
 //            ->add('job')
 //            ->add('candidate')
-        if ($this->tokenStorage->getToken() && $this->tokenStorage->getToken()->getUser()) {
-
-        $builder
             ->add('cv', EntityType::class, [
                 'class' => CandidateCvs::class,
                 'query_builder' => $this->manager->getRepository(CandidateCvs::class)->findForCandidateBuilder($this->tokenStorage->getToken()->getUser()),
                 'placeholder' => 'ui.form.select_resume'
             ])
         ;
-        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void

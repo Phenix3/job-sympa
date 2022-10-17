@@ -3,6 +3,7 @@
 namespace App\Repository\Job;
 
 use App\Entity\Job\Application;
+use App\Entity\Job\Job;
 use App\Entity\User\Candidate;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -47,6 +48,16 @@ class ApplicationRepository extends ServiceEntityRepository
             ->where('application.candidate = :candidate')
             ->orderBy('application.createdAt', 'DESC')
             ->setParameter('candidate', $candidate)
+            ->getQuery()
+            ;
+    }
+
+    public function findForJob(Job $job): Query
+    {
+        return $this->createQueryBuilder('application')
+            ->where('application.job = :job')
+            ->setParameter('job', $job)
+            ->orderBy('application.createdAt', 'DESC')
             ->getQuery()
             ;
     }

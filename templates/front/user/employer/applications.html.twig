@@ -1,0 +1,50 @@
+{% extends 'front/user/base.html.twig' %}
+
+{% block content %}
+    <div class="dashboard-widg-bar d-block">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+
+                <div class="px-3 py-2 br-bottom br-top bg-white rounded mb-3">
+                    <div class="flixors">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+                                <h6 class="mb-0 ft-medium fs-sm">{{ applications|length }} New Applicants Found for <a href="{{ path('app_front_job_show', {id: job.id, slug: job.slug}) }}" class="btn-link"> {{ job.title }} </a></h6>
+                            </div>
+
+                            <div class="col-xl-9 col-lg-8 col-md-7 col-sm-12">
+                                <div class="filter_wraps elspo_wrap d-flex align-items-center justify-content-end">
+                                    <div class="single_fitres mr-2">
+                                        <select class="custom-select simple">
+                                            <option value="1" selected="">Default Sorting</option>
+                                            <option value="2">Short By Name</option>
+                                            <option value="3">Short By Rating</option>
+                                            <option value="4">Short By Trending</option>
+                                            <option value="5">Shot By Recent</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="data-responsive">
+
+                    {% for application in applications %}
+                    {% include 'front/user/employer/_application_row.html.twig' with {application: application} only %}
+                    {% endfor %}
+
+                </div>
+                <div class="row">
+                    <div class="col mx-auto">
+                        {{ knp_pagination_render(applications) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+

@@ -4,6 +4,7 @@ namespace App\Repository\Job;
 
 use App\Dto\JobSearchData;
 use App\Entity\Job\Job;
+use App\Entity\User\Employer;
 use Carbon\Carbon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
@@ -104,5 +105,17 @@ class JobRepository extends ServiceEntityRepository
         }
 
         return $query->getQuery();
+    }
+
+    public function findAllForEmployerQuery(Employer $employer): Query
+    {
+        return $this->createQueryBuilder('job')
+            ->leftJoin('job.applications', 'applications')
+            ->addSelect('applications')
+            ->where('job.company = :company')
+            ->setParameter('company', $employer)
+            ->orderBy('job.createdAt', 'DESC')
+            ->getQuery()
+            ;
     }
 }

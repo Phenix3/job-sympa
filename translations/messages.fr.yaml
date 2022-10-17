@@ -30,6 +30,8 @@ ui:
     apply_for_job: Postuler pour le poste
     login: Connexion
     register: Créer un compte
+    post_job: Poster une offre
+    manage_jobs: Gérer mes offres
 
   alerts:
     already_logged_in: Vous étes déjà connecté.

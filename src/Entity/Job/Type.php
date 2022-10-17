@@ -26,6 +26,11 @@ class Type
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -34,7 +34,7 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column()]
-    private ?int $id = null;
+    protected ?int $id = null;
 
     /**
      * @var string|null
@@ -109,6 +109,16 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?array $socialAccounts = [];
+/*
+
+    public function serialize(): string
+    {
+        return serialize([$this->id, $this->email]);
+    }
+
+    public function unserialize($data) {
+        [$this->id, $this->email] = unserialize($data);
+    }*/
 
     public function getId(): ?int
     {

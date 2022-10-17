@@ -2,7 +2,7 @@
     "controllers": {
         "@arkounay/ux-collection": {
             "collection": {
-                "enabled": false,
+                "enabled": true,
                 "fetch": "eager",
                 "autoimport": {
                     "@arkounay/ux-collection/src/style.css": true,

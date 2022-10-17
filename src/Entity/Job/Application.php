@@ -28,7 +28,7 @@ class Application
     #[ORM\Column()]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'applications')]
+    #[ORM\ManyToOne(fetch: 'EAGER', inversedBy: 'applications')]
     private ?Job $job = null;
 
     #[ORM\ManyToOne(inversedBy: 'applications')]

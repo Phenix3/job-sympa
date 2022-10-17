@@ -47,7 +47,14 @@ class Candidate extends User
         $this->applications = new ArrayCollection();
     }
 
+    public function serialize(): string
+    {
+        return serialize($this->id);
+    }
 
+    public function unserialize($data) {
+        $this->id = unserialize($data);
+    }
 
     public function getProfileIdentifier(): string
     {
@@ -202,5 +209,4 @@ class Candidate extends User
 
         return $this;
     }
-
 }
