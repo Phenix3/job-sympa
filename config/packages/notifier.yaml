@@ -10,7 +10,7 @@ framework:
             # use chat/slack, chat/telegram, sms/twilio or sms/nexmo
             urgent: ['email']
             high: ['email']
-            medium: ['email']
-            low: ['email']
+            medium: ['email', 'browser']
+            low: ['email', 'browser']
         admin_recipients:
             - { email: admin@example.com }

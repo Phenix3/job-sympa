@@ -1,5 +1,5 @@
 <tr>
-    <td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">{{ job.title }}</h4></div></td>
+    <td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm"><a href="{{ path('app_front_job_show', {id: job.id, slug: job.slug}) }}">{{ job.title }}</a></h4></div></td>
     <td><div class="dash-filled"><span class="p-2 circle gray d-inline-flex align-items-center justify-content-center"><i class="lni lni-minus"></i></span></div></td>
     <td>{{ job.createdAt|format_date }}</td>
     <td>{{ job.deadline|format_date }}</td>

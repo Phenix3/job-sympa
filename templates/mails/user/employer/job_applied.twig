@@ -1,0 +1,26 @@
+{% extends layout %}
+
+
+{% block body %}
+    <table style="width:100%;max-width:620px;margin:0 auto;">
+        <tbody>
+        <tr>
+            <td style="text-align: center; padding-bottom:25px">
+                <a href="#"><img style="height: 40px" src="images/logo-dark2x.png" alt="logo"></a>
+                <p style="font-size: 14px; color: #6576ff; padding-top: 12px;">Conceptual Base Modern Dashboard Theme</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table style="width:100%;max-width:620px;margin:0 auto;background-color:#ffffff;">
+        <tbody>
+        <tr>
+            <td style="text-align:center;padding: 50px 30px;">
+                <img style="width:88px; margin-bottom:24px;" src="{{ absolute_url(asset('img/kyc-success.png')) }}" alt="Verified">
+                <h2 style="font-size: 18px; color: #1ee0ac; font-weight: 400; margin-bottom: 8px;">{{ 'ui.alerts.application_posted'|trans }}</h2>
+                <p>One fo our team verified your indentity. You are now in whitelisted for token sale.</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

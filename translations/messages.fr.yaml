@@ -32,6 +32,8 @@ ui:
     register: Créer un compte
     post_job: Poster une offre
     manage_jobs: Gérer mes offres
+    view_applications: Gérer mes candidatures
+
 
   alerts:
     already_logged_in: Vous étes déjà connecté.
@@ -40,6 +42,8 @@ ui:
     resume_created: Votre CV a bien été crée
     application_posted: Votre candidature à bien été postée.
     unable_to_post_application_not_logged_in: Vous dévez etre connecté pour postuler à une offre.
+    jon_applied: Une offre a été faite
+    job_applied_content: Une offre a été faite aà votre offre d'emploi
 
   validator:
     type_email: Veuillez saisir une adresse E-mail

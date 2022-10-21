@@ -12,6 +12,7 @@
         "@symfony/ux-live-component": "file:vendor/symfony/ux-live-component/assets",
         "@symfony/ux-react": "file:vendor/symfony/ux-react/Resources/assets",
         "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/Resources/assets",
+        "@symfony/ux-turbo-mercure": "file:vendor/symfony/ux-turbo-mercure/Resources/assets",
         "@symfony/webpack-encore": "^3.0.0",
         "core-js": "^3.23.0",
         "cropperjs": "^1.5.9",

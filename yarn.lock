@@ -1183,6 +1183,9 @@
 "@symfony/ux-react@file:vendor/symfony/ux-react/Resources/assets":
   version "1.0.0"
 
+"@symfony/ux-turbo-mercure@file:vendor/symfony/ux-turbo-mercure/Resources/assets":
+  version "0.1.0"
+
 "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/Resources/assets":
   version "0.1.0"
 

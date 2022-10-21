@@ -18,3 +18,4 @@ App\Entity\Job\Job:
     city: <city()>
     fullAddress: <address()>
     requiredSkills: '3x @job_skills_*'
+    company: '@employers_*'
