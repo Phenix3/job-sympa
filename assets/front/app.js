@@ -1,5 +1,5 @@
 import '../elements/index';
-import {CookieBanner} from 'headless-elements';
+// import {CookieBanner} from 'headless-elements';
 
 import $ from 'jquery';
 const  Popper = require('popper.js').default;
@@ -16,4 +16,4 @@ import './js/smoothproducts';
 import './js/snackbar.min';
 import './js/jQuery.style.switcher';
 import './js/custom';
-CookieBanner.register();
+// CookieBanner.register();
