@@ -21,7 +21,7 @@
         },
         "@symfony/ux-cropperjs": {
             "cropper": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "eager",
                 "autoimport": {
                     "cropperjs/dist/cropper.min.css": true,
@@ -67,7 +67,7 @@
         },
         "@symfony/ux-turbo-mercure": {
             "turbo-stream": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "eager"
             }
         }
