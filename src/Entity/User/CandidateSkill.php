@@ -7,6 +7,7 @@ use App\Repository\User\CandidateSkillRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CandidateSkillRepository::class)]
+#[ORM\Table("`user_candidate_skill`")]
 class CandidateSkill
 {
     #[ORM\Id]

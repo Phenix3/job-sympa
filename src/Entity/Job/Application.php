@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ApplicationRepository::class)]
+#[ORM\Table("`job_application`")]
 #[UniqueEntity(fields: ['job', 'candidate'], message: 'ui.validator.already_applied_for_job')]
 class Application
 {

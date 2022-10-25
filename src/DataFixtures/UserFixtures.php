@@ -2,7 +2,8 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\User;
+use App\Entity\User\Employer;
+use App\Entity\User\Candidate;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -23,14 +24,26 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         for ($i = 0; $i < 10; $i++) {
-            $user = new User();
-            $user
+            $employer = new Employer();
+            $employer
                 ->setEmail($this->faker->email)
-                ->setPassword($this->passwordHasher->hashPassword($user, '123456'))
-                ->setRoles(['ROLE_USER'])
+                ->setPassword($this->passwordHasher->hashPassword($employer, '123456'))
+                ->setRoles(['ROLE_EMPLOYER'])
                 ->setUsername($this->faker->userName);
 
-            $manager->persist($user);
+            $manager->persist($employer);
+            $manager->flush();
+        }
+
+        for ($i = 0; $i < 10; $i++) {
+            $candidate = new Candidate();
+            $candidate
+                ->setEmail($this->faker->email)
+                ->setPassword($this->passwordHasher->hashPassword($candidate, '123456'))
+                ->setRoles(['ROLE_CANDIDATE'])
+                ->setUsername($this->faker->userName);
+
+            $manager->persist($candidate);
             $manager->flush();
         }
     }

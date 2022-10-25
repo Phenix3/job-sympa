@@ -13,7 +13,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
-#[ORM\Table("job_job")]
+#[ORM\Table("`job_job`")]
 class Job
 {
     use TimestampableEntity;

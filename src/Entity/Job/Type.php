@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: TypeRepository::class)]
-#[ORM\Table("job_type")]
+#[ORM\Table("`job_type`")]
 class Type
 {
     #[ORM\Id]

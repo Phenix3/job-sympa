@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EmployerRepository::class)]
+#[ORM\Table("`user_employer`")]
 class Employer extends User
 {
 

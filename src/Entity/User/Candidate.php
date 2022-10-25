@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CandidateRepository::class)]
+#[ORM\Table("`user_candidate`")]
 class Candidate extends User
 {
 
