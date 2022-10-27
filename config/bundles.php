@@ -41,4 +41,5 @@ return [
     Symfony\UX\Cropperjs\CropperjsBundle::class => ['all' => true],
     Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
     Symfony\Bundle\MercureBundle\MercureBundle::class => ['all' => true],
+    APY\BreadcrumbTrailBundle\APYBreadcrumbTrailBundle::class => ['all' => true],
 ];

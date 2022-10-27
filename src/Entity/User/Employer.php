@@ -32,6 +32,15 @@ class Employer extends User
         $this->jobs = new ArrayCollection();
     }
 
+    public function serialize()
+    {
+      return serialize([$this->id, $this->email]);
+    }
+
+    public  function unserialize($data)
+    {
+      [$this->id, $this->email] = unserialize($data, ['allowed_classes' => false]);
+    }
 
     public function getProfileIdentifier(): string
     {
@@ -44,7 +53,7 @@ class Employer extends User
     }
 
     public function eraseCredentials()
-    { 
+    {
     }
 
 

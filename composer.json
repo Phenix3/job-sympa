@@ -8,6 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/core": "^2.6",
+        "apy/breadcrumbtrail-bundle": "dev-master",
         "arkounay/ux-collection": "^2.2",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.7",

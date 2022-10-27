@@ -10,6 +10,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -26,7 +27,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @Vich\Uploadable()
  */
-abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
+abstract class User implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface , \Serializable
 {
     use TimestampableEntity;
 
@@ -43,7 +44,7 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\NotBlank()]
     #[Assert\Email()]
-    private ?string $email = null;
+    protected ?string $email = null;
 
     /**
      * @var array
@@ -86,14 +87,15 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
 
+
+    #[ORM\Column(nullable: true)]
+    private ?string $avatarName = '';
+
     /**
      * @var File|null
      * @Vich\UploadableField(mapping="avatars", fileNameProperty="avatarName")
      */
     private ?File $avatarFile = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?string $avatarName = null;
 
     #[ORM\ManyToOne]
     private ?Category $category = null;
@@ -110,20 +112,34 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?array $socialAccounts = [];
-/*
 
-    public function serialize(): string
+    // public function __serialize(): array
+    // {
+    // return ['id' => $this->id, 'email' => $this->email];
+    // }
+    //
+    // public function __unserialize(array $data): void
+    // {
+    //     $this->email = $data['email'];
+    //     $this->id = $data['id'];
+    //     // $this->setAvatarName($data['avatarName']);
+    // }
+
+    public function isEqualTo(UserInterface $user): bool
     {
-        return serialize([$this->id, $this->email]);
+      return $this->getEmail() === $user->getEmail();
     }
 
-    public function unserialize($data) {
-        [$this->id, $this->email] = unserialize($data);
-    }*/
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId($id): self
+    {
+      $this->id = $id;
+      return $this;
     }
 
     public function getEmail(): ?string
@@ -236,7 +252,7 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Get the value of avatarFile
-     */ 
+     */
     public function getAvatarFile(): ?File
     {
         return $this->avatarFile;
@@ -251,6 +267,10 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAvatarFile(?File $avatarFile): self
     {
         $this->avatarFile = $avatarFile;
+
+        if(null !== $avatarFile) {
+          $this->updatedAt = new \DateTime();
+        }
 
         return $this;
     }

@@ -5,6 +5,7 @@ namespace App\Controller\Front\User;
 use App\Controller\BaseController;
 use App\Entity\Job\Application;
 use App\Entity\User\CandidateCvs;
+use App\Form\User\CandidateAccountFormType;
 use App\Form\User\CandidateResumeFormType;
 use App\Service\JobApplicationService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -45,10 +46,24 @@ class CandidateController extends BaseController
     }
 
     #[Route("/profile", name: 'profile')]
-    public function profile(Request $request): Response
+    public function profile(Request $request, EntityManagerInterface $manager): Response
     {
+        // dump($this->container->get('security.token_storage')->getToken());
+        $user = $this->getUser();
+        $userAccountForm = $this->createForm(CandidateAccountFormType::class, $user);
+        $userAccountForm->handleRequest($request);
+
+        if ($userAccountForm->isSubmitted() && $userAccountForm->isValid()) {
+            $manager->persist($user);
+            $manager->flush();
+
+            $this->addFlash('success', 'ui.alerts.');
+            return $this->redirectToRoute('app_front_candidate_dashboard');
+        }
+
         return $this->renderForm('front/user/candidate/profile.html.twig', [
-            'user' => $this->getUser()
+            'user' => $user,
+            'userAccountForm' => $userAccountForm
         ]);
     }
 

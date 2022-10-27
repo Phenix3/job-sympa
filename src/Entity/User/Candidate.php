@@ -48,27 +48,29 @@ class Candidate extends User
         $this->applications = new ArrayCollection();
     }
 
-    public function serialize(): string
+
+    public function serialize()
     {
-        return serialize($this->id);
+      return serialize([$this->id, $this->email]);
     }
 
-    public function unserialize($data) {
-        $this->id = unserialize($data);
+    public  function unserialize($data)
+    {
+      [$this->id, $this->email] = unserialize($data, ['allowed_classes' => false]);
     }
 
     public function getProfileIdentifier(): string
     {
         return 'candidate-'.$this->getId();
     }
-    
+
     public function getUserIdentifier(): string
     {
         return $this->getEmail();
     }
 
     public function eraseCredentials()
-    {  
+    {
     }
 
 

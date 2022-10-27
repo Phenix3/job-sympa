@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\UX\Dropzone\Form\DropzoneType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserAccountType extends AbstractType
@@ -26,8 +27,10 @@ class UserAccountType extends AbstractType
             ->add('username', TextType::class)
             ->add('about', TextareaType::class)
             ->add('avatarFile', VichImageType::class, [
-                'mapped' => false,
-                'required' => false
+                // 'required' => false,
+                'attr' => [
+                    // 'data-live-ignore' => true
+                ]
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,

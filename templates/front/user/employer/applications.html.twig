@@ -9,7 +9,9 @@
                     <div class="flixors">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-                                <h6 class="mb-0 ft-medium fs-sm">{{ applications|length }} New Applicants Found for <a href="#" class="btn-link"> {{ job.title }} </a></h6>
+                                <h6 class="mb-0 ft-medium fs-sm">
+                                  {{ applications|length }} New Applicants Found for <a href="{{ path('app_front_job_show', {id: job.id, slug: job.slug}) }}" class="btn-link"> {{ job.title }} </a>
+                                </h6>
                             </div>
 
                             <div class="col-xl-9 col-lg-8 col-md-7 col-sm-12">
@@ -47,4 +49,3 @@
 
     </div>
 {% endblock %}
-

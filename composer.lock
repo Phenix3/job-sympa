@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db63f3df4627d8642dbc990b892eb27f",
+    "content-hash": "301fa81132ec7d5583d240341b0a9057",
     "packages": [
         {
             "name": "api-platform/core",
@@ -166,6 +166,68 @@
                 }
             ],
             "time": "2022-01-11T10:29:54+00:00"
+        },
+        {
+            "name": "apy/breadcrumbtrail-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/APY/APYBreadcrumbTrailBundle.git",
+                "reference": "d99042c01b3189f9c533f500c1b7cc6d6c62e8e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/APY/APYBreadcrumbTrailBundle/zipball/d99042c01b3189f9c533f500c1b7cc6d6c62e8e3",
+                "reference": "d99042c01b3189f9c533f500c1b7cc6d6c62e8e3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "symfony/deprecation-contracts": "^2.4|^3.0",
+                "symfony/framework-bundle": "^3.4|^4.0|^5.0|^6.0",
+                "twig/twig": "^1.41|^2.7|^3.0"
+            },
+            "conflict": {
+                "doctrine/annotations": "< 1.7",
+                "symfony/framework-bundle": "<3.4.26 || >4 <4.1.12 || >4.2 <4.2.7",
+                "twig/twig": ">=2.0 <2.15.3"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^v1.0|^v2.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^4.0",
+                "nyholm/symfony-bundle-test": "^1.5",
+                "symfony/phpunit-bridge": "^5.0|^6.0",
+                "symfony/twig-bundle": "^3.4|^4.0|^5.0|^6.0"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "To allow adding breadcrumbs on controller actions by the use of annotations.",
+                "twig/twig": "To allow adding breadcrumbs via Twig templates."
+            },
+            "default-branch": true,
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "APY\\BreadcrumbTrailBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Symfony bundle to generate a dynamic Twig breadcrumbs trail via Annotations, PHP Attributes or PHP methods.",
+            "homepage": "https://github.com/Abhoryo/APYBreadcrumbTrailBundle",
+            "keywords": [
+                "Breadcrumb Trail",
+                "annotation",
+                "breadcrumbs",
+                "fil ariane",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/APY/APYBreadcrumbTrailBundle/issues",
+                "source": "https://github.com/APY/APYBreadcrumbTrailBundle/tree/master"
+            },
+            "time": "2022-10-04T10:00:45+00:00"
         },
         {
             "name": "arkounay/ux-collection",
@@ -15216,7 +15278,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "apy/breadcrumbtrail-bundle": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

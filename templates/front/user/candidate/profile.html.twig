@@ -4,9 +4,76 @@
     <div class="dashboard-widg-bar d-block">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12">
-                {{ component('user_profile_account', {
+            <div class="_dashboard_content bg-white rounded mb-4">
+    <div class="_dashboard_content_header br-bottom py-3 px-3">
+        <div class="_dashboard__header_flex">
+            <h4 class="mb-0 ft-medium fs-md"><i class="fa fa-user mr-1 theme-cl fs-sm"></i>My Account</h4>
+        </div>
+    </div>
+
+    <div class="_dashboard_content_body py-3 px-3">
+        {{ form_start(userAccountForm, {
+            attr: {
+                'data-action': 'live#action',
+                'data-action-name': 'prevent|save',
+                'class': 'row'
+            }
+        }) }}
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                <div class="custom-file avater_uploads">
+                    {{ form_row(userAccountForm.avatarFile) }}
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        {{ form_row(userAccountForm.username) }}
+                    </div>
+                    {% if userAccountForm.jobTitle is defined %}
+                        <div class="col-xl-6 col-lg-6">
+                            {{ form_row(userAccountForm.jobTitle) }}
+                        </div>
+                    {% endif %}
+                    <div class="col-xl-6 col-lg-6">
+                        {{ form_row(userAccountForm.email) }}
+                    </div>
+                    {% if userAccountForm.jobType is defined %}
+                        <div class="col-xl-6 col-lg-6">
+                            {{ form_row(userAccountForm.jobType) }}
+                        </div>
+                    {% endif %}
+                    <div class="col-xl-6 col-lg-6">
+                        {{ form_row(userAccountForm.category) }}
+                    </div>
+                    {% if userAccountForm.experience is defined %}
+                        <div class="col-xl-6 col-lg-6">
+                            {{ form_row(userAccountForm.experience) }}
+                        </div>
+                    {% endif %}
+                    <div class="col-xl-6 col-lg-6">
+                        {{ form_row(userAccountForm.birth) }}
+                    </div>
+                    <div class="col-xl-12 col-lg-12">
+                        {{ form_row(userAccountForm.about) }}
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">
+                                <i class="lni lni-save"></i> {{ 'ui.buttons.save'|trans }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {{ form_end(userAccountForm) }}
+    </div>
+</div>
+                {# {{ component('user_profile_account', {
                     user: user
-                }) }}
+                }) }} #}
             </div>
         </div>
 

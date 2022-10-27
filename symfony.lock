@@ -13,6 +13,9 @@
             "./src/Entity/.gitignore"
         ]
     },
+    "apy/breadcrumbtrail-bundle": {
+        "version": "dev-master"
+    },
     "arkounay/ux-collection": {
         "version": "2.2.1"
     },
