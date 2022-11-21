@@ -2,6 +2,7 @@
 
 namespace App\Entity\User;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Job\Application;
 use App\Entity\Job\Type;
 use App\Entity\User\User;
@@ -14,6 +15,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CandidateRepository::class)]
 #[ORM\Table("`user_candidate`")]
+#[ApiResource()]
 class Candidate extends User
 {
 

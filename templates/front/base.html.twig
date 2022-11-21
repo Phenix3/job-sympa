@@ -23,7 +23,8 @@
     <div id="main-wrapper">
         {{ component('top_header') }}
         {% block breadcrumbs %}
-            {{ component('breadcrumb') }}
+            {{ apy_breadcrumb_trail_render() }}
+            {# {{ component('breadcrumb') }} #}
         {% endblock %}
         {% block alerts %}
             {% include 'front/includes/_flash.html.twig' %}

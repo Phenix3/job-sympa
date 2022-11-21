@@ -1,8 +1,8 @@
-import '../elements/index';
+import '../js/elements/index';
 // import {CookieBanner} from 'headless-elements';
 
 import $ from 'jquery';
-const  Popper = require('popper.js').default;
+const Popper = require('popper.js').default;
 
 window.$ = window.jQuery = $;
 

@@ -8,10 +8,12 @@ use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
+    #[Breadcrumb('<i class="fa fa-home"></i>')]
     public function index(BasicSeoGenerator $seoGenerator, EntityManagerInterface $manager): Response
     {
         $latestCategories = $manager->getRepository(Category::class)->findLatest();

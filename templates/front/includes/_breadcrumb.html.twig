@@ -1,0 +1,27 @@
+<!-- ======================= Top Breadcrubms ======================== -->
+<div class="gray py-3">
+    <div class="container">
+        <div class="row">
+            <div class="colxl-12 col-lg-12 col-md-12">
+              {%- if breadcrumbs.count %}
+                <ul id="breadcrumbtrail" class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                  {% set class = (loop.first ? 'home' : (loop.last ? 'current' : '')) %}
+                  <li {% for attr,value in breadcrumb.attributes -%}
+                        {%- if attr == 'class' %}{% set value = value ~ ' ' ~ class %}{% endif -%}
+                        {{ attr }}="{{ value }}"
+                      {%- endfor %}{% if breadcrumb.attributes.class is not defined %} class=" breadcrumb-item {{ class }}"{% endif %}>
+                    {%- if breadcrumb.url is null or loop.last -%}
+                      {{ breadcrumb.title|trans|raw }}
+                    {%- else -%}
+                      <a href="{{ breadcrumb.url }}">{{ breadcrumb.title|trans|raw }}</a>
+                    {%- endif -%}
+                  </li>
+                {% endfor %}
+                </ul>
+              {%- endif -%}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======================= Top Breadcrubms ======================== -->

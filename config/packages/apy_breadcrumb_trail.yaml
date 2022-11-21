@@ -1,0 +1,7 @@
+apy_breadcrumb_trail:
+    template: "front/includes/_breadcrumb.html.twig"
+
+
+twig:
+    globals:
+        breadcrumb_trail: "@APY\\BreadcrumbTrailBundle\\BreadcrumbTrail\\Trail"

@@ -1,0 +1,87 @@
+{% extends "front/user/base.html.twig" %}
+
+{% block content %}
+    <div class="dashboard-widg-bar d-block">
+        <div class="row">
+            <div class="col-xl-12 col-md-12 col-sm-12">
+                <div class="cl-justify">
+
+                    <div class="cl-justify-first">
+                        <p class="m-0 p-0 ft-sm">You have applied <span class="text-dark ft-medium">26</span> jobs</p>
+                    </div>
+
+                    <div class="cl-justify-last">
+                        <div class="d-flex align-items-center justify-content-left">
+                            <div class="dlc-list">
+                                <select class="form-control sm rounded">
+                                    <option>All Jobs</option>
+                                    <option>Full Time</option>
+                                    <option>Part Time</option>
+                                    <option>Freelancing</option>
+                                    <option>Internship</option>
+                                    <option>Contract</option>
+                                </select>
+                            </div>
+                            <div class="dlc-list ml-2">
+                                <select class="form-control sm rounded">
+                                    <option>Show 20</option>
+                                    <option>Show 30</option>
+                                    <option>Show 40</option>
+                                    <option>Show 50</option>
+                                    <option>Show 100</option>
+                                    <option>Show 250</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="mb-4 tbl-lg rounded overflow-hidden">
+                    <div class="table-responsive bg-white">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Job Title</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Applied Date</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for bookmark in bookmarks %}
+                                    {% include 'front/user/candidate/_bookmark_row.html.twig' with {bookmark: bookmark} only %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span class="fas fa-arrow-circle-right"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">18</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span class="fas fa-arrow-circle-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

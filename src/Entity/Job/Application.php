@@ -105,7 +105,7 @@ class Application
     public function setStatus(string $status): self
     {
         if (!in_array($status, [static::STATUS_PENDING, static::STATUS_ACCEPTED, static::STATUS_REJECTED], true)) {
-            throw new InvalidArgumentException(sprintf("Invalid status. Allowed is one of [%s, %s, %s]", static::STATUS_REJECTED, static::STATUS_ACCEPTED, static::STATUS_PENDING));
+            throw new \InvalidArgumentException(sprintf("Invalid status. Allowed is one of [%s, %s, %s]", static::STATUS_REJECTED, static::STATUS_ACCEPTED, static::STATUS_PENDING));
         }
 
         $this->status = $status;

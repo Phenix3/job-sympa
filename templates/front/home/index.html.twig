@@ -2,9 +2,11 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 
+{% block breadcrumbs %}{% endblock %}
+
 {% block body %}
     <!-- ======================= Home Banner ======================== -->
-    <div class="home-banner margin-bottom-0" style="background:#eff6f2 url(https://via.placeholder.com/1920x900) no-repeat;">
+    <div class="home-banner margin-bottom-0" style="background:#eff6f2 url({{ asset('img/banner-6.png') }}) no-repeat;">
         <div class="container">
             <div class="row justify-content-start">
                 <div class="col-xl-6 col-lg-9 col-md-12 col-sm-12 col-12">
@@ -75,7 +77,7 @@
 
                     <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
                         <div class="position-relative">
-                            <img src="https://via.placeholder.com/900x1000" class="img-fluid" alt="" />
+                            <img src="{{ asset('omg/img-1.png') }}" class="img-fluid" alt="" />
                         </div>
                     </div>
                 </div>

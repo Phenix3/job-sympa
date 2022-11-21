@@ -1,7 +1,19 @@
 <!-- Single -->
 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
     <div class="job_grid border rounded ">
-        <div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
+        <div class="position-absolute ab-left">
+            {% if app.user %}
+                <turbo-frame id="job-bookmark-{{ job.id }}">
+                    <bookmark-button route="{{ path('app_front_job_bookmark', {id: job.id}) }}" job-id="{{ job.id }}" bookmarked="{{ job.isBookmarkedByUser(app.user) }}" bookmarks="{{ job.jobBookmarks|length }}"></bookmark-button>
+                    {# <a href="{{ path('app_front_job_bookmark', {id: job.id}) }}" class="p-3 border circle d-flex align-items-center justify-content-center bg-white {{ job.isBookmarkedByUser(app.user) ? 'text-danger' : 'text-gray' }}"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></a> #}
+                </turbo-frame>
+            {% else %}
+                <a href="#" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-lock position-absolute snackbar-wishlist"></i></a>
+            {% endif %}
+            {# <span>
+                {{ job.jobBookmarks|length }}
+            </span> #}
+        </div>
         <div class="position-absolute ab-right"><span class="medium theme-cl theme-bg-light px-2 py-1 rounded">{{ job.type.name }}</span></div>
         <div class="job_grid_thumb mb-2 pt-5 px-3">
             <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>

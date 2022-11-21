@@ -2,7 +2,11 @@
 
 namespace App\Entity\User;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Entity\Bookmark;
 use App\Entity\Job\Category;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\User\UserRepository;
@@ -24,6 +28,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
     'employer' => Employer::class
 ])]
 #[UniqueEntity(fields: ['email', 'username'])]
+#[ApiResource()]
 /**
  * @Vich\Uploadable()
  */
@@ -113,6 +118,16 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?array $socialAccounts = [];
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Bookmark::class, orphanRemoval: true)]
+    private Collection $bookmarks;
+
+
+    public function __construct()
+    {
+        $this->bookmarks = new ArrayCollection();
+    }
+
+
     // public function __serialize(): array
     // {
     // return ['id' => $this->id, 'email' => $this->email];
@@ -127,7 +142,7 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isEqualTo(UserInterface $user): bool
     {
-      return $this->getEmail() === $user->getEmail();
+      return $this->getEmail() === $user->getUserIdentifier();
     }
 
 
@@ -332,6 +347,36 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSocialAccounts(?array $socialAccounts): self
     {
         $this->socialAccounts = $socialAccounts;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Bookmark>
+     */
+    public function getBookmarks(): Collection
+    {
+        return $this->bookmarks;
+    }
+
+    public function addBookmark(Bookmark $bookmark): self
+    {
+        if (!$this->bookmarks->contains($bookmark)) {
+            $this->bookmarks[] = $bookmark;
+            $bookmark->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBookmark(Bookmark $bookmark): self
+    {
+        if ($this->bookmarks->removeElement($bookmark)) {
+            // set the owning side to null (unless already changed)
+            if ($bookmark->getUser() === $this) {
+                $bookmark->setUser(null);
+            }
+        }
 
         return $this;
     }

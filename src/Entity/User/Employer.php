@@ -2,6 +2,7 @@
 
 namespace App\Entity\User;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Job\Job;
 use App\Entity\User\User;
 use App\Repository\User\EmployerRepository;
@@ -11,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EmployerRepository::class)]
 #[ORM\Table("`user_employer`")]
+#[ApiResource()]
 class Employer extends User
 {
 

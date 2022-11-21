@@ -2,7 +2,9 @@
 
 namespace App\Entity\Job;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\User\Employer;
+use App\Entity\User\JobBookmark;
 use App\Repository\Job\JobRepository;
 use Carbon\Carbon;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -11,9 +13,11 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
 #[ORM\Table("`job_job`")]
+#[ApiResource()]
 class Job
 {
     use TimestampableEntity;
@@ -89,17 +93,30 @@ class Job
     #[ORM\ManyToOne(inversedBy: 'jobs')]
     private ?Employer $company = null;
 
+    #[ORM\OneToMany(mappedBy: 'job', targetEntity: JobBookmark::class, orphanRemoval: true)]
+    private Collection $jobBookmarks;
+
     
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->requiredSkills = new ArrayCollection();
         $this->applications = new ArrayCollection();
+        $this->jobBookmarks = new ArrayCollection();
     }
 
     public function isActive(): bool
     {
         return Carbon::now()->gte($this->deadline);
+    }
+
+    public function isBookmarkedByUser(UserInterface $user): bool
+    {
+        foreach ($this->jobBookmarks as $jobBookmark) {
+            /** @var JobBookmark $jobBookmark */
+            if($jobBookmark->getUser() === $user) return true;
+        }
+        return false;
     }
 
     public function getId(): ?int
@@ -397,6 +414,36 @@ class Job
     public function setCompany(?Employer $company): self
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, JobBookmark>
+     */
+    public function getJobBookmarks(): Collection
+    {
+        return $this->jobBookmarks;
+    }
+
+    public function addJobBookmark(JobBookmark $jobBookmark): self
+    {
+        if (!$this->jobBookmarks->contains($jobBookmark)) {
+            $this->jobBookmarks[] = $jobBookmark;
+            $jobBookmark->setJob($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJobBookmark(JobBookmark $jobBookmark): self
+    {
+        if ($this->jobBookmarks->removeElement($jobBookmark)) {
+            // set the owning side to null (unless already changed)
+            if ($jobBookmark->getJob() === $this) {
+                $jobBookmark->setJob(null);
+            }
+        }
 
         return $this;
     }

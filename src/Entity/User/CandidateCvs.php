@@ -4,8 +4,11 @@ namespace App\Entity\User;
 
 use App\Entity\Attachment;
 use App\Repository\User\CandidateCvsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: CandidateCvsRepository::class)]
 #[ORM\Table("`user_candidate_cvs`")]
@@ -34,6 +37,23 @@ class CandidateCvs
 
     #[ORM\Column(length: 255)]
     private ?string $jobTitle = null;
+
+    #[ORM\OneToMany(mappedBy: 'cv', targetEntity: CvsBookmark::class, orphanRemoval: true)]
+    private Collection $cvsBookmarks;
+
+    public function __construct()
+    {
+        $this->cvsBookmarks = new ArrayCollection();
+    }
+
+    public function isBookmarkedByUser(UserInterface $user): bool
+    {
+        foreach ($this->cvsBookmarks as $cvsBookmark) {
+            /** @var CvsBookmark $cvsBookmark */
+            if($cvsBookmark->getUser() === $user) return true;
+        }
+        return false;
+    }
 
     public function __toString(): string
     {
@@ -101,6 +121,36 @@ class CandidateCvs
     public function setJobTitle(?string $jobTitle): self
     {
         $this->jobTitle = $jobTitle;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CvsBookmark>
+     */
+    public function getCvsBookmarks(): Collection
+    {
+        return $this->cvsBookmarks;
+    }
+
+    public function addCvsBookmark(CvsBookmark $cvsBookmark): self
+    {
+        if (!$this->cvsBookmarks->contains($cvsBookmark)) {
+            $this->cvsBookmarks[] = $cvsBookmark;
+            $cvsBookmark->setCv($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCvsBookmark(CvsBookmark $cvsBookmark): self
+    {
+        if ($this->cvsBookmarks->removeElement($cvsBookmark)) {
+            // set the owning side to null (unless already changed)
+            if ($cvsBookmark->getCv() === $this) {
+                $cvsBookmark->setCv(null);
+            }
+        }
 
         return $this;
     }

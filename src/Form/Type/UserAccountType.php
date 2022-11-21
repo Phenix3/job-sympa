@@ -26,11 +26,7 @@ class UserAccountType extends AbstractType
             ])
             ->add('username', TextType::class)
             ->add('about', TextareaType::class)
-            ->add('avatarFile', VichImageType::class, [
-                // 'required' => false,
-                'attr' => [
-                    // 'data-live-ignore' => true
-                ]
+            ->add('avatarFile', DropzoneType::class, [
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,

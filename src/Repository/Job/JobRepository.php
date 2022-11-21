@@ -11,6 +11,7 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @extends ServiceEntityRepository<Job>
@@ -48,8 +49,10 @@ class JobRepository extends ServiceEntityRepository
     public function getPopularJobs(int $limit = 8): ?array
     {
         return $this
-            ->createQueryBuilder('j')
-            ->orderBy('j.publishedAt', 'DESC')
+            ->activeJobsBuilder()
+            ->leftJoin('j.jobBookmarks', 'bookmarks')
+            ->addSelect('bookmarks')
+            ->addOrderBy('j.publishedAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
@@ -58,9 +61,11 @@ class JobRepository extends ServiceEntityRepository
 
     public function activeJobsBuilder(?string $alias = 'j'): QueryBuilder
     {
+        $date = Carbon::now()->toDateString();
         return $this->createQueryBuilder($alias)
-//            ->andWhere($alias.'.deadline <= '. Carbon::now()->toDateString())
-            ->orderBy("$alias.createdAt", 'DESC')
+            ->andWhere("{$alias}.deadline <= :date")
+            ->addOrderBy("{$alias}.createdAt", 'DESC')
+            ->setParameter('date', $date)
             ;
     }
 
@@ -75,7 +80,7 @@ class JobRepository extends ServiceEntityRepository
             ->leftJoin('j.categories', 'categories')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
             ->addSelect('requiredSkills', 'categories')
-            ->where("j.id = :id")
+            ->andWhere("j.id = :id")
             ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult()
@@ -97,7 +102,7 @@ class JobRepository extends ServiceEntityRepository
         }
 
         if ($jobSearchData->query) {
-            $query = $query->where("j.title LIKE :title")->setParameter('title', "%{$jobSearchData->query}%");
+            $query = $query->andWhere("j.title LIKE :title")->setParameter('title', "%{$jobSearchData->query}%");
         }
 
         if (!empty($jobSearchData->categories)) {
@@ -109,13 +114,28 @@ class JobRepository extends ServiceEntityRepository
 
     public function findAllForEmployerQuery(Employer $employer): Query
     {
-        return $this->createQueryBuilder('job')
+        return $this->activeJobsBuilder('job')
             ->leftJoin('job.applications', 'applications')
             ->addSelect('applications')
-            ->where('job.company = :company')
+            ->andWhere('job.company = :company')
             ->setParameter('company', $employer)
-            ->orderBy('job.createdAt', 'DESC')
+            ->addOrderBy('job.createdAt', 'DESC')
             ->getQuery()
             ;
+    }
+
+    public function findJobWithBookmarksQuery(int $id, ?UserInterface $user = null)
+    {
+        $query = $this->activeJobsBuilder('j')
+            ->leftJoin('j.jobBookmarks', 'jb')
+            ->addSelect('jb')
+            ->andWhere('j.id = :id')
+            ->setParameter('id', $id)
+            ->setMaxResults(1)
+        ;
+
+        return $query
+            ->getQuery()
+        ;
     }
 }

@@ -7,10 +7,14 @@ use App\Entity\Job\Application;
 use App\Entity\Job\Category;
 use App\Entity\Job\Job;
 use App\Entity\User\Candidate;
+use App\Entity\User\JobBookmark;
 use App\Form\SearchType;
 use App\Form\Type\ApplicationType;
 use App\Repository\Job\JobRepository;
+use App\Repository\User\JobBookmarkRepository;
+use App\Service\BookmarkService;
 use App\Service\JobApplicationService;
+use App\Service\JobService;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\PaginatorInterface;
@@ -20,6 +24,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Turbo\TurboBundle;
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 #[Route('/job', name: 'app_front_job_')]
 class JobController extends AbstractController
@@ -36,10 +42,39 @@ class JobController extends AbstractController
         ]);
     }
 
+    #[Route('/{id<\d+>}/bookmark', name: 'bookmark')]
+    public function toggleBookmark(int $id, JobRepository $jobRepository, Request $request, BookmarkService $bookmarkService)
+    {
+        $job = $jobRepository->findJobWithBookmarksQuery($id)->getOneOrNullResult();
+        
+        if ($this->getUser()) {
+            $bookmarked = $bookmarkService->toggleBookmark($this->getUser(), $job);
+            // dump($job, count($job->getJobBookmarks()));
+            return $this->json([
+                'job' => $job, 
+                'bookmarks' => count($job->getJobBookmarks()),
+                'bookmarked' => $bookmarked
+            ]);
+        } else {
+            $data['error'] = 'Unauthorized to perform this action';
+            $data['bookmarked'] = false;
+            return $this->json($data, 401, []);
+        }
+
+        // if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+        //     $frameId = $request->headers->get('Turbo-Frame');
+        //     $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+        //     return $this->render('front/job/_bookmarked.stream.html.twig', compact('job', 'frameId'));
+        // }
+    }
+
     /**
      * @throws NonUniqueResultException
      */
     #[Route("/{slug<[a-z0-9\-]+>}-{id<\d+>}", name: 'show', methods: ['GET', 'POST'])]
+    #[Breadcrumb('<i class="fa fa-home"></i>', routeName: 'app_home')]
+    #[Breadcrumb('ui.titles.search', routeName: 'app_front_job_index')]
+    #[Breadcrumb('{slug}')]
     public function show(string $slug, int $id, Request $request, JobApplicationService $applicationService): Response
     {
         $data = [];
@@ -72,6 +107,8 @@ class JobController extends AbstractController
     }
 
     #[Route("/search", name: 'search')]
+    #[Breadcrumb('<i class="fa fa-home"></i>', routeName: 'app_home')]
+    #[Breadcrumb('ui.titles.search')]
     public function searchJobs(Request $request, PaginatorInterface $paginator, ?JobSearchData $jobSearchData = null): Response
     {
         $this->seoGenerator
