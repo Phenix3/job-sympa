@@ -46,12 +46,12 @@ class JobController extends AbstractController
     public function toggleBookmark(int $id, JobRepository $jobRepository, Request $request, BookmarkService $bookmarkService)
     {
         $job = $jobRepository->findJobWithBookmarksQuery($id)->getOneOrNullResult();
-        
+
         if ($this->getUser()) {
             $bookmarked = $bookmarkService->toggleBookmark($this->getUser(), $job);
             // dump($job, count($job->getJobBookmarks()));
             return $this->json([
-                'job' => $job, 
+                'job' => $job,
                 'bookmarks' => count($job->getJobBookmarks()),
                 'bookmarked' => $bookmarked
             ]);

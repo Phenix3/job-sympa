@@ -133,7 +133,7 @@
                         {% elseif is_granted('ROLE_EMPLOYER') %}
                         {% else %}
                             <p class="lead">{{ 'ui.alerts.unable_to_post_application_not_logged_in'|trans }}</p>
-                            <p><a href="{{ path('app_register') }}" class="btn btn-link theme-btn-light">{{ 'ui.buttons.login'|trans }}</a> ou <a href="{{ path('app_login') }}" class="btn btn-link theme-btn-light">{{ 'ui.buttons.register'|trans }}</a></p>
+                            <p><a href="{{ path('app_login') }}" class="btn btn-link theme-btn-light">{{ 'ui.buttons.login'|trans }}</a> ou <a href="{{ path('app_register') }}" class="btn btn-link theme-btn-light">{{ 'ui.buttons.register'|trans }}</a></p>
                         {% endif %}
                     </div>
                 </div>
@@ -241,10 +241,8 @@
 
             </div>
             <!-- row -->
-
         </div>
     </section>
     <!-- ======================= Related Jobs ======================== -->
-
 {% endblock %}
 

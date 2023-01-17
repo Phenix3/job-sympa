@@ -52,6 +52,10 @@ ui:
     password_min: Votre mot de passe doit contenir au moins {{ limit }} caracteres
     already_applied_for_job: Vous avez déjà postuler à ce poste
 
+  titles:
+    search: Rechercher une offre
+
+
   job_requirements: Exigences
   job_description: description du job
   skills_required: Competences requises

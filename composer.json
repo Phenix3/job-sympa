@@ -59,7 +59,7 @@
         "symfony/ux-cropperjs": "^2.4",
         "symfony/ux-dropzone": "^2.4",
         "symfony/ux-lazy-image": "^2.4",
-        "symfony/ux-live-component": "^2.4",
+        "symfony/ux-live-component": "2.x-dev",
         "symfony/ux-react": "^2.4",
         "symfony/ux-turbo": "^2.4",
         "symfony/ux-turbo-mercure": "^2.4",
