@@ -32,7 +32,7 @@
                         {% elseif is_granted('ROLE_EMPLOYER') %}
 
                         {% endif %}
-                        <li><a href="dashboard-change-password.html"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
+                        <li><a href="{{ path('app_front_candidate_change_password') }}"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
                         <li><a href="javascript:void(0);"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
                         <li><a href="{{ logout_path() }}"><i class="lni lni-power-switch mr-2"></i>{{ 'ui.buttons.logout'|trans }}</a></li>
                     </ul>
@@ -45,7 +45,7 @@
             <div class="dashboard-tlbar d-block mb-5">
                 <div class="row">
                     <div class="colxl-12 col-lg-12 col-md-12">
-                        <h1 class="ft-medium">My Profile</h1>
+                        {# <h1 class="ft-medium">My Profile</h1> #}
                         {% block breadcrumbs %}
                         {% endblock %}
                     </div>

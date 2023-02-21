@@ -9,7 +9,7 @@ use function Symfony\Component\String\u;
 class JsonTransformer implements DataTransformerInterface
 {
 
-    public function transform(mixed $value)
+    public function transform(mixed $value): mixed
     {
         /*if (!\is_array($value)) {
             throw new TransformationFailedException('Expected type array');
@@ -18,7 +18,7 @@ class JsonTransformer implements DataTransformerInterface
         return u(', ')->join($value ?? [])->toString();
     }
 
-    public function reverseTransform(mixed $value)
+    public function reverseTransform(mixed $value): mixed
     {
         return explode(', ', $value);
     }

@@ -24,7 +24,7 @@ class NotifierService
      * @param array|null $channels
      * @return Notification|NotificationEmail
      */
-    public function createNotification(string $title, string $content, ?string $importance = Notification::IMPORTANCE_MEDIUM, ?array $channels = ['email']): mixed
+    public function createNotification(string $title, string $content, ?string $importance = Notification::IMPORTANCE_MEDIUM, ?array $channels = ['email']): Notification|NotificationEmail
     {
         /** @var NotificationEmail $notification */
         $notification = (new Notification($title, $channels))

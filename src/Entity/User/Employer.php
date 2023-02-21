@@ -15,6 +15,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource()]
 class Employer extends User
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column()]
+    protected ?int $id = null;
 
     /**
      * @var array

@@ -26,7 +26,7 @@ class UserAccountType extends AbstractType
             ])
             ->add('username', TextType::class)
             ->add('about', TextareaType::class)
-            ->add('avatarFile', DropzoneType::class, [
+            ->add('avatarFile', VichImageType::class, [
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
@@ -37,6 +37,7 @@ class UserAccountType extends AbstractType
 //                    'is' => 'date-time-picker'
                 ],
                 'widget' => 'single_text',
+                'required' => false
             ])
             ;
     }

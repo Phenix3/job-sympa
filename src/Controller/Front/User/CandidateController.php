@@ -19,6 +19,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\ChangePasswordFormType;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 
 #[Route('/candidate', name: 'app_front_candidate_')]
 #[IsGranted('ROLE_CANDIDATE')]
@@ -67,6 +70,30 @@ class CandidateController extends BaseController {
                     'user' => $user,
                     'userAccountForm' => $userAccountForm
         ]);
+    }
+
+    #[Route("/change-password", name: 'change_password')]
+    #[Breadcrumb('Dashboard', routeName: 'app_front_candidate_dashboard')]
+    #[Breadcrumb('<i class="fa fa-lock"></i>', routeName: 'app_front_candidate_change_password')]
+    public function changePassword(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordHasher)
+    {
+        $form = $this->createForm(ChangePasswordFormType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $hash = $passwordHasher->hashPassword(
+                $user,
+                $form->get('plainPassword')->getData()
+            );
+            $user->setPassword($hash);
+            $manager->persist($user);
+            $manager->flush();
+
+            $this->addFlash('success', 'ui.alerts.password_changed');
+            return $this->redirectToRoute('app_front_candidate_dashboard');
+        }
+
+        return $this->renderForm('front/user/change_password.html.twig', compact('form'));
     }
 
     #[Route('/manage-resume', name: 'manage_resume', methods: ['GET', 'POST'])]

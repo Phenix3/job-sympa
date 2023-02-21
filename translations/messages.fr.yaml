@@ -33,6 +33,7 @@ ui:
     post_job: Poster une offre
     manage_jobs: Gérer mes offres
     view_applications: Gérer mes candidatures
+    explore_more_jobs: Explorer plus d'offres
 
 
   alerts:
@@ -54,6 +55,8 @@ ui:
 
   titles:
     search: Rechercher une offre
+    sign_in: Connexion
+    sign_out: Déconnexion
 
 
   job_requirements: Exigences
@@ -71,3 +74,7 @@ ui:
   job_title: Titre du poste
   resume_title: Titre du CV
   applied_jobs: Mes candidatures
+  all_popular_listed_jobs: Toutes les offres les plus populaires
+  trending_jobs: Trending Jobs
+  popular_categories: Les categories populaire.
+  browse_top_categories: Browse Top Categories

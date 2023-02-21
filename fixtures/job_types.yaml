@@ -1,4 +1,4 @@
 App\Entity\Job\Type:
   job_types_{1..5}:
-    name: <sentence()>
+    name: <word()>
     description: <paragraphs(2, true)>

@@ -5,6 +5,7 @@ namespace App\Repository\Job;
 use App\Entity\Job\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr;
 
 /**
  * @extends ServiceEntityRepository<Category>
@@ -46,36 +47,18 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public function findLatest(?int $limit = 12): mixed
     {
-        return $this->createQueryBuilder('category')
-            ->orderBy('category.id', 'DESC')
+        $data = $this->createQueryBuilder('c')
+            ->join('c.jobs', 'j')
+            ->groupBy('c.id')
+            ->select('c', 'COUNT(c.id) as count')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
             ;
+
+        return array_map(function(array $d) {
+            $d[0]->setJobsCount((int) $d['count']);
+            return $d[0];
+        }, $data);
     }
-
-//    /**
-//     * @return Category[] Returns an array of Category objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Category
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

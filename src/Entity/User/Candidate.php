@@ -18,6 +18,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[ApiResource()]
 class Candidate extends User
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column()]
+    protected ?int $id = null;
 
     /**
      * @var array

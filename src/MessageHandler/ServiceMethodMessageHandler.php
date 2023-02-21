@@ -7,8 +7,10 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-final class ServiceMethodMessageHandler implements MessageHandlerInterface
+#[AsMessageHandler()]
+final class ServiceMethodMessageHandler
 {
     public function __construct(private readonly ContainerInterface $parameterBag)
     {}

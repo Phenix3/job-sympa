@@ -15,17 +15,17 @@ use App\Repository\User\JobBookmarkRepository;
 use App\Service\BookmarkService;
 use App\Service\JobApplicationService;
 use App\Service\JobService;
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\PaginatorInterface;
 use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Turbo\TurboBundle;
-use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 #[Route('/job', name: 'app_front_job_')]
 class JobController extends AbstractController
@@ -101,8 +101,7 @@ class JobController extends AbstractController
             }
         }
 
-        dump($data);
-
+        // dump($data);
         return $this->render('front/job/show.html.twig', $data);
     }
 

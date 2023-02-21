@@ -6,9 +6,11 @@ use App\Repository\Job\SkillRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: SkillRepository::class)]
 #[ORM\Table("`job_skill`")]
+#[ApiResource()]
 class Skill
 {
     #[ORM\Id]

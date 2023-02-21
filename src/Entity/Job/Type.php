@@ -6,9 +6,11 @@ use App\Repository\Job\TypeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: TypeRepository::class)]
 #[ORM\Table("`job_type`")]
+#[ApiResource()]
 class Type
 {
     #[ORM\Id]

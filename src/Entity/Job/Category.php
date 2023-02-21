@@ -7,9 +7,13 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\Table("`job_category`")]
+#[ApiResource()]
 class Category
 {
     use TimestampableEntity;
@@ -31,6 +35,19 @@ class Category
 
     #[ORM\Column(length: 255)]
     private ?string $icon = null;
+
+    #[ORM\Column(options: ["unsigned" => true])]
+    private int $jobsCount = 0;
+
+    #[ORM\ManyToMany(targetEntity: Job::class, inversedBy: 'categories')]
+    #[ORM\JoinTable(name: 'job_job_job_category')]
+    #[Groups(['read:job:collection'])]
+    private Collection $jobs;
+
+    public function __construct()
+    {
+        $this->jobs = new ArrayCollection();
+    }
 
     public function __toString(): string
     {
@@ -89,4 +106,43 @@ class Category
 
         return $this;
     }
+
+
+    /**
+     * @return Collection<int, Job>
+     */
+    public function getJobs(): Collection
+    {
+        return $this->jobs;
+    }
+
+    public function addJob(Job $job): self
+    {
+        if (!$this->jobs->contains($job)) {
+            $this->jobs[] = $job;
+        }
+
+        return $this;
+    }
+
+    public function removeJob(Job $job): self
+    {
+        $this->jobs->removeElement($job);
+
+        return $this;
+    }
+
+
+    public function getJobsCount(): int
+    {
+        return $this->jobsCount;
+    }
+
+    public function setJobsCount(int $jobsCount): self
+    {
+        $this->jobsCount = $jobsCount;
+
+        return $this;
+    }
+
 }

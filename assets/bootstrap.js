@@ -1,5 +1,6 @@
 import { startStimulusApp } from '@symfony/stimulus-bridge';
 import { registerReactControllerComponents } from '@symfony/ux-react';
+import '@@/react/controllers/BookmarkButton.jsx';
 
 // Registers React controller components to allow loading them from Twig
 //

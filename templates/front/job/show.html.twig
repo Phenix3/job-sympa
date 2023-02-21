@@ -27,7 +27,7 @@
                         <div class="jbd-01-right text-right">
                             <div class="jbl_button mb-2"><a href="javascript:void(0);" class="btn btn-md rounded theme-bg-light theme-cl fs-sm ft-medium">Apply This Job</a></div>
                             {% if job.company %}
-                                <div class="jbl_button"><a href="javascript:void(0);" class="btn btn-md rounded bg-white border fs-sm ft-medium">View Company</a></div>
+                                <div class="jbl_button"><a href="{{ path('app_front_user_show', {id: job.company.id}) }}" class="btn btn-md rounded bg-white border fs-sm ft-medium">View Company</a></div>
                             {% endif %}
                         </div>
                     </div>

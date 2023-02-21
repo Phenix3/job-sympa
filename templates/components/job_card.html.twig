@@ -3,10 +3,12 @@
     <div class="job_grid border rounded ">
         <div class="position-absolute ab-left">
             {% if app.user %}
-                <turbo-frame id="job-bookmark-{{ job.id }}">
-                    <bookmark-button route="{{ path('app_front_job_bookmark', {id: job.id}) }}" job-id="{{ job.id }}" bookmarked="{{ job.isBookmarkedByUser(app.user) }}" bookmarks="{{ job.jobBookmarks|length }}"></bookmark-button>
+                {# <turbo-frame id="job-bookmark-{{ job.id }}"> #}
+                    <div {{ react_component('BookmarkButton', {job: job.id, bookmarked: job.isBookmarkedByUser(app.user), route: path('app_front_job_bookmark', {id: job.id}), user: app.user.id }) }}></div>
+                    {# <bookmark-button route="{{ path('app_front_job_bookmark', {id: job.id}) }}" job-id="{{ job.id }}" bookmarked="{{ job.isBookmarkedByUser(app.user) }}" bookmarks="{{ job.jobBookmarks|length }}"></bookmark-button> #}
                     {# <a href="{{ path('app_front_job_bookmark', {id: job.id}) }}" class="p-3 border circle d-flex align-items-center justify-content-center bg-white {{ job.isBookmarkedByUser(app.user) ? 'text-danger' : 'text-gray' }}"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></a> #}
-                </turbo-frame>
+                    {# <div class="btn-bookmark"></div> #}
+                {# </turbo-frame> #}
             {% else %}
                 <a href="#" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-lock position-absolute snackbar-wishlist"></i></a>
             {% endif %}

@@ -89,7 +89,7 @@ class Attachment
      *
      * @return  self
      */ 
-    public function setFile(?File $file)
+    public function setFile(?File $file): \App\Entity\Attachment
     {
         $this->file = $file;
 

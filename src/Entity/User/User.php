@@ -279,7 +279,7 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @param File|null $avatarFile
      * @return  self
      */
-    public function setAvatarFile(?File $avatarFile): self
+    public function setAvatarFile(?File $avatarFile): \App\Entity\User\User
     {
         $this->avatarFile = $avatarFile;
 

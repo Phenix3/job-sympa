@@ -5,8 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="sec_title position-relative text-center mb-5">
-                    <h6 class="text-muted mb-0">Popular Categories</h6>
-                    <h2 class="ft-bold">Browse Top Categories</h2>
+                    <h6 class="text-muted mb-0">{{ 'ui.popular_categories'|trans }}</h6>
+                    <h2 class="ft-bold">{{ 'ui.browse_top_categories'|trans }}</h2>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
                             <div class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 theme-bg-light circle"><i class="{{ category.icon }} fs-lg theme-cl"></i></div>
                             <div class="cats-box-caption">
                                 <h4 class="fs-md mb-0 ft-medium m-catrio">{{ category.name }}</h4>
-                                <span class="text-muted">472 Jobs</span>
+                                <span class="text-muted">{{ category.jobsCount }} Jobs</span>
                             </div>
                         </a>
                     </div>

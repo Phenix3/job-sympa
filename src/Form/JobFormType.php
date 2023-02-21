@@ -29,7 +29,7 @@ class JobFormType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('description', TextareaType::class)
-            ->add('responsibilities', JsonArrayType::class, [
+            ->add('responsibilities', TextareaType::class, [
 
             ])
             ->add('education', TextType::class)

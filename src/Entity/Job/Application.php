@@ -12,10 +12,13 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use http\Exception\InvalidArgumentException;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: ApplicationRepository::class)]
 #[ORM\Table("`job_application`")]
 #[UniqueEntity(fields: ['job', 'candidate'], message: 'ui.validator.already_applied_for_job')]
+#[ApiResource()]
 class Application
 {
     use TimestampableEntity;
@@ -27,12 +30,14 @@ class Application
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column()]
+    #[Groups(['read:job'])]
     private ?int $id = null;
 
     #[ORM\ManyToOne(fetch: 'EAGER', inversedBy: 'applications')]
     private ?Job $job = null;
 
     #[ORM\ManyToOne(inversedBy: 'applications')]
+    #[Groups(['read:job'])]
     private ?Candidate $candidate = null;
 
     #[ORM\ManyToOne]

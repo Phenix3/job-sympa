@@ -4,8 +4,8 @@
         <div class="row justify-content-center">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="sec_title position-relative text-center mb-5">
-                    <h6 class="text-muted mb-0">Trending Jobs</h6>
-                    <h2 class="ft-bold">All Popular Listed jobs</h2>
+                    <h6 class="text-muted mb-0">{{ 'ui.trending_jobs'|trans }}</h6>
+                    <h2 class="ft-bold">{{ 'ui.all_popular_listed_jobs'|trans }}</h2>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <div class="row justify-content-center">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="position-relative text-center">
-                    <a href="job-search-v1.html" class="btn btn-md theme-bg rounded text-white hover-theme">Explore More Jobs<i class="lni lni-arrow-right-circle ml-2"></i></a>
+                    <a href="{{ path('app_front_job_search') }}" class="btn btn-md theme-bg rounded text-white hover-theme">{{ 'ui.buttons.explore_more_jobs'|trans }}<i class="lni lni-arrow-right-circle ml-2"></i></a>
                 </div>
             </div>
         </div>

@@ -14,10 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
 #[ORM\Table("`job_job`")]
-#[ApiResource()]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read:job:collection']]
+)]
 class Job
 {
     use TimestampableEntity;
@@ -25,56 +28,72 @@ class Job
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column()]
+    #[Groups(['read:job:collection'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['read:job:collection'])]
     private ?string $title = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Gedmo\Slug(fields: ['title'])]
+    #[Groups(['read:job:collection'])]
     private ?string $slug = null;
 
-    #[ORM\ManyToMany(targetEntity: Category::class)]
+    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'jobs')]
     #[ORM\JoinTable(name: 'job_job_job_category')]
+    #[Groups(['read:job:collection'])]
     private Collection $categories;
 
     #[ORM\ManyToOne(fetch: "EAGER")]
+    #[Groups(['read:job:collection'])]
     private ?Type $type = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::JSON)]
+    #[Groups(['read:job:collection'])]
     private ?string $responsibilities = null;
 
     #[ORM\Column(type: Types::JSON)]
+    #[Groups(['read:job:collection'])]
     private ?string $education = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['read:job:collection'])]
     private ?string $location = null;
 
     #[ORM\Column(type: Types::JSON, nullable: true)]
+    #[Groups(['read:job:collection'])]
     private ?string $otherBenefits = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['read:job:collection'])]
     private ?int $experience = null;
 
-    #[ORM\Column]
+    #[ORM\Column()]
+    #[Groups(['read:job:collection'])]
     private ?int $salaryMin = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['read:job:collection'])]
     private ?int $salaryMax = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Groups(['read:job:collection'])]
     private ?\DateTimeInterface $deadline = null;
 
     #[ORM\Column(type: Types::JSON)]
+    #[Groups(['read:job:collection'])]
     private ?string $requirements = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Groups(['read:job:collection'])]
     private ?\DateTimeInterface $publishedAt = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['read:job:collection'])]
     private ?string $country = null;
 
     #[ORM\Column(length: 255)]
@@ -88,6 +107,7 @@ class Job
     private Collection $requiredSkills;
 
     #[ORM\OneToMany(mappedBy: 'job', targetEntity: Application::class)]
+    #[Groups(['read:job'])]
     private Collection $applications;
 
     #[ORM\ManyToOne(inversedBy: 'jobs')]
