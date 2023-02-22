@@ -18,7 +18,7 @@
         </div>
         <div class="position-absolute ab-right"><span class="medium theme-cl theme-bg-light px-2 py-1 rounded">{{ job.type.name }}</span></div>
         <div class="job_grid_thumb mb-2 pt-5 px-3">
-            <a href="job-detail.html" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
+            <a href="{{ path('app_front_job_show', {slug: job.slug, id: job.id}) }}" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
         </div>
         <div class="job_grid_caption text-center pb-3 px-3">
             <h4 class="mb-0 ft-medium medium"><a href="{{ path('app_front_job_show', {slug: job.slug, id: job.id}) }}" class="text-dark fs-md">{{ job.title }}</a></h4>

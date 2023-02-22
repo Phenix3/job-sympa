@@ -1,0 +1,5 @@
+App\Entity\User\Admin:
+  admin_1:
+    email: 'admin\@email.com'
+    username: 'admin'
+    password: <password('123456')>

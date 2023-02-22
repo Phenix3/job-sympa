@@ -19,10 +19,34 @@ security:
             entity:
                 class: App\Entity\User\User
                 property: email
+
+        app_admin_provider:
+            entity:
+                class: App\Entity\User\Admin
+                property: email
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        admin:
+            lazy: true
+            pattern: ^/admin
+#            user_checker: App\Security\AppUserChecker
+            provider: app_admin_provider
+            logout:
+                path: admin_logout
+            custom_authenticator:
+                - App\Security\AppAdminAuthenticator
+
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                # where to redirect after logout
+                # target: app_any_route
+
         main:
             lazy: true
 #            user_checker: App\Security\AppUserChecker
@@ -31,8 +55,6 @@ security:
                 path: app_logout
             custom_authenticator:
                 - App\Security\AppUserAuthenticator
-
-            # entry_point: App\Security\AppEmployerAuthenticator
 
             remember_me:
                 secret: '%kernel.secret%'
@@ -49,6 +71,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+         - { path: ^/admin/login$, roles: PUBLIC_ACCESS }
          - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
     role_hierarchy:

@@ -48,7 +48,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function findLatest(?int $limit = 12): mixed
     {
         $data = $this->createQueryBuilder('c')
-            ->join('c.jobs', 'j')
+            ->leftJoin('c.jobs', 'j')
             ->groupBy('c.id')
             ->select('c', 'COUNT(c.id) as count')
             ->setMaxResults($limit)
