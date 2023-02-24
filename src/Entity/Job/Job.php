@@ -40,7 +40,7 @@ class Job
     #[Groups(['read:job:collection'])]
     private ?string $slug = null;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'jobs')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'jobs')]
     #[ORM\JoinTable(name: 'job_job_job_category')]
     #[Groups(['read:job:collection'])]
     private Collection $categories;

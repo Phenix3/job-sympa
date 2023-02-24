@@ -1,5 +1,7 @@
 {% extends 'front/base.html.twig' %}
 
+{# {% set breadcrumb = block('breadcrumbs') %} #}
+
 {% block body %}
 
     <!-- ============================================================== -->
@@ -12,14 +14,8 @@
         <div class="container">
             <div class="row">
                 <div class="colxl-12 col-lg-12 col-md-12">
-                    <h1 class="ft-medium">Job Search Style 3</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#" class="text-light">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="text-light">Job</a></li>
-                            <li class="breadcrumb-item active theme-cl" aria-current="page">Job Search</li>
-                        </ol>
-                    </nav>
+                    <h1 class="ft-medium">{{ 'ui.titles.job_search'|trans }}</h1>
+                    {# {{ breadcrumb|raw }} #}
                 </div>
             </div>
         </div>

@@ -73,7 +73,7 @@ class JobController extends AbstractController
      */
     #[Route("/{slug<[a-z0-9\-]+>}-{id<\d+>}", name: 'show', methods: ['GET', 'POST'])]
     #[Breadcrumb('<i class="fa fa-home"></i>', routeName: 'app_home')]
-    #[Breadcrumb('ui.titles.search', routeName: 'app_front_job_index')]
+    #[Breadcrumb('ui.titles.search', routeName: 'app_front_job_search')]
     #[Breadcrumb('{slug}')]
     public function show(string $slug, int $id, Request $request, JobApplicationService $applicationService): Response
     {
@@ -111,9 +111,9 @@ class JobController extends AbstractController
     public function searchJobs(Request $request, PaginatorInterface $paginator, ?JobSearchData $jobSearchData = null): Response
     {
         $this->seoGenerator
-            ->setTitle("")
-            ->setDescription("")
-            ->setKeywords("")
+            ->setTitle("ui.titles.search")
+            ->setDescription("ui.descriptions.search")
+            ->setKeywords("ui.keywords.search")
         ;
         // $jobSearchData = $jobSearchData ?: new JobSearchData();
         return $this->render('front/job/search.html.twig', compact('jobSearchData'));

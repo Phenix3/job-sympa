@@ -21,18 +21,13 @@
             <a href="{{ path('app_front_job_show', {slug: job.slug, id: job.id}) }}" class="d-block text-center m-auto"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="70" alt="" /></a>
         </div>
         <div class="job_grid_caption text-center pb-3 px-3">
+            <h6 class="mb-0 lh-1 ft-medium medium"><a href="employer-detail.html" class="text-muted medium">{{ job.company.username }}</a></h6>
             <h4 class="mb-0 ft-medium medium"><a href="{{ path('app_front_job_show', {slug: job.slug, id: job.id}) }}" class="text-dark fs-md">{{ job.title }}</a></h4>
-            <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>{{ job.location }}</span></div>
+            <div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>{{ job.city }}, {{ job.country }}</span></div>
         </div>
-        <div class="job_grid_footer pb-4 px-3">
-            <ul class="p-0 skills_tag text-center">
-                <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-                <li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-                <li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-                <li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-                <li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-                <li><span class="px-2 py-1 medium theme-bg rounded text-light">+3 More</span></li>
-            </ul>
+        <div class="job_grid_footer pb-4 px-3 d-flex align-items-center justify-content-between">
+            <div class="df-1 text-muted"><i class="lni lni-wallet mr-1"></i>{{ job.salaryMin|format_currency('XAF') }} - {{ job.salaryMax|format_currency('XAF') }} </div>
+            <div class="df-1 text-muted"><i class="lni lni-timer mr-1"></i>{{ job.createdAt|carbon_date }}</div>
         </div>
     </div>
 </div>

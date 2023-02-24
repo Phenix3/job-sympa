@@ -12,7 +12,13 @@ class JobSearchData
 
     public array|ArrayCollection $categories = [];
 
-    public ?array $type = [];
+    public array|ArrayCollection $types = [];
 
     public ?string $location = '';
+
+    public array|ArrayCollection $country = [];
+
+    public ?string $sort = '';
+
+    public ?string $direction = '';
 }

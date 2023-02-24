@@ -95,8 +95,13 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "KMS\\FroalaEditorBundle\\": "lib/froala/KMSFroalaEditorBundle/src/"
-        }
+            "KMS\\FroalaEditorBundle\\": "lib/froala/KMSFroalaEditorBundle/src/",
+            "Fidry\\PsyshBundle\\": "lib/theofidry/psysh-bundle/src/",
+            "Psy\\": "lib/psy/psysh/src/"
+        },
+        "files": [
+            "lib/psy/psysh/src/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
