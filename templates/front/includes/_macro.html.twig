@@ -1,0 +1,4 @@
+{% macro skill(label) %}
+{% set colors = ['success', 'info', 'warning', 'danger', ''] %}
+	<span class="mr-2 mb-2 d-inline-flex px-2 py-1 rounded text-{{ colors[random(0, colors|length - 1)] }} theme-bg-light">{{ label }}</span>
+{% endmacro %}

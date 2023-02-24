@@ -51,7 +51,8 @@ class JobRepository extends ServiceEntityRepository
         return $this
             ->activeJobsBuilder()
             ->leftJoin('j.jobBookmarks', 'bookmarks')
-            ->addSelect('bookmarks')
+            ->leftJoin('j.company', 'company')
+            ->addSelect('bookmarks', 'company')
             ->addOrderBy('j.publishedAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
@@ -64,7 +65,6 @@ class JobRepository extends ServiceEntityRepository
         $date = Carbon::now()->toDateString();
         return $this->createQueryBuilder($alias)
             ->andWhere("{$alias}.deadline <= :date")
-            ->addOrderBy("{$alias}.createdAt", 'DESC')
             ->setParameter('date', $date)
             ;
     }
@@ -81,6 +81,7 @@ class JobRepository extends ServiceEntityRepository
             ->leftJoin('j.requiredSkills', 'requiredSkills')
             ->addSelect('requiredSkills', 'categories')
             ->andWhere("j.id = :id")
+            ->addOrderBy("j.createdAt", 'DESC')
             ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult()
@@ -93,6 +94,7 @@ class JobRepository extends ServiceEntityRepository
         $query =  $this
             ->activeJobsBuilder()
             ->leftJoin('j.categories', 'c')
+            ->leftJoin('j.type', 't')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
             ->addSelect('c', 'requiredSkills')
             ;
@@ -101,13 +103,37 @@ class JobRepository extends ServiceEntityRepository
             return $query->getQuery();
         }
 
+        // Searc by Job title
         if ($jobSearchData->query) {
             $query = $query->andWhere("j.title LIKE :title")->setParameter('title', "%{$jobSearchData->query}%");
         }
 
+        // Searc by Job location country
+        if ($jobSearchData->country) {
+            $query = $query->andWhere("j.country IN (:country)")->setParameter('country', $jobSearchData->country);
+        }
+
+        /*if ($jobSearchData->location) {
+            $query = $query->andWhere("j.location LIKE :location")->setParameter('location', "%{$jobSearchData->location}%");
+        }*/
+
+        // Searc by Job categories
         if (!empty($jobSearchData->categories)) {
             $query = $query->andWhere("c IN (:categories)")->setParameter('categories', $jobSearchData->categories);
         }
+
+        // Searc by Job types (full_time, part_time, freelance)
+        if (!empty($jobSearchData->types)) {
+            $query = $query->andWhere("t IN (:types)")->setParameter('types', $jobSearchData->types);
+        }
+
+        // Sorting
+        if ($jobSearchData->sort) {
+            $query = $query->addOrderBy("j.{$jobSearchData->sort}", $jobSearchData?->direction ? $jobSearchData?->direction : 'DESC');
+        } else {
+            $query = $query->addOrderBy("j.createdAt", 'DESC');
+        }
+
 
         return $query->getQuery();
     }
@@ -130,6 +156,7 @@ class JobRepository extends ServiceEntityRepository
             ->leftJoin('j.jobBookmarks', 'jb')
             ->addSelect('jb')
             ->andWhere('j.id = :id')
+            ->addOrderBy("j.createdAt", 'DESC')
             ->setParameter('id', $id)
             ->setMaxResults(1)
         ;

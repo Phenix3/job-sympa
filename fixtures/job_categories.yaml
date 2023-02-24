@@ -1,5 +1,5 @@
 App\Entity\Job\Category:
-  job_categories_{1..15}:
-    name: <word()>
+  job_categories_{1..25}:
+    name: <jobCategory()>
     description: <paragraphs(2, true)>
     icon: 'fa fa-box'

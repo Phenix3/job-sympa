@@ -32,7 +32,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @Vich\Uploadable()
  */
-abstract class User implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface , \Serializable
+abstract class User implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface 
 {
     use TimestampableEntity;
 

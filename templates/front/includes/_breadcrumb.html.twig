@@ -12,9 +12,9 @@
                         {{ attr }}="{{ value }}"
                       {%- endfor %}{% if breadcrumb.attributes.class is not defined %} class=" breadcrumb-item {{ class }}"{% endif %}>
                     {%- if breadcrumb.url is null or loop.last -%}
-                      {{ breadcrumb.title|trans|raw }}
+                      {{ breadcrumb.title|trans|raw|u.title }}
                     {%- else -%}
-                      <a href="{{ breadcrumb.url }}">{{ breadcrumb.title|trans|raw }}</a>
+                      <a href="{{ breadcrumb.url }}">{{ breadcrumb.title|trans|u.title|raw }}</a>
                     {%- endif -%}
                   </li>
                 {% endfor %}

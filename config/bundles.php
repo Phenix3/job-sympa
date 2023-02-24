@@ -42,4 +42,5 @@ return [
     Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
     Symfony\Bundle\MercureBundle\MercureBundle::class => ['all' => true],
     APY\BreadcrumbTrailBundle\APYBreadcrumbTrailBundle::class => ['all' => true],
+    Fidry\PsyshBundle\PsyshBundle::class => ['dev' => true, 'test' => true],
 ];

@@ -1,13 +1,4 @@
 App\Entity\Job\Type:
-  job_types_1:
-    name: Contract
-    description: <paragraphs(2, true)>
-  job_types_2:
-    name: Part Time
-    description: <paragraphs(2, true)>
-  job_types_3:
-    name: Full Time
-    description: <paragraphs(2, true)>
-  job_types_4:
-    name: Enternship
+  job_types_{1..6}:
+    name: <jobType()>
     description: <paragraphs(2, true)>

@@ -4,6 +4,8 @@ namespace App\Twig\Components;
 
 use App\Dto\JobSearchData;
 use App\Repository\Job\JobRepository;
+use App\Repository\Job\CategoryRepository;
+use App\Repository\Job\TypeRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
@@ -16,14 +18,14 @@ class FullSearchComponent
 {
     use DefaultActionTrait;
 
-    #[LiveProp(writable: true, exposed: ['page', 'query', 'categories', 'type', 'location'])]
+    #[LiveProp(writable: true, exposed: ['page', 'query', 'categories', 'types', 'location', 'country', 'sort', 'direction'])]
     public JobSearchData $jobSearchData;
 
     /**
      * @param PaginatorInterface $paginator
      * @param JobRepository $jobRepository
      */
-    public function __construct(private PaginatorInterface $paginator, private JobRepository $jobRepository)
+    public function __construct(private PaginatorInterface $paginator, private JobRepository $jobRepository, private CategoryRepository $categoryRepository, private TypeRepository $typeRepository)
     {
     }
 
@@ -33,10 +35,22 @@ class FullSearchComponent
      */
     public function getJobs(): PaginationInterface
     {
-        return $this->paginator->paginate(
+        $jobs = $this->paginator->paginate(
             $this->jobRepository->searchJobs($this->jobSearchData),
             $this->jobSearchData->page ?: 1
         );
+        dump($jobs);
+        return $jobs;
+    }
+
+    public function getCategories()
+    {
+        return $this->categoryRepository->findLatest();
+    }
+
+    public function getTypes()
+    {
+        return $this->typeRepository->findAll();
     }
 
     public function resetPage()
@@ -55,6 +69,12 @@ class FullSearchComponent
     public function next()
     {
         $this->jobSearchData->page += 1;
+    }
+
+    #[LiveAction()]
+    public function sort()
+    {
+        dump($this->jobSearchData->sort);
     }
 
 }

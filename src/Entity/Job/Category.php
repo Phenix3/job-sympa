@@ -39,7 +39,7 @@ class Category
     #[ORM\Column(options: ["unsigned" => true])]
     private int $jobsCount = 0;
 
-    #[ORM\ManyToMany(targetEntity: Job::class, inversedBy: 'categories')]
+    #[ORM\ManyToMany(targetEntity: Job::class, mappedBy: 'categories')]
     #[ORM\JoinTable(name: 'job_job_job_category')]
     #[Groups(['read:job:collection'])]
     private Collection $jobs;

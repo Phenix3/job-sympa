@@ -32,3 +32,6 @@ App\Entity\Job\Skill:
   job_skills_11:
     name: Neo4j
     description: <paragraphs(2, true)>
+  job_skills_{12..20}:
+    name: <jobSkill()>
+    description: <paragraphs(2, true)>
