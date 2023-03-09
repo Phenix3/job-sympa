@@ -191,6 +191,21 @@
             "./config/packages/nyholm_psr7.yaml"
         ]
     },
+    "php-translation/symfony-bundle": {
+        "version": "0.13",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.10",
+            "ref": "f3ca4e4da63897d177e58da78626c20648c0e102"
+        },
+        "files": [
+            "config/packages/dev/php_translation.yaml",
+            "config/packages/php_translation.yaml",
+            "config/routes/dev/php_translation.yaml",
+            "config/routes/php_translation.yaml"
+        ]
+    },
     "phpunit/phpunit": {
         "version": "9.5",
         "recipe": {
@@ -573,6 +588,9 @@
             "version": "1.0",
             "ref": "fe5a50faf580eb58f08ada2abe8afbd2d4941e05"
         }
+    },
+    "theofidry/psysh-bundle": {
+        "version": "4.5.0"
     },
     "twig/extra-bundle": {
         "version": "v3.4.0"

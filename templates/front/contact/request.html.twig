@@ -1,0 +1,55 @@
+{% extends 'front/base.html.twig' %}
+
+
+{% block body %}
+
+	<section class="middle">
+		<div class="container">
+		
+			<div class="row justify-content-center mb-5">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<div class="sec_title position-relative text-center">
+						<h2 class="off_title">{{ 'ui.titles.contact'|trans }}</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row align-items-start justify-content-between">
+			
+				<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+					<div class="card-wrap-body mb-4 gray rounded p-3">
+						<h4 class="ft-medium mb-3 theme-cl">
+							<i class="lni lni-map "></i> {{ 'ui.make_a_call'|trans }}
+						</h4>
+						<p>1354 Green Street Nashville Drive Dodge City,<br> KS 67801 United States</p>
+						<p class="lh-1"><span class="text-dark ft-medium">Email:</span> dhananjaypreet@gmail.com</p>
+					</div>
+					
+					<div class="card-wrap-body mb-3 gray rounded p-3">
+						<h4 class="ft-medium mb-3 theme-cl">
+							<i class="lni lni-phone"></i> {{ 'ui.make_a_call'|trans }}
+						</h4>
+						<h6 class="ft-medium mb-1">Customer Care:</h6>
+						<p class="mb-2">+91 458 753 6924</p>
+					</div>
+					
+					<div class="card-wrap-body mb-3 gray rounded p-3">
+						<h4 class="ft-medium mb-3 theme-cl">
+							<i class="lni lni-envelope"></i> {{ 'ui.drop_a_mail'|trans }}
+						</h4>
+						<p>{{ 'ui.drop_a_mail_text'|trans }}</p>
+						<p class="lh-1 text-dark">dhananjaypreet@gmail.com</p>
+					</div>
+				</div>
+				
+				<div class="col-xl-7 col-lg-8 col-md-12 col-sm-12">
+					{{ component('contact_request_form', {
+						contactRequestData: contactRequestData
+					}) }}
+				</div>
+				
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

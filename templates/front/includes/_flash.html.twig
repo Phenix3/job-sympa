@@ -1,8 +1,10 @@
-{% for label, messages in app.flashes() %}
-    {% for message in messages %}
-        {{ component('alert', {
-            type: label,
-            message: message
-        }) }}
+<div class="container">
+    {% for label, messages in app.flashes() %}
+        {% for message in messages %}
+            {{ component('alert', {
+                type: label,
+                message: message
+            }) }}
+        {% endfor %}
     {% endfor %}
-{% endfor %}
+</div>

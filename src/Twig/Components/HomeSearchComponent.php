@@ -21,13 +21,13 @@ class HomeSearchComponent extends AbstractController
     use DefaultActionTrait;
     use ComponentWithFormTrait;
 
+    #[LiveProp(writable: true, exposed: ['query', 'categories'])]
+    public ?JobSearchData $jobSearchData;
+
     public function __construct(private JobRepository $jobRepository, private CategoryRepository $categoryRepository)
     {
         $this->jobSearchData = new JobSearchData();
     }
-
-    #[LiveProp(writable: true, exposed: ['query', 'categories'])]
-    public ?JobSearchData $jobSearchData;
 
     public function getFilteredJobs()
     {
