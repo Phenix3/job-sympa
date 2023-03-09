@@ -64,13 +64,25 @@ ui.all_popular_listed_jobs: 'Toutes les offres les plus populaires'
 ui.trending_jobs: 'Trending Jobs'
 ui.popular_categories: 'Les categories populaire.'
 ui.browse_top_categories: 'Browse Top Categories'
-ui.mails.subjects.employer_job_applied: Une offre a ete poste pour votre annonce
-ui.search_filter: Filtre de recherche
-ui.job_categories: Categorie d'emploi
+ui.mails.subjects.employer_job_applied: 'Une offre a ete poste pour votre annonce'
+ui.search_filter: 'Filtre de recherche'
+ui.job_categories: "Categorie d'emploi"
 ui.skills: Competences
-ui.job_types: Type d'emploi
-ui.jobs_found: Offres trouve
-ui.created_at: Date de creation
-ui.deadline: Date limit
+ui.job_types: "Type d'emploi"
+ui.jobs_found: 'Offres trouve'
+ui.created_at: 'Date de creation'
+ui.deadline: 'Date limit'
 ui.asc: Croissant
 ui.desc: Decroissant
+ui.buttons.send_message: 'Envoyer le message'
+ui.contact: Contact
+ui.titles.job_search: 'Trouver le meilleur job de votre vie'
+ui.name: Nom
+ui.email: Email
+ui.subject: Sujet
+ui.content: Contenu
+ui.make_a_call: 'Applez nous'
+ui.drop_a_mail: 'Laissez nous un E-mail'
+ui.drop_a_mail_text: 'Fill out our form and we will contact you within 24 hours.'
+ui.titles.contact: 'Contactez nous'
+'Job title, Keywords or Company': 'Job title, Keywords or Company'

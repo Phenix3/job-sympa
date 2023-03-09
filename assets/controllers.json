@@ -46,7 +46,7 @@
             }
         },
         "@symfony/ux-live-component": {
-            "typed": {
+            "live": {
                 "enabled": true,
                 "fetch": "eager",
                 "autoimport": {

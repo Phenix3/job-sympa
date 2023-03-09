@@ -3,8 +3,8 @@
 namespace App\Twig\Components;
 
 use App\Dto\JobSearchData;
-use App\Repository\Job\JobRepository;
 use App\Repository\Job\CategoryRepository;
+use App\Repository\Job\JobRepository;
 use App\Repository\Job\TypeRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
