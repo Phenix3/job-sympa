@@ -14,7 +14,7 @@ App\Entity\Job\Job:
     deadline: <dateTime()>
     requirements: <paragraphs(3, true)>
     publishedAt: <dateTime()>
-    country: <country()>
+    country: '@countries_*'
     city: <city()>
     fullAddress: <address()>
     requiredSkills: '3x @job_skills_*'

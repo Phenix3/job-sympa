@@ -12,12 +12,7 @@
                     </div>
 
                     <div class="_dashboard_content_body py-3 px-3">
-                        {{ form_start(form) }}
-                        {{ form_rest(form) }}
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">{{ 'ui.buttons.post_job'|trans }}</button>
-                        </div>
-                        {{ form_end(form) }}
+                        {% include 'front/user/employer/_job_form.html.twig' %}
                     </div>
                 </div>
             </div>

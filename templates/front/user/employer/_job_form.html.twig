@@ -1,0 +1,39 @@
+{{ form_start(form) }}
+{{ form_row(form.title) }}
+{{ form_row(form.description) }}
+<div class="row">
+	<div class="col">{{ form_row(form.salaryMin) }}</div>
+	<div class="col">{{ form_row(form.salaryMax) }}</div>
+</div>
+
+<div class="row">
+	<div class="col">{{ form_row(form.experience) }}</div>
+	<div class="col">{{ form_row(form.requiredSkills) }}</div>
+</div>
+
+<div class="row">
+	<div class="col">{{ form_row(form.deadline) }}</div>
+	<div class="col">{{ form_row(form.publishedAt) }}</div>
+</div>
+<div class="row">
+	<div class="col">{{ form_row(form.country) }}</div>
+	<div class="col">{{ form_row(form.city) }}</div>
+</div>
+
+<div class="row">
+	<div class="col">{{ form_row(form.categories) }}</div>
+	<div class="col">{{ form_row(form.type) }}</div>
+</div>
+
+<div class="row">
+	<div class="col">{{ form_row(form.isFreelance) }}</div>
+	<div class="col">{{ form_row(form.isSuspended) }}</div>
+</div><div class="row">
+	<div class="col">{{ form_row(form.location) }}</div>
+	<div class="col">{{ form_row(form.fullAddress) }}</div>
+</div>
+{{ form_rest(form) }}
+<div class="form-group">
+    <button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">{{ 'ui.buttons.post_job'|trans }}</button>
+</div>
+{{ form_end(form) }}

@@ -10,19 +10,31 @@ use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use App\Entity\User\User;
+use App\Entity\User\Candidate;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
 #[Route('', name: 'app_front_user_')]
 class UserController extends AbstractController
 {
-	public function __construct(private EntityManagerInterface $manager){}
+	public function __construct(
+		private BasicSeoGenerator $seoGenerator,
+		private EntityManagerInterface $manager
+	) {}
 
 	#[Route('user/{id}', name: 'show')]
 	#[Breadcrumb('<i class="fa fa-home"></i>', routeName: 'app_home')]
-	#[Breadcrumb('')]
-	public function show(int $id)
+	#[Breadcrumb('{user.username}')]
+	public function show(User $user)
 	{
-		$user = $this->manager->getRepository(User::class)->find($id);
-		dump($user);
+		// $user = $this->manager->getRepository(User::class)->find($id);
+		// dump($user);
 		return $this->render('front/user/show.html.twig', compact('user'));
 	}
+
+    #[Route('/candidate-profile/{id}', name: 'show_candidate')]
+    #[Entity('candidate', expr: 'repository.findForShow(id)')]
+    public function showCandidate(Candidate $candidate): Response
+    {
+        return $this->render('front/user/candidate/show.html.twig', compact('candidate'));
+    }
 }

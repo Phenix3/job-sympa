@@ -7,3 +7,4 @@ App\Entity\User\Employer:
     isVerified: true
     address: <address()>
     phone: <phoneNumber()>
+    country: '@countries_*'

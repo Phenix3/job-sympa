@@ -4,6 +4,7 @@ namespace App\Entity\User;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Bookmark;
+use App\Entity\Country;
 use App\Entity\Job\Category;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -105,8 +106,8 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne]
     private ?Category $category = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $country = null;
+    // #[ORM\Column(length: 255, nullable: true)]
+    // private ?string $country = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $city = null;
@@ -121,24 +122,14 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Bookmark::class, orphanRemoval: true)]
     private Collection $bookmarks;
 
+    #[ORM\ManyToOne]
+    private ?Country $country = null;
+
 
     public function __construct()
     {
         $this->bookmarks = new ArrayCollection();
     }
-
-
-    // public function __serialize(): array
-    // {
-    // return ['id' => $this->id, 'email' => $this->email];
-    // }
-    //
-    // public function __unserialize(array $data): void
-    // {
-    //     $this->email = $data['email'];
-    //     $this->id = $data['id'];
-    //     // $this->setAvatarName($data['avatarName']);
-    // }
 
     public function isEqualTo(UserInterface $user): bool
     {
@@ -302,18 +293,6 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(?string $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
     public function getCity(): ?string
     {
         return $this->city;
@@ -377,6 +356,18 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $bookmark->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?Country $country): self
+    {
+        $this->country = $country;
 
         return $this;
     }

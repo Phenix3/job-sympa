@@ -16,6 +16,9 @@ class JobSearchData
 
     public ?string $location = '';
 
+    /**
+     * @var array<string, string>
+     */
     public array|ArrayCollection $country = [];
 
     public ?string $sort = '';

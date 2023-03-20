@@ -1,0 +1,5 @@
+App\Entity\Country:
+  countries_{1..10}:
+    name: <country()>
+    code: <countryCode()>
+    phoneCode: '+237'

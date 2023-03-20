@@ -3,11 +3,18 @@
     <div class="dashed-list-full bg-white rounded p-3 mb-3">
         <div class="dashed-list-short d-flex align-items-center">
             <div class="dashed-list-short-first">
-                <div class="dashed-avater"><img src="https://via.placeholder.com/500x500" class="img-fluid circle" width="70" alt=""></div>
+                {% if not application.candidate.avatarName %}
+                    {% set img = asset('img/avatar.png') %}
+                {% else %}
+                    {% set img = vich_uploader_asset(application.candidate, 'avatarFile') %}
+                {% endif %}
+                <div class="dashed-avater"><img src="{{ img|imagine_filter('avatar') }}" class="img-fluid circle" width="70" alt=""></div>
             </div>
             <div class="dashed-list-short-last">
                 <div class="cats-box-caption px-2">
-                    <h4 class="fs-lg mb-0 ft-medium theme-cl">{{ application.candidate.username }}</h4>
+                    <h4 class="fs-lg mb-0 ft-medium theme-cl">
+                        <a href="{{ path('app_front_user_show', {id: application.candidate.id}) }}">{{ application.candidate.username }}</a>
+                    </h4>
                     <div class="d-block mb-2 position-relative">
                         <span><i class="lni lni-map-marker mr-1"></i>{{ application.candidate.address }}</span>
                         <span class="ml-2"><i class="lni lni-briefcase mr-1"></i>PHP Developer</span>
@@ -39,7 +46,7 @@
         </div>
         <div class="ico-content">
             <ul>
-                <li><span><i class="lni lni-calendar mr-1"></i>{{ application.createdAt|format_datetime }}</span></li>
+                <li><span><i class="lni lni-calendar mr-1"></i>{{ application.createdAt|carbon_date }}</span></li>
                 <li><span><i class="lni lni-add-files mr-1"></i>Recent</span></li>
             </ul>
         </div>

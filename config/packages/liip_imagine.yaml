@@ -4,3 +4,31 @@ liip_imagine:
     driver: "gd"
     twig:
         mode: lazy
+
+    filter_sets:
+        mini:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [150, 100]
+                    mode: outbound
+
+        thumb:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [360, 230]
+                    mode: outbound
+        avatar:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [150, 150]
+                    mode: outbound
+
+        medium:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [800, 530]
+                    mode: outbound

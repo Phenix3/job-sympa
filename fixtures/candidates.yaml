@@ -6,3 +6,4 @@ App\Entity\User\Candidate:
     about: <paragraphs(3, true)>
     isVerified: true
     address: <address()>
+    country: '@countries_*'

@@ -95,8 +95,9 @@ class JobRepository extends ServiceEntityRepository
             ->activeJobsBuilder()
             ->leftJoin('j.categories', 'c')
             ->leftJoin('j.type', 't')
+            ->leftJoin('j.country', 'country')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
-            ->addSelect('c', 'requiredSkills')
+            ->addSelect('c', 'requiredSkills', 'country')
             ;
 
         if (null === $jobSearchData) {

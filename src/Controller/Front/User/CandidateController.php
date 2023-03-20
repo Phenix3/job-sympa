@@ -6,6 +6,7 @@ use App\Controller\BaseController;
 use App\Entity\Job\Application;
 use App\Entity\Job\Job;
 use App\Entity\User\CandidateCvs;
+use App\Entity\User\Candidate;
 use App\Entity\User\JobBookmark;
 use App\Form\User\CandidateAccountFormType;
 use App\Form\User\CandidateResumeFormType;

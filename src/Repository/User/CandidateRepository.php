@@ -43,4 +43,18 @@ class CandidateRepository extends ServiceEntityRepository implements PasswordUpg
         }
     }
 
+    public function findForShow(int $id): ?Candidate
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb = $qb->where('c.id = :id')
+            ->leftJoin('c.category', 'cat')
+            ->addSelect('cat')
+            ->setMaxResults(1)
+            ->setParameter('id', $id)
+            ;
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
 }

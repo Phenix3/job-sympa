@@ -4,6 +4,7 @@ namespace App\Entity\Job;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\User\Employer;
+use App\Entity\Country;
 use App\Entity\User\JobBookmark;
 use App\Repository\Job\JobRepository;
 use Carbon\Carbon;
@@ -92,9 +93,9 @@ class Job
     #[Groups(['read:job:collection'])]
     private ?\DateTimeInterface $publishedAt = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\ManyToOne]
     #[Groups(['read:job:collection'])]
-    private ?string $country = null;
+    private ?Country $country = null;
 
     #[ORM\Column(length: 255)]
     private ?string $city = null;
@@ -115,6 +116,15 @@ class Job
 
     #[ORM\OneToMany(mappedBy: 'job', targetEntity: JobBookmark::class, orphanRemoval: true)]
     private Collection $jobBookmarks;
+
+    #[ORM\Column(nullable: true, options: ['default' => false])]
+    private ?bool $isFreelance = null;
+
+    #[ORM\Column(nullable: true, options: ['default' => false])]
+    private ?bool $isSuspended = null;
+
+    #[ORM\Column(nullable: true, options: ['default' => false])]
+    private ?bool $isCreatedByAdmin = null;
 
     
     public function __construct()
@@ -324,12 +334,12 @@ class Job
         return $this;
     }
 
-    public function getCountry(): ?string
+    public function getCountry(): ?Country
     {
         return $this->country;
     }
 
-    public function setCountry(string $country): self
+    public function setCountry(Country $country): self
     {
         $this->country = $country;
 
@@ -464,6 +474,42 @@ class Job
                 $jobBookmark->setJob(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isIsFreelance(): ?bool
+    {
+        return $this->isFreelance;
+    }
+
+    public function setIsFreelance(bool $isFreelance): self
+    {
+        $this->isFreelance = $isFreelance;
+
+        return $this;
+    }
+
+    public function isIsSuspended(): ?bool
+    {
+        return $this->isSuspended;
+    }
+
+    public function setIsSuspended(bool $isSuspended): self
+    {
+        $this->isSuspended = $isSuspended;
+
+        return $this;
+    }
+
+    public function isIsCreatedByAdmin(): ?bool
+    {
+        return $this->isCreatedByAdmin;
+    }
+
+    public function setIsCreatedByAdmin(bool $isCreatedByAdmin): self
+    {
+        $this->isCreatedByAdmin = $isCreatedByAdmin;
 
         return $this;
     }

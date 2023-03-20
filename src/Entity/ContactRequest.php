@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ContactRequestRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use geertw\IpAnonymizer\IpAnonymizer;
 
 #[ORM\Entity(repositoryClass: ContactRequestRepository::class)]
 class ContactRequest
@@ -50,6 +51,13 @@ class ContactRequest
     public function setIp(string $ip): self
     {
         $this->ip = $ip;
+
+        return $this;
+    }
+
+    public function setRawIp(string $ip): self
+    {
+        $this->ip = (new IpAnonymizer())->anonymize($ip);
 
         return $this;
     }

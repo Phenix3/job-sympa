@@ -36,3 +36,17 @@ services:
         tags:
             - { name: doctrine.orm.entity_listener, event: prePersist, entity: App\Entity\User\CandidateCvs}
 
+    App\EventListener\CountryEventListener:
+        tags: 
+            - { name: kernel.event_listener, event: 'EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent', method: 'onAfterCountryPersisted' }
+            - { name: kernel.event_listener, event: 'EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityDeletedEvent', method: 'onAfterCountryDeleted' }
+
+    App\Asset\AssetPackage:
+        arguments:
+            - '@request_stack'
+        tags:
+            - { name: 'assets.package' }
+
+    App\Form\Type\CountryType:
+        arguments:
+            - '@App\Asset\AssetPackage'
