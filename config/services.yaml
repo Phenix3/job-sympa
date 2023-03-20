@@ -25,6 +25,9 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    Symfony\Component\Asset\PackageInterface:
+        class: App\Asset\AssetPackage
+
     App\Uploader\PropertyGroupedDirectoryNamer:
         public: true      # Automatically
 

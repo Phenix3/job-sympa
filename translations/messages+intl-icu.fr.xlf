@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="fr" trgLang="fr">
+  <file id="messages.fr">
+    <unit id="kQWnsB7" name="Your email address has been verified.">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Front/RegistrationController.php:132</note>
+      </notes>
+      <segment>
+        <source>Your email address has been verified.</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="0jqF2KR" name="ui.alerts.">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Front/User/CandidateController.php:66</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Tm5vr17" name="ui.alerts.password_changed">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Front/User/CandidateController.php:93</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.password_changed</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="R3GhhGC" name="ui.alerts.resume_deleted">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Front/User/CandidateController.php:128</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.resume_deleted</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="5xqBbqL" name="ui.alerts.application_deleted">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Front/User/CandidateController.php:149</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.application_deleted</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="qbBD31z" name="ui.alerts.job_posted">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Front/User/EmployerController.php:44</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.job_posted</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="PdnfREH" name="New password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ChangePasswordFormType.php:26</note>
+      </notes>
+      <segment>
+        <source>New password</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Hkmh4Tp" name="Repeat Password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ChangePasswordFormType.php:41</note>
+      </notes>
+      <segment>
+        <source>Repeat Password</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="RZQ0CeQ" name="Plain password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ChangePasswordFormType.php:18</note>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:26</note>
+      </notes>
+      <segment>
+        <source>Plain password</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="8RhOomP" name="Old password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ChangePasswordFormType.php:18</note>
+      </notes>
+      <segment>
+        <source>Old password</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="2iiGQsk" name="Agree">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobApplicationFormType.php:14</note>
+      </notes>
+      <segment>
+        <source>Agree</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="561SLqM" name="Application">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobApplicationFormType.php:14</note>
+      </notes>
+      <segment>
+        <source>Application</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="oQPSm13" name="Is suspended">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Is suspended</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="gNRwNH1" name="Is freelance">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Is freelance</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="3H87N8." name="Required skills">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Required skills</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="uq3fcPt" name="Type">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Type</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="uLHYlMa" name="Categories">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+        <note category="file-source" priority="1">job-sympa/src/Form/SearchType.php:17</note>
+      </notes>
+      <segment>
+        <source>Categories</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="oOguKhg" name="Full address">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Full address</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id=".DP3Mkb" name="City">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserContactType.php:17</note>
+      </notes>
+      <segment>
+        <source>City</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="cB0CHQj" name="Country">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserContactType.php:17</note>
+      </notes>
+      <segment>
+        <source>Country</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="JJOwID." name="Published at">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Published at</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="4M3Qf2o" name="Requirements">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Requirements</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="b8s43ch" name="Deadline">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Deadline</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="6GZLIj_" name="Salary max">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Salary max</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="waumPXK" name="Salary min">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Salary min</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="jqsPCd8" name="Experience">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Experience</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="HpqBEP0" name="Other benefits">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Other benefits</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="FbYZdLJ" name="Location">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Location</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="USqzxrm" name="Education">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Education</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="V1BqPAZ" name="Responsibilities">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Responsibilities</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Um4Ah8w" name="Description">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+      </notes>
+      <segment>
+        <source>Description</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="fozSBW2" name="Title">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/JobFormType.php:31</note>
+        <note category="file-source" priority="1">job-sympa/src/Form/User/CandidateResumeFormType.php:17</note>
+      </notes>
+      <segment>
+        <source>Title</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="uAo3Vk_" name="Query">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/SearchType.php:17</note>
+      </notes>
+      <segment>
+        <source>Query</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="w3gDTZy" name="Cv">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/ApplicationType.php:22</note>
+      </notes>
+      <segment>
+        <source>Cv</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="L3dmip3" name="Message">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/ApplicationType.php:22</note>
+      </notes>
+      <segment>
+        <source>Message</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="QffRDfl" name="ui.form.select_resume">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/ApplicationType.php:29</note>
+      </notes>
+      <segment>
+        <source>ui.form.select_resume</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="FwkwXJ_" name="Level">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/CandidateSkillType.php:17</note>
+      </notes>
+      <segment>
+        <source>Level</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="bfG7GKW" name="Skill">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/CandidateSkillType.php:17</note>
+      </notes>
+      <segment>
+        <source>Skill</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Murrb4B" name="Birth">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserAccountType.php:23</note>
+      </notes>
+      <segment>
+        <source>Birth</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="KSwG8AR" name="Category">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserAccountType.php:23</note>
+      </notes>
+      <segment>
+        <source>Category</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="GjXifIK" name="Avatar file">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserAccountType.php:23</note>
+      </notes>
+      <segment>
+        <source>Avatar file</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Tvyg0Qx" name="About">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserAccountType.php:23</note>
+      </notes>
+      <segment>
+        <source>About</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="47ienTP" name="Username">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserAccountType.php:23</note>
+      </notes>
+      <segment>
+        <source>Username</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="lpzL089" name="Email">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserAccountType.php:23</note>
+      </notes>
+      <segment>
+        <source>Email</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Y9zriAC" name="Phone">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserContactType.php:17</note>
+      </notes>
+      <segment>
+        <source>Phone</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Vu_PIJV" name="Address">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserContactType.php:17</note>
+      </notes>
+      <segment>
+        <source>Address</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Vc1YuRe" name="Social accounts">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserSocialType.php:16</note>
+      </notes>
+      <segment>
+        <source>Social accounts</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="OJOCCdo" name="Job type">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/User/CandidateAccountFormType.php:18</note>
+      </notes>
+      <segment>
+        <source>Job type</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="htuAqAl" name="Job title">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/User/CandidateAccountFormType.php:18</note>
+        <note category="file-source" priority="1">job-sympa/src/Form/User/CandidateResumeFormType.php:17</note>
+      </notes>
+      <segment>
+        <source>Job title</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="WhPvGiV" name="Is default">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/User/CandidateResumeFormType.php:17</note>
+      </notes>
+      <segment>
+        <source>Is default</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="ZtD1I6N" name="Skills">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/User/CandidateSkillFormType.php:16</note>
+      </notes>
+      <segment>
+        <source>Skills</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="b2OJqpH" name="ui.alerts.job_applied">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Twig/Components/ApplicationFormComponent.php:51</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.job_applied</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="KFWudSs" name="ui.alerts.contact_request_success">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Twig/Components/ContactRequestFormComponent.php:42</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.contact_request_success</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="UtvDgtp" name="ui.alerts.contact_request_error">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Twig/Components/ContactRequestFormComponent.php:44</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.contact_request_error</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="un_76LG" name="ui.buttons.view_employer">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/employer_card.html.twig:22</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.view_employer</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="B4YNabd" name="ui.companies">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/top_header.html.twig:39</note>
+      </notes>
+      <segment>
+        <source>ui.companies</source>
+        <target></target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

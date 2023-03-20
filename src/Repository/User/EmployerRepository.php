@@ -8,6 +8,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use App\Dto\EmployerSearchData;
+use Doctrine\ORM\Query;
 
 /**
  * @extends ServiceEntityRepository<Employer>
@@ -56,28 +58,26 @@ class EmployerRepository extends ServiceEntityRepository implements PasswordUpgr
         $this->add($user, true);
     }
 
-//    /**
-//     * @return Employer[] Returns an array of Employer objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Employer
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function searchEmployersQuery(?EmployerSearchData $employersSearchData = null): Query
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->leftJoin('e.category', 'c')
+            ->addSelect('c')
+        ;
+
+        if (null === $employersSearchData) {
+            return $qb->getQuery();
+        }
+
+        if ($employersSearchData->name) {
+            $qb = $qb->andWhere("e.name LIKE :name")->setParameter('name', "%{$employersSearchData->name}%");
+        }
+
+        if (!empty($employersSearchData->categories)) {
+            $qb = $qb->andWhere("c IN (:categories)")->setParameter('categories', $employersSearchData->categories);
+        }
+
+        return $qb->getQuery();
+    }
 }

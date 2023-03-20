@@ -1,0 +1,88 @@
+<div {{ attributes }}>
+	
+<section class="bg-light middle">
+	<div class="container">
+		<div class="row">
+			<!-- Item Wrap Start -->
+			<div class="col-12">
+				
+				<div class="row">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-12">
+						<div class="row align-items-center justify-content-between mx-0 bg-white rounded py-2 mb-4">
+							<div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+								<h6 class="mb-0 ft-medium fs-sm">302 New employers Found</h6>
+							</div>
+							
+							<div class="col-xl-9 col-lg-8 col-md-7 col-sm-12">
+								<div class="filter_wraps elspo_wrap d-flex align-items-center justify-content-end">
+									<div class="single_fitres mr-2 br-right">
+										<select class="custom-select simple">
+										  <option value="1" selected="">Default Sorting</option>
+										  <option value="2">Recent employers</option>
+										  <option value="3">Featured employers</option>
+										  <option value="4">Trending employers</option>
+										  <option value="5">Premium employers</option>
+										</select>
+									</div>
+									<div class="single_fitres">
+										<a href="browse-resumes.html" class="simple-button active theme-cl mr-1"><i class="ti-layout-grid2"></i></a>
+										<a href="browse-resumes-list.html" class="simple-button"><i class="ti-view-list"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+				<!-- row -->
+				<div class="row align-items-center">
+				
+				{% for employer in computed.employers %}
+					<!-- Single -->
+					{{ component('employer_card', {employer}) }}
+				{% endfor %}
+				</div>
+				<!-- row -->
+				
+				<div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        {% if computed.employers.paginationData.pageCount > 1 %}
+                            <nav>
+                                {% set classAlign = (align is not defined) ? '' : align=='center' ? ' justify-content-center' : (align=='right' ? ' justify-content-end' : '') %}
+                                {% set classSize = (size is not defined) ? '' : size=='large' ? ' pagination-lg' : (size=='small' ? ' pagination-sm' : '') %}
+                                <ul class="pagination{{ classAlign }}{{ classSize }}">
+
+                                    {% if computed.employers.paginationData.previous is defined %}
+                                        <li class="page-item">
+                                            {# <a class="page-link" data-action="live#action" data-action-name="prevent|prev" rel="prev" href="{{ path(computed.employers.route, computed.employers.query|merge({(computed.employers.paginatorOption('pageParameterName')): computed.employers.paginationData.previous})) }}">&laquo;&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</a> #}
+                                            <a class="page-link" data-action="live#action" data-action-name="prevent|prev" rel="prev" href="{{ path('app_front_user_companies', computed.employers.query|merge({(computed.employers.paginatorOption('pageParameterName')): computed.employers.paginationData.previous})) }}">&laquo;&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link">&laquo;&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</span>
+                                        </li>
+                                    {% endif %}
+
+
+                                    {% if computed.employers.paginationData.next is defined %}
+                                        <li class="page-item">
+                                            {# <a class="page-link" data-action="live#action" data-action-name="prevent|next" rel="next" href="{{ path(computed.employers.route, computed.employers.query|merge({(computed.employers.paginatorOption('pageParameterName')): computed.employers.paginationData.next})) }}">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</a> #}
+                                            <a class="page-link" data-action="live#action" data-action-name="prevent|next" rel="next" href="{{ path('app_front_user_companies', computed.employers.query|merge({(computed.employers.paginatorOption('pageParameterName')): computed.employers.paginationData.next})) }}">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</a>
+                                        </li>
+                                    {% else %}
+                                        <li  class="page-item disabled">
+                                            <span class="page-link">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</span>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        {% endif %}
+                    </div>
+                </div>
+				
+			</div>
+			
+		</div>
+	</div>
+</section>
+</div>

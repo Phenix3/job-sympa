@@ -8,7 +8,5 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent('job_card')]
 class JobCardComponent
 {
-
     public Job $job;
-
 }

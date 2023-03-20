@@ -12,6 +12,7 @@ use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use App\Entity\User\User;
 use App\Entity\User\Candidate;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use App\Dto\EmployerSearchData;
 
 #[Route('', name: 'app_front_user_')]
 class UserController extends AbstractController
@@ -36,5 +37,15 @@ class UserController extends AbstractController
     public function showCandidate(Candidate $candidate): Response
     {
         return $this->render('front/user/candidate/show.html.twig', compact('candidate'));
+    }
+
+    #[Route("companies", name: 'companies')]
+    #[Breadcrumb('<i class="fa fa-home"></i>', routeName: 'app_home')]
+	#[Breadcrumb('companies')]
+    public function indexCompanies(): Response
+    {
+    	return $this->render('front/user/companies.html.twig', [
+    		'employerSearchData' => new EmployerSearchData()
+    	]);
     }
 }

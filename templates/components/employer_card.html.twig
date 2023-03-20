@@ -1,0 +1,25 @@
+<!-- Single -->
+	<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12" {{ attributes }}>
+		<div class="job_grid border rounded ">
+			<div class="position-absolute ab-left"><button type="button" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-gray"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></button></div>
+			<div class="job_grid_thumbmb-2 text-center pt-4 px-3 mb-2">
+				<a href="candidate-detail.html" class="d-inline-flex text-center m-auto circle border p-2"><img src="{{ avatar(employer, 'avatarName', 'avatar') }}" class="img-fluid circle" width="70" alt=""></a>
+			</div>
+			<div class="job_grid_caption text-center pb-3 px-3">
+				<h4 class="mb-0 ft-medium medium"><a href="candidate-detail.html" class="text-dark fs-md">{{ employer.username }}</a></h4>
+				<div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>{{ employer.city }}</span></div>
+			</div>
+			<div class="job_grid_footer px-3">
+				<ul class="p-0 skills_tag text-center">
+					<li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
+					<li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
+					<li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
+					<li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
+					<li><span class="px-2 py-1 medium bg-danger rounded text-light">+3 More</span></li>
+				</ul>
+			</div>
+			<div class="job_grid_footer pb-4 px-3">
+				<div class="df-1 text-dark ft-medium col-12 mt-3"><a href="{{ path('app_front_user_show', {id: employer.id}) }}" class="btn gray apply-btn rounded full-width">{{ 'ui.buttons.view_employer'|trans }}<i class="lni lni-arrow-right-circle ml-1"></i></a></div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="fr" trgLang="fr">
+  <file id="validators.fr">
+    <unit id="EsVIYZj" name="ui.validator.must_match">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ChangePasswordFormType.php:24</note>
+      </notes>
+      <segment>
+        <source>ui.validator.must_match</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="_mdYn6e" name="ui.validator.type_password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ChangePasswordFormType.php:30</note>
+      </notes>
+      <segment>
+        <source>ui.validator.type_password</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Ed2aLu3" name="ui.validator.password_min">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ChangePasswordFormType.php:34</note>
+      </notes>
+      <segment>
+        <source>ui.validator.password_min</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="IaE5GBl" name="You should agree to our terms.">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:48</note>
+      </notes>
+      <segment>
+        <source>You should agree to our terms.</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="YXZ26gK" name="Please enter a password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:70</note>
+      </notes>
+      <segment>
+        <source>Please enter a password</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id=".esazsm" name="Your password should be at least {{ limit }} characters">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:74</note>
+      </notes>
+      <segment>
+        <source>Your password should be at least {{ limit }} characters</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="mH423Iy" name="ui.validator.type_email">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ResetPasswordRequestFormType.php:21</note>
+      </notes>
+      <segment>
+        <source>ui.validator.type_email</source>
+        <target></target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

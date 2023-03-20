@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="fr" trgLang="fr">
+  <file id="messages.fr">
+    <unit id="XJlfzyp" name="ui.alerts.already_logged_in">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Admin/SecurityController.php:26</note>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Front/SecurityController.php:24</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.already_logged_in</source>
+        <target>Vous étes déjà connecté.</target>
+      </segment>
+    </unit>
+    <unit id="A9gaW1B" name="ui.alerts.application_posted">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Front/JobController.php:141</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/_applied.stream.html.twig:5</note>
+        <note category="file-source" priority="1">job-sympa/templates/mails/user/candidate/job_applied.twig:20</note>
+        <note category="file-source" priority="1">job-sympa/templates/mails/user/employer/job_applied.twig:20</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.application_posted</source>
+        <target>Votre candidature à bien été postée.</target>
+      </segment>
+    </unit>
+    <unit id="fbvaYTR" name="ui.alerts.resume_created">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Controller/Front/User/CandidateController.php:111</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.resume_created</source>
+        <target>Votre CV a bien été crée</target>
+      </segment>
+    </unit>
+    <unit id="p2cdtdZ" name="ui.name">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ContactRequestFormType.php:18</note>
+      </notes>
+      <segment>
+        <source>ui.name</source>
+        <target>Nom</target>
+      </segment>
+    </unit>
+    <unit id="Uzw1EdR" name="ui.email">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ContactRequestFormType.php:21</note>
+      </notes>
+      <segment>
+        <source>ui.email</source>
+        <target>Email</target>
+      </segment>
+    </unit>
+    <unit id="U3NJKzN" name="ui.subject">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ContactRequestFormType.php:24</note>
+      </notes>
+      <segment>
+        <source>ui.subject</source>
+        <target>Sujet</target>
+      </segment>
+    </unit>
+    <unit id="TXfce3x" name="ui.content">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/ContactRequestFormType.php:27</note>
+      </notes>
+      <segment>
+        <source>ui.content</source>
+        <target>Contenu</target>
+      </segment>
+    </unit>
+    <unit id="MVnf1XF" name="ui.form.candidate">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:30</note>
+      </notes>
+      <segment>
+        <source>ui.form.candidate</source>
+        <target>Je suis candidat</target>
+      </segment>
+    </unit>
+    <unit id="c7ePADM" name="ui.form.employer">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:30</note>
+      </notes>
+      <segment>
+        <source>ui.form.employer</source>
+        <target>Je suis employeur</target>
+      </segment>
+    </unit>
+    <unit id="tPNKovd" name="ui.form.account_type">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:27</note>
+      </notes>
+      <segment>
+        <source>ui.form.account_type</source>
+        <target>Type de compte</target>
+      </segment>
+    </unit>
+    <unit id="rVH7yTO" name="ui.form.username">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:37</note>
+      </notes>
+      <segment>
+        <source>ui.form.username</source>
+        <target>Nom d'utilisateur</target>
+      </segment>
+    </unit>
+    <unit id="c0wQTVP" name="ui.form.email">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:40</note>
+        <note category="file-source" priority="1">job-sympa/src/Form/ResetPasswordRequestFormType.php:16</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/security/login.html.twig:24</note>
+      </notes>
+      <segment>
+        <source>ui.form.email</source>
+        <target>Adresse mail</target>
+      </segment>
+    </unit>
+    <unit id="QRUgaN_" name="ui.form.agreeTerms">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:43</note>
+      </notes>
+      <segment>
+        <source>ui.form.agreeTerms</source>
+        <target>Accepter les conditions</target>
+      </segment>
+    </unit>
+    <unit id="6T.Aohm" name="ui.form.type_password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:57</note>
+      </notes>
+      <segment>
+        <source>ui.form.type_password</source>
+        <target>Taper votre mot de passe</target>
+      </segment>
+    </unit>
+    <unit id="AX.VnRV" name="ui.form.confirm_password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/RegistrationFormType.php:63</note>
+      </notes>
+      <segment>
+        <source>ui.form.confirm_password</source>
+        <target>Confirmez votre mot de passe</target>
+      </segment>
+    </unit>
+    <unit id="g9tVH9d" name="Job title, Keywords or Company">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/SearchType.php:20</note>
+      </notes>
+      <segment>
+        <source>Job title, Keywords or Company</source>
+        <target>Job title, Keywords or Company</target>
+      </segment>
+    </unit>
+    <unit id="fTDwMaQ" name="ui.form.help.email_change">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/Type/UserAccountType.php:25</note>
+      </notes>
+      <segment>
+        <source>ui.form.help.email_change</source>
+        <target>Vous devez confirmez votre E-mail si vous le changer!</target>
+      </segment>
+    </unit>
+    <unit id="Ur.bH1V" name="ui.form.resume_file">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Form/User/CandidateResumeFormType.php:23</note>
+      </notes>
+      <segment>
+        <source>ui.form.resume_file</source>
+        <target>Votre CV ici</target>
+      </segment>
+    </unit>
+    <unit id="NNAidWq" name="ui.alerts.profile_updated">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/src/Twig/Components/CandidateProfileSkillComponent.php:46</note>
+        <note category="file-source" priority="1">job-sympa/src/Twig/Components/UserProfileAccountComponent.php:49</note>
+        <note category="file-source" priority="1">job-sympa/src/Twig/Components/UserProfileContactComponent.php:41</note>
+        <note category="file-source" priority="1">job-sympa/src/Twig/Components/UserProfileSocialComponent.php:41</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.profile_updated</source>
+        <target>Votre profile a bien été mis à jour.</target>
+      </segment>
+    </unit>
+    <unit id="jzjvFK1" name="ui.buttons.apply_for_job">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/application_form.html.twig:14</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:128</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.apply_for_job</source>
+        <target>Postuler pour le poste</target>
+      </segment>
+    </unit>
+    <unit id="SN1jXsG" name="ui.buttons.save">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/candidate_profile_skill.html.twig:25</note>
+        <note category="file-source" priority="1">job-sympa/templates/components/user_profile_account.html.twig:58</note>
+        <note category="file-source" priority="1">job-sympa/templates/components/user_profile_contact.html.twig:43</note>
+        <note category="file-source" priority="1">job-sympa/templates/components/user_profile_social.html.twig:38</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/candidate/manage_resume.html.twig:64</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/candidate/profile.html.twig:64</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.save</source>
+        <target>Sauvegarder</target>
+      </segment>
+    </unit>
+    <unit id="zeBiX_K" name="ui.buttons.send_message">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/contact_request_form.html.twig:13</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.send_message</source>
+        <target>Envoyer le message</target>
+      </segment>
+    </unit>
+    <unit id="MjuphCh" name="ui.search_filter">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:11</note>
+      </notes>
+      <segment>
+        <source>ui.search_filter</source>
+        <target>Filtre de recherche</target>
+      </segment>
+    </unit>
+    <unit id="zbIdxAI" name="ui.job_categories">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:41</note>
+      </notes>
+      <segment>
+        <source>ui.job_categories</source>
+        <target>Categorie d'emploi</target>
+      </segment>
+    </unit>
+    <unit id="r_gf64H" name="ui.skills">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:70</note>
+      </notes>
+      <segment>
+        <source>ui.skills</source>
+        <target>Competences</target>
+      </segment>
+    </unit>
+    <unit id="0nMWth2" name="ui.job_types">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:100</note>
+      </notes>
+      <segment>
+        <source>ui.job_types</source>
+        <target>Type d'emploi</target>
+      </segment>
+    </unit>
+    <unit id="HblZdcO" name="ui.jobs_found">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:144</note>
+      </notes>
+      <segment>
+        <source>ui.jobs_found</source>
+        <target>Offres trouve</target>
+      </segment>
+    </unit>
+    <unit id="yC6xB9p" name="ui.job_title">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:152</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/candidate/manage_resume.html.twig:13</note>
+      </notes>
+      <segment>
+        <source>ui.job_title</source>
+        <target>Titre du poste</target>
+      </segment>
+    </unit>
+    <unit id=".kq3K3b" name="ui.created_at">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:154</note>
+      </notes>
+      <segment>
+        <source>ui.created_at</source>
+        <target>Date de creation</target>
+      </segment>
+    </unit>
+    <unit id="WBMp38n" name="ui.deadline">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:155</note>
+      </notes>
+      <segment>
+        <source>ui.deadline</source>
+        <target>Date limit</target>
+      </segment>
+    </unit>
+    <unit id="6swnPmm" name="ui.asc">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:160</note>
+      </notes>
+      <segment>
+        <source>ui.asc</source>
+        <target>Croissant</target>
+      </segment>
+    </unit>
+    <unit id="dSAHz8N" name="ui.desc">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/full_search.html.twig:161</note>
+      </notes>
+      <segment>
+        <source>ui.desc</source>
+        <target>Decroissant</target>
+      </segment>
+    </unit>
+    <unit id="sYWDbZi" name="ui.trending_jobs">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/popular_jobs.html.twig:7</note>
+      </notes>
+      <segment>
+        <source>ui.trending_jobs</source>
+        <target>Trending Jobs</target>
+      </segment>
+    </unit>
+    <unit id="7uUtHQE" name="ui.all_popular_listed_jobs">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/popular_jobs.html.twig:8</note>
+      </notes>
+      <segment>
+        <source>ui.all_popular_listed_jobs</source>
+        <target>Toutes les offres les plus populaires</target>
+      </segment>
+    </unit>
+    <unit id="DTgXsc3" name="ui.buttons.explore_more_jobs">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/popular_jobs.html.twig:26</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.explore_more_jobs</source>
+        <target>Explorer plus d'offres</target>
+      </segment>
+    </unit>
+    <unit id="kmNlEC7" name="ui.home">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/top_header.html.twig:33</note>
+      </notes>
+      <segment>
+        <source>ui.home</source>
+        <target>Accueil</target>
+      </segment>
+    </unit>
+    <unit id="1p72i4a" name="ui.search">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/top_header.html.twig:36</note>
+      </notes>
+      <segment>
+        <source>ui.search</source>
+        <target>Rechercher</target>
+      </segment>
+    </unit>
+    <unit id="L6zSEsn" name="ui.contact">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/top_header.html.twig:42</note>
+      </notes>
+      <segment>
+        <source>ui.contact</source>
+        <target>Contact</target>
+      </segment>
+    </unit>
+    <unit id="sGuzaIj" name="ui.buttons.dashboard">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/top_header.html.twig:52</note>
+        <note category="file-source" priority="1">job-sympa/templates/components/top_header.html.twig:56</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.dashboard</source>
+        <target>Tableau de board</target>
+      </segment>
+    </unit>
+    <unit id="GM8zK8D" name="ui.buttons.logout">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/top_header.html.twig:62</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/base.html.twig:37</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.logout</source>
+        <target>Déconnexion</target>
+      </segment>
+    </unit>
+    <unit id="We8e1sk" name="ui.login">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/components/top_header.html.twig:73</note>
+      </notes>
+      <segment>
+        <source>ui.login</source>
+        <target>Connexion</target>
+      </segment>
+    </unit>
+    <unit id="bb10DYI" name="ui.titles.contact">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/contact/request.html.twig:12</note>
+      </notes>
+      <segment>
+        <source>ui.titles.contact</source>
+        <target>Contactez nous</target>
+      </segment>
+    </unit>
+    <unit id="5KYuAvj" name="ui.make_a_call">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/contact/request.html.twig:22</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/contact/request.html.twig:30</note>
+      </notes>
+      <segment>
+        <source>ui.make_a_call</source>
+        <target>Applez nous</target>
+      </segment>
+    </unit>
+    <unit id="6nEdwoU" name="ui.drop_a_mail">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/contact/request.html.twig:38</note>
+      </notes>
+      <segment>
+        <source>ui.drop_a_mail</source>
+        <target>Laissez nous un E-mail</target>
+      </segment>
+    </unit>
+    <unit id="oDoSCd7" name="ui.drop_a_mail_text">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/contact/request.html.twig:40</note>
+      </notes>
+      <segment>
+        <source>ui.drop_a_mail_text</source>
+        <target>Fill out our form and we will contact you within 24 hours.</target>
+      </segment>
+    </unit>
+    <unit id="qdcHHrm" name="ui.popular_categories">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/home/_latest_categories.html.twig:8</note>
+      </notes>
+      <segment>
+        <source>ui.popular_categories</source>
+        <target>Les categories populaire.</target>
+      </segment>
+    </unit>
+    <unit id="tKW.ZjX" name="ui.browse_top_categories">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/home/_latest_categories.html.twig:9</note>
+      </notes>
+      <segment>
+        <source>ui.browse_top_categories</source>
+        <target>Browse Top Categories</target>
+      </segment>
+    </unit>
+    <unit id="KrHS_zf" name="ui.titles.job_search">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/search.html.twig:17</note>
+      </notes>
+      <segment>
+        <source>ui.titles.job_search</source>
+        <target>Trouver le meilleur job de votre vie</target>
+      </segment>
+    </unit>
+    <unit id="k3fPoSJ" name="ui.job_description">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:49</note>
+      </notes>
+      <segment>
+        <source>ui.job_description</source>
+        <target>description du job</target>
+      </segment>
+    </unit>
+    <unit id="qtmnvxH" name="ui.job_requirements">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:54</note>
+      </notes>
+      <segment>
+        <source>ui.job_requirements</source>
+        <target>Exigences</target>
+      </segment>
+    </unit>
+    <unit id="pD3ZHM1" name="ui.years_of_experience">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:67</note>
+      </notes>
+      <segment>
+        <source>ui.years_of_experience</source>
+        <target>Années d'expérience</target>
+      </segment>
+    </unit>
+    <unit id="tsfVBRL" name="ui.industry_type">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:68</note>
+      </notes>
+      <segment>
+        <source>ui.industry_type</source>
+        <target>Type d'industrie</target>
+      </segment>
+    </unit>
+    <unit id="Z9vJ30H" name="ui.functional_area">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:69</note>
+      </notes>
+      <segment>
+        <source>ui.functional_area</source>
+        <target>Domaine fonctionnel</target>
+      </segment>
+    </unit>
+    <unit id="8Ezbi4C" name="ui.employment_type">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:70</note>
+      </notes>
+      <segment>
+        <source>ui.employment_type</source>
+        <target>Type d'emploi</target>
+      </segment>
+    </unit>
+    <unit id="X2qybbV" name="ui.role_category">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:71</note>
+      </notes>
+      <segment>
+        <source>ui.role_category</source>
+        <target>Catégorie de fonctions</target>
+      </segment>
+    </unit>
+    <unit id="ccYdTGP" name="ui.skills_required">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:80</note>
+      </notes>
+      <segment>
+        <source>ui.skills_required</source>
+        <target>Competences requises</target>
+      </segment>
+    </unit>
+    <unit id="q._yNGM" name="ui.alerts.unable_to_post_application_not_logged_in">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:135</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.unable_to_post_application_not_logged_in</source>
+        <target>Vous dévez etre connecté pour postuler à une offre.</target>
+      </segment>
+    </unit>
+    <unit id="UhpMHAd" name="ui.buttons.login">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:136</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/security/login.html.twig:47</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.login</source>
+        <target>Connexion</target>
+      </segment>
+    </unit>
+    <unit id="b7g2VaY" name="ui.buttons.register">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/job/show.html.twig:136</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.register</source>
+        <target>Créer un compte</target>
+      </segment>
+    </unit>
+    <unit id="McKAJBW" name="ui.already_registered">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/registration/register.html.twig:45</note>
+      </notes>
+      <segment>
+        <source>ui.already_registered</source>
+        <target>Vous avez deja un compte ?</target>
+      </segment>
+    </unit>
+    <unit id="hmH7KF_" name="ui.reset_your_password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/reset_password/request.html.twig:14</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/reset_password/reset.html.twig:14</note>
+      </notes>
+      <segment>
+        <source>ui.reset_your_password</source>
+        <target>Reinitialiser votre mot de passe</target>
+      </segment>
+    </unit>
+    <unit id="YTCqNv6" name="ui.form.help.send_password_reset_email">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/reset_password/request.html.twig:22</note>
+      </notes>
+      <segment>
+        <source>ui.form.help.send_password_reset_email</source>
+        <target>Enter votre E-mail et nous vous enverons un lien pour recuperer votre mot de passe</target>
+      </segment>
+    </unit>
+    <unit id="2bPu9Rn" name="ui.buttons.send_password_reset_email">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/reset_password/request.html.twig:28</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/reset_password/reset.html.twig:20</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.send_password_reset_email</source>
+        <target>Envoyer le lien de recuperation du mot de passe</target>
+      </segment>
+    </unit>
+    <unit id="WFVlbrR" name="ui.form.password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/security/login.html.twig:29</note>
+      </notes>
+      <segment>
+        <source>ui.form.password</source>
+        <target>Mot de passe</target>
+      </segment>
+    </unit>
+    <unit id="NQebrOM" name="ui.form.remember_me">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/security/login.html.twig:37</note>
+      </notes>
+      <segment>
+        <source>ui.form.remember_me</source>
+        <target>Se souvenir de moi</target>
+      </segment>
+    </unit>
+    <unit id="40WkudK" name="ui.lost_password">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/security/login.html.twig:40</note>
+      </notes>
+      <segment>
+        <source>ui.lost_password</source>
+        <target>Mot de passe oublier ?</target>
+      </segment>
+    </unit>
+    <unit id="JTWgES2" name="ui.manage_resume">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/base.html.twig:16</note>
+      </notes>
+      <segment>
+        <source>ui.manage_resume</source>
+        <target>Gérer mes CV</target>
+      </segment>
+    </unit>
+    <unit id="WJmFut6" name="ui.applied_jobs">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/base.html.twig:17</note>
+      </notes>
+      <segment>
+        <source>ui.applied_jobs</source>
+        <target>Mes candidatures</target>
+      </segment>
+    </unit>
+    <unit id="Qcx5A8m" name="ui.buttons.post_job">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/base.html.twig:21</note>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/employer/_job_form.html.twig:37</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.post_job</source>
+        <target>Poster une offre</target>
+      </segment>
+    </unit>
+    <unit id="NJSd_qS" name="ui.buttons.manage_jobs">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/base.html.twig:22</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.manage_jobs</source>
+        <target>Gérer mes offres</target>
+      </segment>
+    </unit>
+    <unit id="v4YXh.9" name="ui.resume_title">
+      <notes>
+        <note category="file-source" priority="1">job-sympa/templates/front/user/candidate/manage_resume.html.twig:12</note>
+      </notes>
+      <segment>
+        <source>ui.resume_title</source>
+        <target>Titre du CV</target>
+      </segment>
+    </unit>
+    <unit id="BDnEN37" name="ui.buttons.change_password">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.change_password</source>
+        <target>Changer mon mot de passe</target>
+      </segment>
+    </unit>
+    <unit id="Kaa9.ng" name="ui.buttons.add_skill">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.add_skill</source>
+        <target>Ajouter une competence</target>
+      </segment>
+    </unit>
+    <unit id="LyMdHAe" name="ui.buttons.view_applications">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.buttons.view_applications</source>
+        <target>Gérer mes candidatures</target>
+      </segment>
+    </unit>
+    <unit id="dozDJOJ" name="ui.alerts.no_resume_to_manage">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.no_resume_to_manage</source>
+        <target>Vous n'avez encore ajouter aucun CV</target>
+      </segment>
+    </unit>
+    <unit id="E6YgouN" name="ui.alerts.jon_applied">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.jon_applied</source>
+        <target>Une offre a été faite</target>
+      </segment>
+    </unit>
+    <unit id="WK5NaTn" name="ui.alerts.job_applied_content">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.alerts.job_applied_content</source>
+        <target>Une offre a été faite aà votre offre d'emploi</target>
+      </segment>
+    </unit>
+    <unit id="mH423Iy" name="ui.validator.type_email">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.validator.type_email</source>
+        <target>Veuillez saisir une adresse E-mail</target>
+      </segment>
+    </unit>
+    <unit id="_mdYn6e" name="ui.validator.type_password">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.validator.type_password</source>
+        <target>Veuillez saisir un mot de passe</target>
+      </segment>
+    </unit>
+    <unit id="EsVIYZj" name="ui.validator.must_match">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.validator.must_match</source>
+        <target>Les champs ne correspondent pas</target>
+      </segment>
+    </unit>
+    <unit id="Ed2aLu3" name="ui.validator.password_min">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.validator.password_min</source>
+        <target>Votre mot de passe doit contenir au moins {{ limit }} caracteres</target>
+      </segment>
+    </unit>
+    <unit id="WlDTrgU" name="ui.validator.already_applied_for_job">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.validator.already_applied_for_job</source>
+        <target>Vous avez déjà postuler à ce poste</target>
+      </segment>
+    </unit>
+    <unit id="AMXXvVQ" name="ui.titles.search">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.titles.search</source>
+        <target>Rechercher une offre</target>
+      </segment>
+    </unit>
+    <unit id="B9XKeYw" name="ui.titles.sign_in">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.titles.sign_in</source>
+        <target>Connexion</target>
+      </segment>
+    </unit>
+    <unit id="HNRyfVI" name="ui.titles.sign_out">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.titles.sign_out</source>
+        <target>Déconnexion</target>
+      </segment>
+    </unit>
+    <unit id="k8zYzUe" name="ui.descriptions.search">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.descriptions.search</source>
+        <target>Rechercher le job de vos reves des aujourd'hui</target>
+      </segment>
+    </unit>
+    <unit id="9SS6AWI" name="ui.keywords.search">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.keywords.search</source>
+        <target>Rechercher, job, offre, emploi</target>
+      </segment>
+    </unit>
+    <unit id="rMFYU8y" name="ui.mails.subjects.employer_job_applied">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>ui.mails.subjects.employer_job_applied</source>
+        <target>Une offre a ete poste pour votre annonce</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

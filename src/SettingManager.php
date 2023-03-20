@@ -10,8 +10,11 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 
 class SettingManager
 {
-    public function __construct(private EntityManagerInterface $entityManager, private EventDispatcherInterface $eventDispatcher)
-    {}
+    public function __construct(
+        private EntityManagerInterface $entityManager,
+        private EventDispatcherInterface $eventDispatcher,
+        private TagAwareCacheInterface $cache
+    ) {}
 
     public function get(string $keyName, ?string $default = null): ?string
     {
@@ -64,9 +67,11 @@ class SettingManager
             return $settingsByKey;
         }
 
-        return array_reduce($keys, function(array $acc, string $key) use ($settingsByKey) {
+        $settings = array_reduce($keys, function(array $acc, string $key) use ($settingsByKey) {
             $acc[$key] = $settingsByKey[$key] ?? null;
             return $acc;
         }, []);
+
+        return $settings;
     }
 }

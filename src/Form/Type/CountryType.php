@@ -57,7 +57,13 @@ class CountryType extends AbstractType
 	private function getChoices()
 	{
 		$countries = $this->em->getRepository(Country::class)->findAll();
-		return $countries;
+		return ChoiceList::lazy($this, function() use($countries) {
+			$choices = [];
+			foreach ($countries as $country) {
+				$choices[$country->getName()] = $contry->getId();
+			}
+			return $choices;
+		});
 	}
 
 	public function getBlockPrefix(): string
