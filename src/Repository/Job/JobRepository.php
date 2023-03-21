@@ -95,7 +95,10 @@ class JobRepository extends ServiceEntityRepository
             ->activeJobsBuilder()
             ->leftJoin('j.categories', 'c')
             ->leftJoin('j.type', 't')
+<<<<<<< HEAD
             ->leftJoin('j.country', 'country')
+=======
+>>>>>>> origin/master
             ->leftJoin('j.requiredSkills', 'requiredSkills')
             ->addSelect('c', 'requiredSkills', 'country')
             ;

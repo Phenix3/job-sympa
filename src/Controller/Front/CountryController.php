@@ -7,14 +7,18 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Intl\Countries;
 use Symfony\Component\Routing\Annotation\Route;
+<<<<<<< HEAD
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\Cache\TagAwareCacheInterface;
 use App\Repository\CountryRepository;
 use App\Entity\Country;
+=======
+>>>>>>> origin/master
 
 #[Route('/', name: 'app_front_')]
 class CountryController extends BaseController
 {
+<<<<<<< HEAD
 	public function __construct(private TagAwareCacheInterface $cache, private CountryRepository $repository)
 	{}
 
@@ -30,15 +34,33 @@ class CountryController extends BaseController
 		if (null !== $query && '' !== $query) {
 			$countries = array_filter($countries, function(Country $country) use($query) {
 				return str_contains(mb_strtolower($country->getName()), mb_strtolower($query));
+=======
+	#[Route('/countries-autocomplete', name: 'countries_autocomplete', methods: ['GET'])]
+	public function countryAutocomplete(Request $request): JsonResponse
+	{
+		$countries = Countries::getNames();
+		dump($countries);
+		$query = $request->query->get('query', '');
+		if (null !== $query && '' !== $query) {
+			$countries = array_filter($countries, function($country) use($query) {
+				return str_contains(mb_strtolower($country), mb_strtolower($query));
+>>>>>>> origin/master
 			});
 		}
 
 		$results = [];
 
+<<<<<<< HEAD
 		foreach ($countries as $country) {
 			$results[] = [
 				'value' => $country->getId(),
 				'text' => $country->getName(),
+=======
+		foreach ($countries as $alpha2Code => $name) {
+			$results[] = [
+				'value' => $name,
+				'text' => $name,
+>>>>>>> origin/master
 			];
 		}
 

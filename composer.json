@@ -97,8 +97,13 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
-        }
+            "App\\": "src/",
+            "Tightenco\\Collect\\": "lib/tightenco/collect/src/Collect"
+        },
+        "files": [
+            "lib/tightenco/collect/src/Collect/Support/helpers.php",
+            "lib/tightenco/collect/src/Collect/Support/alias.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

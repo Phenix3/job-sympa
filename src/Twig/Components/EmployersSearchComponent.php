@@ -1,7 +1,6 @@
 <?php
 namespace App\Twig\Components;
 
-use App\Controller\BaseController;
 use App\Dto\EmployerSearchData;
 use App\Repository\User\EmployerRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -12,7 +11,7 @@ use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent('employers_search')]
-class EmployersSearchComponent extends BaseController
+class EmployersSearchComponent
 {
 	use DefaultActionTrait;
 

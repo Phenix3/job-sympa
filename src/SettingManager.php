@@ -7,6 +7,8 @@ use App\Event\SettingCreatedEvent;
 use App\Event\SettingDeletedEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\Cache\ItemInterface;
+use Symfony\Contracts\Cache\TagAwareCacheInterface;
 
 class SettingManager
 {
@@ -18,8 +20,8 @@ class SettingManager
 
     public function get(string $keyName, ?string $default = null): ?string
     {
-        $setting = $this->entityManager->getRepository(Setting::class)->find($keyName);
-        return null === $setting ? $default : $setting->getValue();
+        $settings = $this->all();
+        return $settings[$keyName] ?? $default;
     }
 
     public function set(string $keyName, string $value)
@@ -50,25 +52,24 @@ class SettingManager
 
     public function all(?array $keys = null): array
     {
-        if (null === $keys) {
+        $settings = $this->cache->get('global_settings', function(ItemInterface $item) use($keys) {
             $settings = $this->entityManager->getRepository(Setting::class)->findAll();
-        } else {
-            $settings = $this->entityManager->getRepository(Setting::class)->findBy([
-                'keyName' => $keys
-            ]);
-        }
 
-        $settingsByKey = array_reduce($settings, function(array $acc, Setting  $setting) {
-            $acc[$setting->getKeyName()] = $setting->getValue();
-            return $acc;
-        }, []);
+            $settingsByKey = array_reduce($settings, function(array $acc, Setting  $setting) {
+                $acc[$setting->getKeyName()] = $setting->getValue();
+                return $acc;
+            }, []);
+            
+            $settings = array_reduce($keys, function(array $acc, string $key) use ($settingsByKey) {
+                $acc[$key] = $settingsByKey[$key] ?? null;
+                return $acc;
+            }, []);
 
-        if (null === $keys) {
-            return $settingsByKey;
-        }
+            return $settings;
+        });
 
-        $settings = array_reduce($keys, function(array $acc, string $key) use ($settingsByKey) {
-            $acc[$key] = $settingsByKey[$key] ?? null;
+        $settings = array_reduce($keys, function(array $acc, string $key) use($settings) {
+            $acc[$key] = $settings[$key] ?? null;
             return $acc;
         }, []);
 
