@@ -22,11 +22,7 @@ class ContactService
 			->setName($data->name)
 			->setEmail($data->email)
 			->setContent($data->content)
-<<<<<<< HEAD
 			->setRawIp($request->getClientIp());
-=======
-			->setIp($request->getClientIp());
->>>>>>> origin/master
 		$lastRequest = $this->repository->findLastRequestForIp($contactRequest->getIp());
 
 		if ($lastRequest && $lastRequest->getCreatedAt() > new \DateTime('-1 hour')) {

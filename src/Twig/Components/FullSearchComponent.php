@@ -39,10 +39,6 @@ class FullSearchComponent
             $this->jobRepository->searchJobs($this->jobSearchData),
             $this->jobSearchData->page ?: 1
         );
-<<<<<<< HEAD
-=======
-        dump($jobs);
->>>>>>> origin/master
         return $jobs;
     }
 

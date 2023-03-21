@@ -53,25 +53,23 @@ class SettingManager
     public function all(?array $keys = null): array
     {
         $settings = $this->cache->get('global_settings', function(ItemInterface $item) use($keys) {
+            $item->tag(['global_settings_tag']);
             $settings = $this->entityManager->getRepository(Setting::class)->findAll();
 
-            $settingsByKey = array_reduce($settings, function(array $acc, Setting  $setting) {
+            $settings = array_reduce($settings, function(array $acc, Setting  $setting) {
                 $acc[$setting->getKeyName()] = $setting->getValue();
-                return $acc;
-            }, []);
-            
-            $settings = array_reduce($keys, function(array $acc, string $key) use ($settingsByKey) {
-                $acc[$key] = $settingsByKey[$key] ?? null;
                 return $acc;
             }, []);
 
             return $settings;
         });
 
-        $settings = array_reduce($keys, function(array $acc, string $key) use($settings) {
-            $acc[$key] = $settings[$key] ?? null;
-            return $acc;
-        }, []);
+        if (null !== $keys) {
+            return array_reduce($keys, function(array $acc, string $key) use ($settings) {
+                $acc[$key] = $settings[$key] ?? null;
+                return $acc;
+            }, []);
+        }
 
         return $settings;
     }

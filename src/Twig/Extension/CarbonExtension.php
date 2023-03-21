@@ -6,7 +6,6 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Twig\TwigFilter;
 use Carbon\Carbon;
-<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class CarbonExtension extends AbstractExtension
@@ -14,11 +13,6 @@ class CarbonExtension extends AbstractExtension
 	public function __construct(private RequestStack $requestStack)
 	{}
 
-=======
-
-class CarbonExtension extends AbstractExtension
-{
->>>>>>> origin/master
 	public function getFilters(): array
 	{
 		return [
@@ -28,7 +22,6 @@ class CarbonExtension extends AbstractExtension
 
 	public function carbonDate($date)
 	{
-<<<<<<< HEAD
 		$locale = $this->getLocale();
 		$parsed = Carbon::parse($date)->locale($locale);
 		return $parsed->diffForHumans();
@@ -40,9 +33,4 @@ class CarbonExtension extends AbstractExtension
 
 		return $request->getPreferredLanguage();
 	} 
-=======
-		$parsed = Carbon::parse($date);
-		return $parsed->diffForHumans();
-	}
->>>>>>> origin/master
 }

@@ -50,6 +50,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Candidates', 'fa fa-users', Entity\User\Candidate::class);
         yield MenuItem::linkToCrud('Employers', 'fa fa-companies', Entity\User\Employer::class);
         yield MenuItem::linkToCrud('Countries', 'fa fa-flag', Entity\Country::class);
+        yield MenuItem::linkToCrud('Settings', 'fa fa-cogs', Entity\Setting::class);
 
     }
 }

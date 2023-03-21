@@ -5,10 +5,7 @@ namespace App\Entity;
 use App\Repository\ContactRequestRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-<<<<<<< HEAD
 use geertw\IpAnonymizer\IpAnonymizer;
-=======
->>>>>>> origin/master
 
 #[ORM\Entity(repositoryClass: ContactRequestRepository::class)]
 class ContactRequest
@@ -58,7 +55,6 @@ class ContactRequest
         return $this;
     }
 
-<<<<<<< HEAD
     public function setRawIp(string $ip): self
     {
         $this->ip = (new IpAnonymizer())->anonymize($ip);
@@ -66,8 +62,6 @@ class ContactRequest
         return $this;
     }
 
-=======
->>>>>>> origin/master
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;

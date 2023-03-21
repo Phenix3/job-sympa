@@ -4,7 +4,6 @@ liip_imagine:
     driver: "gd"
     twig:
         mode: lazy
-<<<<<<< HEAD
 
     filter_sets:
         mini:
@@ -33,5 +32,3 @@ liip_imagine:
                 thumbnail:
                     size: [800, 530]
                     mode: outbound
-=======
->>>>>>> origin/master
