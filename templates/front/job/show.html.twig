@@ -1,4 +1,5 @@
 {% extends 'front/base.html.twig' %}
+{% from 'front/includes/_macro.html.twig' import bookmark_button %}
 
 {% block body %}
     <!-- ======================= Searchbar Banner ======================== -->
@@ -90,7 +91,7 @@
                         <div class="jbd-02 pt-4 pr-3">
                             <div class="jbd-02-flex d-flex align-items-center justify-content-between">
                                 <div class="jbl_button mb-2">
-                                    <a href="#" class="btn btn-md rounded gray fs-sm ft-medium mr-2">Save This Job</a>
+                                    {{ bookmark_button(job, false) }}
                                     <a href="#" class="btn btn-md rounded theme-bg text-light fs-sm ft-medium">Apply Job</a>
                                 </div>
                             </div>

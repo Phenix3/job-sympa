@@ -91,11 +91,22 @@ const BookmarkButton = (props) => {
 			console.log(response);
 		}).catch(error => console.log(error));
 	}
-	let color = "p-3 border circle d-flex align-items-center justify-content-center bg-white text-";
-	color = bookmarked ? color + "danger" : color + "gray";
 
-	return <button type="button" className={color} onClick={handleClick}>
-			<i className="lni lni-heart-filled position-absolute snackbar-wishlist"></i>
+	let classNames = "";
+	let label = '';
+	const icon = <i className="lni lni-heart-filled snackbar-wishlist"></i>;
+
+	if(props.icon == true) {
+		classNames = 'p-3 d-flex border circle  align-items-center justify-content-center bg-white text-';
+	} else {
+		label = 'Save This Job';
+		classNames = 'btn btn-sm rounded fs-sm ft-medium mr-2 text-' + classNames;
+	}
+
+	classNames = bookmarked ? classNames + "danger" : classNames + "gray";
+
+	return <button type="button" className={classNames} onClick={handleClick}>
+			{icon} {label}
 		</button>;
 }
 

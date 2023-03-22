@@ -17,14 +17,14 @@ class SettingExtension extends AbstractExtension implements GlobalsInterface
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('setting', [$this, 'getSetting'], ['needs_context' => true, 'is_safe' => ['html']]),
+            new TwigFunction('setting', [$this, 'getSetting'], ['is_safe' => ['html']]),
         ];
     }
 
-    public function getSetting(array $context, string $keyName, string $default = '')
+    public function getSetting(string $keyName, string $default = '')
     {
-        $settings = $context['global_settings'];
-        return $settings[$keyName] ?: $default;
+        $setting = $this->settingManager->get($keyName);
+        return $setting ?? $default;
     }
 
     public function getGlobals(): array

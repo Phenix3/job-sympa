@@ -2,3 +2,14 @@
 {% set colors = ['success', 'info', 'warning', 'danger', ''] %}
 	<span class="mr-2 mb-2 d-inline-flex px-2 py-1 rounded text-{{ colors[random(0, colors|length - 1)] }} theme-bg-light">{{ label }}</span>
 {% endmacro %}
+
+{% macro bookmark_button(job, icon = true) %}
+	{# icon = true|false permet d'afficher le bouton en icon simple ou en bouton #}
+	{% if app.user %}
+		{% set bookmarked = job.isBookmarkedByUser(app.user) %}
+		{% set route = path('app_front_job_bookmark', {id: job.id}) %}
+		{% set user = app.user.id %}
+		{% set job = job.id %}
+	    <span {{ react_component('BookmarkButton', {job, bookmarked, route, user, icon}) }}></span>
+	{% endif %}
+{% endmacro %}
