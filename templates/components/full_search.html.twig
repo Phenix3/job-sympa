@@ -171,8 +171,8 @@
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         {% for job in computed.jobs %}
-                            {{ component('search_job_card', {job: job}) }}
-                            {# {{ component('job_card', {job: job}) }} #}
+                            {# {{ component('search_job_card', {job: job}) }} #}
+                            {{ component('job_card_horizontal', {job: job}) }}
                         {% endfor %}
                     </div>
                 </div>

@@ -1,6 +1,8 @@
 <?php
 namespace App\Dto;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class EmployerSearchData
 {
 
@@ -16,4 +18,6 @@ class EmployerSearchData
 	 * @var array<int>
 	 */
 	public array|ArrayCollection $categories = [];
+
+    public ?string $country = '';
 }

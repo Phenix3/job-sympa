@@ -2,14 +2,14 @@
 
 namespace App\Controller\Front;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\BaseController;
+use function Symfony\Component\Translation\t;
+use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
-use function Symfony\Component\Translation\t;
 
-class SecurityController extends AbstractController
+class SecurityController extends BaseController
 {
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, BasicSeoGenerator $seoGenerator): Response
@@ -22,7 +22,7 @@ class SecurityController extends AbstractController
 
          if ($this->getUser()) {
             $this->addFlash('warning', 'ui.alerts.already_logged_in');
-            return $this->redirectToRoute('app_home');
+            return $this->redirectBack('app_home');
          }
 
         // get the login error if there is one

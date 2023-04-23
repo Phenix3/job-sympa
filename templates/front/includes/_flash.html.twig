@@ -1,3 +1,4 @@
+{% if app.flashes() %}
 <div class="container">
     {% for label, messages in app.flashes() %}
         {% for message in messages %}
@@ -8,3 +9,4 @@
         {% endfor %}
     {% endfor %}
 </div>
+{% endif %}

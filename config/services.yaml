@@ -25,8 +25,8 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    Symfony\Component\Asset\PackageInterface:
-        class: App\Asset\AssetPackage
+    # Symfony\Component\Asset\PackageInterface:
+    #     class: App\Asset\AssetPackage
 
     App\Uploader\PropertyGroupedDirectoryNamer:
         public: true      # Automatically
@@ -50,6 +50,6 @@ services:
         tags:
             - { name: 'assets.package' }
 
-    App\Form\Type\CountryType:
-        arguments:
-            - '@App\Asset\AssetPackage'
+    # App\Form\Type\CountryType:
+    #     arguments:
+    #         - '@App\Asset\AssetPackage'

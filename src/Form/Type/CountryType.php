@@ -1,24 +1,22 @@
 <?php
 namespace App\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\ChoiceList\ChoiceList;
-
-use Symfony\Component\Form\Extension\Core\Type\CountryType as BaseCountryType;
-use Symfony\Component\Intl\Countries;
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Asset\PackageInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
-
 use App\Entity\Country;
+use Doctrine\ORM\EntityRepository;
+
+use Symfony\Component\Form\FormView;
+use Symfony\Component\Asset\Packages;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+use Symfony\Component\Form\ChoiceList\ChoiceList;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CountryType extends AbstractType
 {
-	public function __construct(private PackageInterface $assetPackage, private EntityManagerInterface $em)
+	public function __construct(private Packages $assetPackage, private EntityManagerInterface $em)
 	{}
 
 	public function getCountryFlag(string $code): string
@@ -35,9 +33,10 @@ class CountryType extends AbstractType
 	{
 		$resolver->setDefaults([
 			'class' => Country::class,
-			'choices' => $this->getChoices(),
-			'choice_label' => 'name',
-			'choice_value' => 'id',
+			// 'choice_loader' => $this->getChoices(),
+			// 'choice_label' => 'name',
+			// 'choice_value' => 'id',
+            'query_builder' => fn(EntityRepository $er) => $er->createQueryBuilder('c'),
 			'show_flag' => true,
 		]);
 
@@ -58,9 +57,10 @@ class CountryType extends AbstractType
 	{
 		$countries = $this->em->getRepository(Country::class)->findAll();
 		return ChoiceList::lazy($this, function() use($countries) {
+            dump($countries);
 			$choices = [];
 			foreach ($countries as $country) {
-				$choices[$country->getName()] = $contry->getId();
+				$choices[$country->getName()] = $country->getId();
 			}
 			return $choices;
 		});

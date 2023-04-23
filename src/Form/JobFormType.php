@@ -6,19 +6,13 @@ use App\Entity\Job\Category;
 use App\Entity\Job\Job;
 use App\Entity\Job\Skill;
 use App\Entity\Job\Type;
-use App\Form\Type\JsonArrayType;
-use Arkounay\Bundle\UxCollectionBundle\Form\UxCollectionType;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\ArrayFilterType;
+use App\Form\Type\CountryType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\DataTransformer\ArrayToPartsTransformer;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use App\Form\Type\CountryType;
-// use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,13 +24,17 @@ class JobFormType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, [
+                'attr' => ['is' => 'wysiwyg-editor']
+            ])
             ->add('responsibilities', TextareaType::class, [
-
+                'attr' => ['is' => 'wysiwyg-editor']
             ])
             ->add('education', TextType::class)
             ->add('location', TextType::class)
-            ->add('otherBenefits')
+            ->add('otherBenefits', TextareaType::class, [
+                'attr' => ['is' => 'wysiwyg-editor']
+            ])
             ->add('experience', IntegerType::class)
             ->add('salaryMin', IntegerType::class)
             ->add('salaryMax', IntegerType::class)
@@ -44,12 +42,18 @@ class JobFormType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => ['is' => 'date-time-picker'],
             ])
-            ->add('requirements')
+            ->add('requirements', TextareaType::class, [
+                'attr' => ['is' => 'wysiwyg-editor']
+            ])
             ->add('publishedAt', DateTimeType::class, [
                 'widget' => 'single_text',
                 'attr' => ['is' => 'date-time-picker'],
             ])
-            ->add('country', CountryType::class)
+            ->add('country', CountryType::class, [
+                'attr' => [
+                    'is' => 'select-selectize'
+                ]
+            ])
             ->add('city')
             ->add('fullAddress')
             ->add('categories', EntityType::class, [
@@ -67,6 +71,7 @@ class JobFormType extends AbstractType
                 'attr' => ['is' => 'select-selectize'],
             ])
             ->add('isFreelance', CheckboxType::class, [
+                'required' => false,
                 'attr' => [
                     'class' => 'checkbox-custom'
                 ],
@@ -75,6 +80,7 @@ class JobFormType extends AbstractType
                 ]
             ])
             ->add('isSuspended', CheckboxType::class, [
+                'required' => false,
                 'attr' => [
                     'class' => 'checkbox-custom'
                 ],

@@ -33,7 +33,7 @@ class EmojiType extends AbstractType
 					$countriesCode = Countries::getNames($options['choice_translation_locale']);
 
 					foreach($countriesCode as $cc => $displayed){
-						$choices[$cc] = self::getEmojiFlag($cc) . ' ' . $displayed;
+						$choices[$displayed] = self::getEmojiFlag($cc) . ' ' . $displayed;
 					}
 					return array_flip($choices);
 				});

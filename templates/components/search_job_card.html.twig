@@ -4,7 +4,7 @@
     <div class="jb-list01">
         <div class="jb-list-01-title"><h5 class="ft-medium mb-1"><a href="{{ path('app_front_job_show', {slug: job.slug, id: job.id}) }}">{{ job.title }}</a></h5></div>
         <div class="jb-list-01-info d-block mb-3">
-            <span class="text-muted mr-2"><i class="lni lni-map-marker mr-1"></i>{{ job.city }}, {{ job.country }}</span>
+            <span class="text-muted mr-2"><i class="lni lni-map-marker mr-1"></i>{{ job.city }}</span>
             <span class="text-muted mr-2"><i class="lni lni-briefcase mr-1"></i>{{ job.type.name }}</span>
             <span class="text-muted mr-2"><i class="lni lni-star-filled mr-1"></i>Urgent</span>
             <span class="text-muted mr-2"><i class="lni lni-money-protection mr-1"></i>{{ job.salaryMin|format_currency('XAF') }} - {{ job.salaryMax|format_currency('XAF') }}</span>

@@ -3,8 +3,8 @@
 namespace App;
 
 use App\Entity\Setting;
-use App\Event\SettingCreatedEvent;
-use App\Event\SettingDeletedEvent;
+use App\Event\Setting\SettingCreatedEvent;
+use App\Event\Setting\SettingDeletedEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Cache\ItemInterface;

@@ -3,15 +3,16 @@ namespace App\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Symfony\Component\Asset\PackageInterface;
+// use Symfony\Component\Asset\PackageInterface;
 use App\SettingManager;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Symfony\Component\Asset\Packages;
 
 class AssetExtension extends AbstractExtension
 {
 	public function __construct(
-		private PackageInterface $assetPackage, 
+		private Packages $assetPackage, 
 		private SettingManager $settingManager,
 		private UploaderHelper $uploaderHelper,
 		private CacheManager $imagineCache

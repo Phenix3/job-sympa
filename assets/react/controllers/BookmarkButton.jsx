@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import axios from 'axios';
 
 const BookmarkButton = (props) => {
+	console.log('Render');
     const [bookmarked, setBookmarked] = useState(props.bookmarked);
 	const [bookmark, setBookmark] = useState(null);
 
-	const handleClick = (e) => {
+	const handleClick = useCallback(e => {
 		e.preventDefault();
 		e.stopPropagation();
 		setBookmarked(bookmarked => !bookmarked);
@@ -19,7 +20,7 @@ const BookmarkButton = (props) => {
 			console.log('Bookmark ', bookmark);
 			deleteBookmark(bookmark);
 		}
-	}
+	}, [bookmark, bookmarked]);
 
 	const createBookmark = () => {
 		axios.post('/api/graphql', {

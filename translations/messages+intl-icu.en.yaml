@@ -1,0 +1,142 @@
+ui.alerts.already_logged_in: null
+ui.alerts.application_posted: null
+'Your email address has been verified.': null
+ui.alerts.: null
+ui.alerts.password_changed: null
+ui.alerts.resume_created: null
+ui.alerts.resume_deleted: null
+ui.alerts.application_deleted: null
+ui.alerts.job_posted: null
+'New password': null
+'Repeat Password': null
+'Plain password': null
+'Old password': null
+ui.name: null
+ui.email: null
+ui.subject: null
+ui.content: null
+Agree: null
+Application: null
+'Is suspended': null
+'Is freelance': null
+'Required skills': null
+Type: null
+Categories: null
+'Full address': null
+City: null
+Country: null
+'Published at': null
+Requirements: null
+Deadline: null
+'Salary max': null
+'Salary min': null
+Experience: null
+'Other benefits': null
+Location: null
+Education: null
+Responsibilities: null
+Description: null
+Title: null
+ui.form.candidate: null
+ui.form.employer: null
+ui.form.account_type: null
+ui.form.username: null
+ui.form.email: null
+ui.form.agreeTerms: null
+ui.form.type_password: null
+ui.form.confirm_password: null
+Query: null
+'Job title, Keywords or Company': null
+Cv: null
+Message: null
+ui.form.select_resume: null
+Level: null
+Skill: null
+ui.form.help.email_change: null
+Birth: null
+Category: null
+'Avatar file': null
+About: null
+Username: null
+Email: null
+Phone: null
+Address: null
+'Social accounts': null
+'Job type': null
+'Job title': null
+ui.form.resume_file: null
+'Is default': null
+Skills: null
+ui.alerts.job_applied: null
+ui.alerts.profile_updated: null
+ui.alerts.contact_request_success: null
+ui.alerts.contact_request_error: null
+ui.buttons.apply_for_job: null
+ui.buttons.save: null
+ui.buttons.send_message: null
+ui.buttons.view_employer: null
+ui.search_filter: null
+ui.job_categories: null
+ui.skills: null
+ui.job_types: null
+ui.jobs_found: null
+ui.job_title: null
+ui.created_at: null
+ui.deadline: null
+ui.asc: null
+ui.desc: null
+ui.trending_jobs: null
+ui.all_popular_listed_jobs: null
+ui.buttons.explore_more_jobs: null
+ui.home: null
+ui.search: null
+ui.companies: null
+ui.contact: null
+ui.buttons.dashboard: null
+ui.buttons.logout: null
+ui.login: null
+ui.titles.contact: null
+ui.make_a_call: null
+ui.drop_a_mail: null
+ui.drop_a_mail_text: null
+ui.popular_categories: null
+ui.browse_top_categories: null
+ui.titles.job_search: null
+ui.job_applications: null
+ui.job_description: null
+ui.job_requirements: null
+ui.job_responsibilities: null
+ui.years_of_experience: null
+ui.industry_type: null
+ui.functional_area: null
+ui.employment_type: null
+ui.role_category: null
+ui.skills_required: null
+ui.about_company: null
+ui.company_name: null
+ui.address: null
+ui.company_about: null
+ui.job_summary: null
+ui.published_at: null
+ui.job_type: null
+ui.job_experience: null
+ui.job_location: null
+ui.job_salary: null
+ui.job_deadline: null
+ui.share: null
+ui.unnable_to_apply: null
+ui.alerts.unable_to_post_application_not_logged_in: null
+ui.buttons.login: null
+ui.buttons.register: null
+ui.already_registered: null
+ui.reset_your_password: null
+ui.form.help.send_password_reset_email: null
+ui.buttons.send_password_reset_email: null
+ui.form.password: null
+ui.form.remember_me: null
+ui.lost_password: null
+ui.manage_resume: null
+ui.applied_jobs: null
+ui.buttons.post_job: null
+ui.buttons.manage_jobs: null
+ui.resume_title: null

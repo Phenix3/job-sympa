@@ -1,15 +1,26 @@
+{% from 'front/includes/_macro.html.twig' import bookmark_button %}
+
 <div class="jbr-wrap text-left border rounded">
     <div class="cats-box mlb-res rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
         <div class="cats-box rounded bg-white d-flex align-items-center">
             <div class="text-center"><img src="https://via.placeholder.com/120x120" class="img-fluid" width="55" alt=""></div>
             <div class="cats-box-caption px-2">
-                <h4 class="fs-md mb-0 ft-medium">{{ job.title }} ({{ job.experience }} Year Exp.)</h4>
+                <h4 class="fs-md mb-0 ft-medium">
+                    <a href="{{ path('app_front_job_show', {slug: job.slug, id: job.id}) }}">{{ job.title }} ({{ job.experience }} Year Exp.)</a>
+                </h4>
                 <div class="d-block mb-2 position-relative">
-                    <span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i>{{ job.location }}, {{ job.city }}</span>
+                    <span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i>{{ job.city }}, {{ job.country }}</span>
                     <span class="muted medium ml-2 theme-cl"><i class="lni lni-briefcase mr-1"></i>{{ job.type.name }}</span>
                 </div>
             </div>
         </div>
-        <div class="text-center mlb-last"><a href="{{ path('app_front_job_show', {slug: job.slug, id: job.id}) }}" class="btn gray ft-medium apply-btn fs-sm rounded">Apply Job<i class="lni lni-arrow-right-circle ml-1"></i></a></div>
+        <div class="text-center mlb-last">
+            <span>
+                {{ bookmark_button(job, false) }}
+            </span>
+            <span href="{{ path('app_front_job_show', {slug: job.slug, id: job.id}) }}">
+                {{ job.deadline|format_date }}
+            </span>
+        </div>
     </div>
 </div>

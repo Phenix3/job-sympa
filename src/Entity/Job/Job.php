@@ -41,7 +41,7 @@ class Job
     #[Groups(['read:job:collection'])]
     private ?string $slug = null;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'jobs')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'jobs', cascade: ['persist'])]
     #[ORM\JoinTable(name: 'job_job_job_category')]
     #[Groups(['read:job:collection'])]
     private Collection $categories;
@@ -53,11 +53,11 @@ class Job
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::JSON)]
+    #[ORM\Column(type: Types::TEXT)]
     #[Groups(['read:job:collection'])]
     private ?string $responsibilities = null;
 
-    #[ORM\Column(type: Types::JSON)]
+    #[ORM\Column(type: Types::TEXT)]
     #[Groups(['read:job:collection'])]
     private ?string $education = null;
 
@@ -65,7 +65,7 @@ class Job
     #[Groups(['read:job:collection'])]
     private ?string $location = null;
 
-    #[ORM\Column(type: Types::JSON, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Groups(['read:job:collection'])]
     private ?string $otherBenefits = null;
 
@@ -85,7 +85,7 @@ class Job
     #[Groups(['read:job:collection'])]
     private ?\DateTimeInterface $deadline = null;
 
-    #[ORM\Column(type: Types::JSON)]
+    #[ORM\Column(type: Types::TEXT)]
     #[Groups(['read:job:collection'])]
     private ?string $requirements = null;
 
@@ -103,7 +103,7 @@ class Job
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fullAddress = null;
 
-    #[ORM\ManyToMany(targetEntity: Skill::class)]
+    #[ORM\ManyToMany(targetEntity: Skill::class, cascade: ['persist'])]
     #[ORM\JoinTable(name: 'job_job_job_skill')]
     private Collection $requiredSkills;
 
@@ -145,6 +145,15 @@ class Job
         foreach ($this->jobBookmarks as $jobBookmark) {
             /** @var JobBookmark $jobBookmark */
             if($jobBookmark->getUser() === $user) return true;
+        }
+        return false;
+    }
+
+    public function isAppliedByUser(UserInterface $user): bool
+    {
+        foreach ($this->applications as $application) {
+            /** @var Application $application */
+            if($application->getCandidate() === $user) return true;
         }
         return false;
     }

@@ -5,7 +5,7 @@
 
 {% macro bookmark_button(job, icon = true) %}
 	{# icon = true|false permet d'afficher le bouton en icon simple ou en bouton #}
-	{% if app.user %}
+	{% if is_granted('JOB_CAN_BOOKMARK', job) %}
 		{% set bookmarked = job.isBookmarkedByUser(app.user) %}
 		{% set route = path('app_front_job_bookmark', {id: job.id}) %}
 		{% set user = app.user.id %}

@@ -52,7 +52,8 @@ class JobRepository extends ServiceEntityRepository
             ->activeJobsBuilder()
             ->leftJoin('j.jobBookmarks', 'bookmarks')
             ->leftJoin('j.company', 'company')
-            ->addSelect('bookmarks', 'company')
+            ->leftJoin('j.country', 'country')
+            ->addSelect('bookmarks', 'company', 'country')
             ->addOrderBy('j.publishedAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
@@ -79,7 +80,8 @@ class JobRepository extends ServiceEntityRepository
         return $this->activeJobsBuilder()
             ->leftJoin('j.categories', 'categories')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
-            ->addSelect('requiredSkills', 'categories')
+            ->leftJoin('j.applications', 'applications')
+            ->addSelect('requiredSkills', 'categories', 'applications')
             ->andWhere("j.id = :id")
             ->addOrderBy("j.createdAt", 'DESC')
             ->setParameter('id', $id)
@@ -97,7 +99,8 @@ class JobRepository extends ServiceEntityRepository
             ->leftJoin('j.type', 't')
             ->leftJoin('j.country', 'country')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
-            ->addSelect('c', 'requiredSkills', 'country')
+            ->leftJoin('j.jobBookmarks', 'bookmarks')
+            ->addSelect('c', 'requiredSkills', 'country', 'bookmarks')
             ;
 
         if (null === $jobSearchData) {

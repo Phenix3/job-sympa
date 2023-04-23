@@ -3,9 +3,9 @@
 namespace App\Security\Voter\Job;
 
 use App\Entity\Job\Job;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class JobVoter extends Voter
@@ -14,6 +14,7 @@ class JobVoter extends Voter
     public const VIEW = 'JOB_VIEW';
     public const DELETE = 'JOB_DELETE';
     public const CAN_APPLY = 'JOB_CAN_APPLY';
+    public const CAN_BOOKMARK = 'JOB_CAN_BOOKMARK';
 
     public function __construct(private Security $security)
     {}
@@ -42,7 +43,9 @@ class JobVoter extends Voter
                 // return true or false
                 break;
             case self::CAN_APPLY:
-                return $this->canApply($subject);
+                return $this->canApply($subject, $token);
+            case self::CAN_BOOKMARK:
+                return $this->canBookmark($subject, $token);
         }
 
         return false;
@@ -53,9 +56,14 @@ class JobVoter extends Voter
         return $this->isAuthenticated($token) && $this->security->getUser() === $job->getCompany();
     }
 
-    private function canApply(Job $job): bool
+    private function canApply(Job $job, TokenInterface $token): bool
     {
-        return $this->security->isGranted('ROLE_CANDIDATE');
+        return $this->security->isGranted('ROLE_CANDIDATE') && !$job->isAppliedByUser($token->getUser());
+    }
+
+    private function canBookmark(Job $job, TokenInterface $token): bool
+    {
+        return $this->isAuthenticated($token) && $this->security->isGranted('ROLE_CANDIDATE');
     }
 
     private function isAuthenticated(TokenInterface $token): bool

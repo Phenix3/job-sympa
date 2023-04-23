@@ -1,0 +1,8 @@
+ui.validator.already_applied_for_job: null
+ui.validator.must_match: null
+ui.validator.type_password: null
+ui.validator.password_min: null
+'You should agree to our terms.': null
+'Please enter a password': null
+'Your password should be at least {{ limit }} characters': null
+ui.validator.type_email: null

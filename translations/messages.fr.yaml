@@ -1,10 +1,42 @@
 ui.alerts.already_logged_in: 'Vous étes déjà connecté.'
 ui.alerts.application_posted: 'Votre candidature à bien été postée.'
+'Your email address has been verified.': 'Votre adresse E-mail a bien ete verifie'
+ui.alerts.: Alert
+ui.alerts.password_changed: 'Le mot de passe a bien ete modifie'
 ui.alerts.resume_created: 'Votre CV a bien été crée'
+ui.alerts.resume_deleted: 'Le CV a bien ete supprime'
+ui.alerts.application_deleted: 'Candidature supprimer.'
+ui.alerts.job_posted: "Offre d'emploi bien poste"
+'New password': 'Nouveau mot de passe'
+'Repeat Password': 'Repeter le mot de passe'
+'Plain password': 'Mot de passe'
+'Old password': 'Ancien mot de passe'
 ui.name: Nom
 ui.email: Email
 ui.subject: Sujet
 ui.content: Contenu
+Agree: Accepter
+Application: Application
+'Is suspended': Suspendue
+'Is freelance': 'En Freelance'
+'Required skills': 'Competences requises'
+Type: Type
+Categories: Categories
+'Full address': 'Adresse complete'
+City: Ville
+Country: Pays
+'Published at': 'Date de publication'
+Requirements: Pre-requis
+Deadline: 'Date limite'
+'Salary max': 'Salaire maximum'
+'Salary min': 'Salaire minimum'
+Experience: Experience
+'Other benefits': 'Autes benefices'
+Location: Localisation
+Education: Education
+Responsibilities: Responsabilites
+Description: Description
+Title: Titre
 ui.form.candidate: 'Je suis candidat'
 ui.form.employer: 'Je suis employeur'
 ui.form.account_type: 'Type de compte'
@@ -13,13 +45,36 @@ ui.form.email: 'Adresse mail'
 ui.form.agreeTerms: 'Accepter les conditions'
 ui.form.type_password: 'Taper votre mot de passe'
 ui.form.confirm_password: 'Confirmez votre mot de passe'
+Query: Requete
 'Job title, Keywords or Company': 'Job title, Keywords or Company'
+Cv: CV
+Message: Message
+ui.form.select_resume: 'Selectionner un CV'
+Level: Niveau
+Skill: Competence
 ui.form.help.email_change: 'Vous devez confirmez votre E-mail si vous le changer!'
+Birth: 'Date de naissance'
+Category: Categorie
+'Avatar file': 'Photo de profile'
+About: 'A propos'
+Username: Nom
+Email: 'Adresse e-mail'
+Phone: Telephone
+Address: Adresse
+'Social accounts': 'Reseaux sociaux'
+'Job type': "Type d'emploi"
+'Job title': "Titre de l'emploi"
 ui.form.resume_file: 'Votre CV ici'
+'Is default': 'Par defaut'
+Skills: Competences
+ui.alerts.job_applied: 'Candidature bien poste'
 ui.alerts.profile_updated: 'Votre profile a bien été mis à jour.'
+ui.alerts.contact_request_success: 'Le message a bien ete pris en compte. On vous repondra dans les plus bref delais'
+ui.alerts.contact_request_error: "Le message n'a pas pu etre envoyer"
 ui.buttons.apply_for_job: 'Postuler pour le poste'
 ui.buttons.save: Sauvegarder
 ui.buttons.send_message: 'Envoyer le message'
+ui.buttons.view_employer: Details
 ui.search_filter: 'Filtre de recherche'
 ui.job_categories: "Categorie d'emploi"
 ui.skills: Competences
@@ -47,7 +102,8 @@ ui.drop_a_mail_text: 'Fill out our form and we will contact you within 24 hours.
 ui.popular_categories: 'Les categories populaire.'
 ui.browse_top_categories: 'Browse Top Categories'
 ui.titles.job_search: 'Trouver le meilleur job de votre vie'
-ui.job_description: 'description du job'
+ui.job_applications: Candidatures
+ui.job_description: Description du job
 ui.job_requirements: Exigences
 ui.years_of_experience: "Années d'expérience"
 ui.industry_type: "Type d'industrie"
@@ -87,58 +143,17 @@ ui.titles.sign_out: Déconnexion
 ui.descriptions.search: "Rechercher le job de vos reves des aujourd'hui"
 ui.keywords.search: 'Rechercher, job, offre, emploi'
 ui.mails.subjects.employer_job_applied: 'Une offre a ete poste pour votre annonce'
-About: 'A propos'
-Address: Adresse
-Agree: Accepter
-Application: Application
-'Avatar file': 'Photo de profile'
-Birth: 'Date de naissance'
-Categories: Categories
-Category: Categorie
-City: Ville
-Country: Pays
-Cv: CV
-Deadline: 'Date limite'
-Description: Description
-Education: Education
-Email: 'Adresse e-mail'
-Experience: Experience
-'Full address': 'Adresse complete'
-'Is default': 'Par defaut'
-'Is freelance': 'En Freelance'
-'Is suspended': Suspendue
-'Job title': "Titre de l'emploi"
-'Job type': "Type d'emploi"
-Level: Niveau
-Location: Localisation
-Message: Message
-'New password': 'Nouveau mot de passe'
-'Old password': 'Ancien mot de passe'
-'Other benefits': 'Autes benefices'
-Phone: Telephone
-'Plain password': 'Mot de passe'
-'Published at': 'Date de publication'
-Query: Requete
-'Repeat Password': 'Repeter le mot de passe'
-'Required skills': 'Competences requises'
-Requirements: Pre-requis
-Responsibilities: Responsabilites
-'Salary max': 'Salaire maximum'
-'Salary min': 'Salaire minimum'
-Skill: Competence
-Skills: Competences
-'Social accounts': 'Reseaux sociaux'
-Title: Titre
-Type: Type
-Username: Nom
-'Your email address has been verified.': 'Votre adresse E-mail a bien ete verifie'
-ui.alerts.: Alert
-ui.form.select_resume: 'Selectionner un CV'
-ui.alerts.resume_deleted: 'Le CV a bien ete supprime'
-ui.alerts.password_changed: 'Le mot de passe a bien ete modifie'
-ui.alerts.job_posted: "Offre d'emploi bien poste"
-ui.alerts.job_applied: 'Candidature bien poste'
-ui.alerts.contact_request_success: 'Le message a bien ete pris en compte. On vous repondra dans les plus bref delais'
-ui.alerts.contact_request_error: "Le message n'a pas pu etre envoyer"
-ui.alerts.application_deleted: 'Candidature supprimer.'
-ui.buttons.view_employer: Details
+ui.job_responsibilities: Responsabilites
+ui.about_company: A propos de l'entreprise
+ui.company_name: Nom de l'entreprise
+ui.address: Adresse
+ui.company_about: A propos de l'entreprise
+ui.job_summary: Resume de l'offre
+ui.published_at: Date de Publication
+ui.job_type: Type d'emploi
+ui.job_experience: Experience
+ui.job_location: Localisation du post
+ui.job_salary: Salaire du post
+ui.job_deadline: Date de fermeture
+ui.share: Partager
+ui.unnable_to_apply: Impossible de postuler

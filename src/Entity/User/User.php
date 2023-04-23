@@ -125,6 +125,9 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne]
     private ?Country $country = null;
 
+    #[ORM\Column(nullable: true, options: ['unsigned' => true, 'default' => 0])]
+    private ?int $viewCount = null;
+
 
     public function __construct()
     {
@@ -368,6 +371,18 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCountry(?Country $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    public function getViewCount(): ?int
+    {
+        return $this->viewCount;
+    }
+
+    public function setViewCount(int $viewCount): self
+    {
+        $this->viewCount = $viewCount;
 
         return $this;
     }
