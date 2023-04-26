@@ -8,3 +8,6 @@ App\Entity\User\Employer:
     address: <address()>
     phone: <phoneNumber()>
     country: '@countries_*'
+    ownership_type: '@ownership_type_*'
+    ceo: <name()>
+    established_at: <dateTimeBetween('-30 years', '-10 years')>

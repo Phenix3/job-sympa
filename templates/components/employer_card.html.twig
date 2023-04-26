@@ -7,7 +7,7 @@
 			</div>
 			<div class="job_grid_caption text-center pb-3 px-3">
 				<h4 class="mb-0 ft-medium medium"><a href="{{ path('app_front_user_show', {id: employer.id}) }}" class="text-dark fs-md">{{ employer.username }}</a></h4>
-				<div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>{{ employer.city }}</span></div>
+				<div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span> {{ employer.country.name }}</span></div>
 			</div>
 			<div class="job_grid_footer px-3">
 				<ul class="p-0 skills_tag text-center">

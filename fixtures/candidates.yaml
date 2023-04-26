@@ -7,3 +7,6 @@ App\Entity\User\Candidate:
     isVerified: true
     address: <address()>
     country: '@countries_*'
+    experience: <numberBetween(1, 6)>
+    job_type: '@job_types_*'
+    job_title: <jobTitle()>

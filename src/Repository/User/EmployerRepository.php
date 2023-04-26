@@ -2,14 +2,14 @@
 
 namespace App\Repository\User;
 
+use App\Dto\EmployerSearchData;
 use App\Entity\User\Employer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
-use App\Dto\EmployerSearchData;
-use Doctrine\ORM\Query;
 
 /**
  * @extends ServiceEntityRepository<Employer>
@@ -63,7 +63,8 @@ class EmployerRepository extends ServiceEntityRepository implements PasswordUpgr
     {
         $qb = $this->createQueryBuilder('e')
             ->leftJoin('e.category', 'c')
-            ->addSelect('c')
+            ->leftJoin('e.country', 'country')
+            ->addSelect('c', 'country')
         ;
 
         if (null === $employersSearchData) {
@@ -71,11 +72,27 @@ class EmployerRepository extends ServiceEntityRepository implements PasswordUpgr
         }
 
         if ($employersSearchData->name) {
-            $qb = $qb->andWhere("e.name LIKE :name")->setParameter('name', "%{$employersSearchData->name}%");
+            $qb = $qb->orWhere("e.username LIKE :name")
+                ->setParameter('name', "%{$employersSearchData->name}%")
+                ->orderBy('e.username', 'DESC');
         }
 
         if (!empty($employersSearchData->categories)) {
-            $qb = $qb->andWhere("c IN (:categories)")->setParameter('categories', $employersSearchData->categories);
+            $qb = $qb->orWhere("c IN (:categories)")
+                ->setParameter('categories', $employersSearchData->categories);
+        }
+
+        if (!empty($employersSearchData->country)) {
+            $qb = $qb->orWhere("country.name LIKE :country")
+                ->orWhere('e.city LIKE :country')
+                ->setParameter('country', "%{$employersSearchData->country}%")
+                ->addOrderBy('country.name', 'ASC');
+        }
+
+        if (!empty($employersSearchData->ceo)) {
+            $qb = $qb->orWhere("e.ceo LIKE :ceo")
+                ->setParameter('ceo', "%{$employersSearchData->ceo}%")
+                ->addOrderBy('e.ceo', 'ASC');
         }
 
         return $qb->getQuery();

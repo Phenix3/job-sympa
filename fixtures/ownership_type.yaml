@@ -1,0 +1,16 @@
+App\Entity\OwnershipType:
+  ownership_type_1:
+    name: 'Sole Proprietorship'
+    description: The sole proprietorship is the simplest business form under which one can operate a business.
+  ownership_type_2:
+    name: Public
+    description: A company whose shares are traded freely on a stock exchange.
+  ownership_type_3:
+    name: Private
+    description: A company whose shares may not be offered to the public for sale and which operates under legal requirements less strict than those for a public company.
+  ownership_type_4:
+    name: Government
+    description: A government company is a company in which 51% or more of the paid-up capital is held by the Government or State Government.
+  ownership_type_5:
+    name: NGO
+    description: A non-profit organization that operates independently of any government, typically one whose purpose is to address a social or political issue.
