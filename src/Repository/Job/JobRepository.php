@@ -57,17 +57,19 @@ class JobRepository extends ServiceEntityRepository
             ->addOrderBy('j.publishedAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     public function activeJobsBuilder(?string $alias = 'j'): QueryBuilder
     {
         $date = Carbon::now()->toDateString();
-        return $this->createQueryBuilder($alias)
-            ->andWhere("{$alias}.deadline <= :date")
-            ->setParameter('date', $date)
-            ;
+        $qb = $this->createQueryBuilder($alias);
+
+            $qb->andWhere(
+                $qb->expr()->gte("{$alias}.deadline", ":date")
+            )->setParameter('date', $date);
+
+        return $qb;
     }
 
     /**
@@ -86,8 +88,7 @@ class JobRepository extends ServiceEntityRepository
             ->addOrderBy("j.createdAt", 'DESC')
             ->setParameter('id', $id)
             ->getQuery()
-            ->getOneOrNullResult()
-            ;
+            ->getOneOrNullResult();
     }
 
     public function searchJobs(?JobSearchData $jobSearchData = null): Query
@@ -100,8 +101,7 @@ class JobRepository extends ServiceEntityRepository
             ->leftJoin('j.country', 'country')
             ->leftJoin('j.requiredSkills', 'requiredSkills')
             ->leftJoin('j.jobBookmarks', 'bookmarks')
-            ->addSelect('c', 'requiredSkills', 'country', 'bookmarks')
-            ;
+            ->addSelect('c', 'requiredSkills', 'country', 'bookmarks');
 
         if (null === $jobSearchData) {
             return $query->getQuery();
@@ -109,12 +109,14 @@ class JobRepository extends ServiceEntityRepository
 
         // Searc by Job title
         if ($jobSearchData->query) {
-            $query = $query->andWhere("j.title LIKE :title")->setParameter('title', "%{$jobSearchData->query}%");
+            $query = $query->andWhere("j.title LIKE :title")
+                ->setParameter('title', "%{$jobSearchData->query}%");
         }
 
         // Searc by Job location country
         if ($jobSearchData->country) {
-            $query = $query->andWhere("j.country IN (:country)")->setParameter('country', $jobSearchData->country);
+            $query = $query->andWhere("j.country IN (:country)")
+                ->setParameter('country', $jobSearchData->country);
         }
 
         /*if ($jobSearchData->location) {
@@ -123,12 +125,14 @@ class JobRepository extends ServiceEntityRepository
 
         // Searc by Job categories
         if (!empty($jobSearchData->categories)) {
-            $query = $query->andWhere("c IN (:categories)")->setParameter('categories', $jobSearchData->categories);
+            $query = $query->andWhere("c IN (:categories)")
+                ->setParameter('categories', $jobSearchData->categories);
         }
 
         // Searc by Job types (full_time, part_time, freelance)
         if (!empty($jobSearchData->types)) {
-            $query = $query->andWhere("t IN (:types)")->setParameter('types', $jobSearchData->types);
+            $query = $query->andWhere("t IN (:types)")
+                ->setParameter('types', $jobSearchData->types);
         }
 
         // Sorting
@@ -150,8 +154,7 @@ class JobRepository extends ServiceEntityRepository
             ->andWhere('job.company = :company')
             ->setParameter('company', $employer)
             ->addOrderBy('job.createdAt', 'DESC')
-            ->getQuery()
-            ;
+            ->getQuery();
     }
 
     public function findJobWithBookmarksQuery(int $id, ?UserInterface $user = null)
@@ -162,11 +165,36 @@ class JobRepository extends ServiceEntityRepository
             ->andWhere('j.id = :id')
             ->addOrderBy("j.createdAt", 'DESC')
             ->setParameter('id', $id)
-            ->setMaxResults(1)
-        ;
+            ->setMaxResults(1);
 
-        return $query
-            ->getQuery()
-        ;
+        return $query->getQuery();
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param  Job          $job
+     * @param  integer|null $limit
+     * @return Job[]
+     */
+    public function findRelatedJobs(Job $job, ?int $limit = 4)
+    {
+        $cats = $job->getCategories()->map(fn ($cat) => $cat->getId())->toArray();
+        $qb = $this->activeJobsBuilder('j')
+            ->leftJoin('j.categories', 'c')
+            ->leftJoin('j.type', 't')
+            ->leftJoin('j.country', 'country')
+            ->leftJoin('j.company', 'company')
+            ->addSelect('c', 'country', 't', 'company')
+            ->andWhere('c IN (:categories)')
+            ->orderBy('j.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->setParameter('categories', $cats);
+
+        $qb->andWhere(
+            $qb->expr()->neq('j.id', $job->getId())
+        );
+
+        return $qb->getQuery()->getResult();
     }
 }

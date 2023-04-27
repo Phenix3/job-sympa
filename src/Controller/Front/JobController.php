@@ -93,7 +93,6 @@ class JobController extends BaseController
             }
         }
 
-        // dump($data);
         return $this->render('front/job/show.html.twig', $data);
     }
 

@@ -26,4 +26,9 @@ class JobService
         dump($job);
     }
 
+    public function getRelatedJobs(Job $job, ?int $limit = 4)
+    {
+        return $this->repository->findRelatedJobs($job, $limit);
+    }
+
 }
