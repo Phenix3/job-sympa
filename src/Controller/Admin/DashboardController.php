@@ -2,12 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity as Entity;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity as Entity;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -51,6 +51,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Employers', 'fa fa-companies', Entity\User\Employer::class);
         yield MenuItem::linkToCrud('Countries', 'fa fa-flag', Entity\Country::class);
         yield MenuItem::linkToCrud('Settings', 'fa fa-cogs', Entity\Setting::class);
+        yield MenuItem::linkToCrud('Notifications', 'fa fa-bell', Entity\Notification::class);
 
     }
 }

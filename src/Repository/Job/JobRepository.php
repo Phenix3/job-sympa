@@ -109,14 +109,16 @@ class JobRepository extends ServiceEntityRepository
 
         // Searc by Job title
         if ($jobSearchData->query) {
-            $query = $query->andWhere("j.title LIKE :title")
-                ->setParameter('title', "%{$jobSearchData->query}%");
+            $query->andWhere(
+                $query->expr()->like("j.title", ":title")
+            )->setParameter('title', "%{$jobSearchData->query}%");
         }
 
         // Searc by Job location country
         if ($jobSearchData->country) {
-            $query = $query->andWhere("j.country IN (:country)")
-                ->setParameter('country', $jobSearchData->country);
+            $query->andWhere(
+                $query->expr()->in("j.country", ":country")
+            )->setParameter('country', $jobSearchData->country);
         }
 
         /*if ($jobSearchData->location) {
@@ -125,21 +127,23 @@ class JobRepository extends ServiceEntityRepository
 
         // Searc by Job categories
         if (!empty($jobSearchData->categories)) {
-            $query = $query->andWhere("c IN (:categories)")
-                ->setParameter('categories', $jobSearchData->categories);
+            $query->andWhere(
+                $query->expr()->in("c", ":categories")
+            )->setParameter('categories', $jobSearchData->categories);
         }
 
         // Searc by Job types (full_time, part_time, freelance)
         if (!empty($jobSearchData->types)) {
-            $query = $query->andWhere("t IN (:types)")
-                ->setParameter('types', $jobSearchData->types);
+            $query->andWhere(
+                $query->expr()->in("t", ":types")
+            )->setParameter('types', $jobSearchData->types);
         }
 
         // Sorting
         if ($jobSearchData->sort) {
-            $query = $query->addOrderBy("j.{$jobSearchData->sort}", $jobSearchData?->direction ? $jobSearchData?->direction : 'DESC');
+            $query->addOrderBy("j.{$jobSearchData->sort}", $jobSearchData?->direction ? $jobSearchData?->direction : 'DESC');
         } else {
-            $query = $query->addOrderBy("j.createdAt", 'DESC');
+            $query->addOrderBy("j.createdAt", 'DESC');
         }
 
 

@@ -3,6 +3,8 @@
 namespace App\Controller\Front;
 
 use App\Controller\BaseController;
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
+
 use function Symfony\Component\Translation\t;
 use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +14,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends BaseController
 {
     #[Route(path: '/login', name: 'app_login')]
+    #[Breadcrumb('<i class="fa fa-home"></i>', 'app_home')]
+    #[Breadcrumb("ui.login", 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, BasicSeoGenerator $seoGenerator): Response
     {
         $seoGenerator

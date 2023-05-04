@@ -6,17 +6,19 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Bookmark;
 use App\Entity\Country;
 use App\Entity\Job\Category;
+use App\Entity\Notification;
+use App\Entity\Traits\Notifiable;
+use App\Repository\User\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\User\UserRepository;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -36,6 +38,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 abstract class User implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface 
 {
     use TimestampableEntity;
+    use Notifiable;
 
     private ?string $type = '';
 
@@ -128,10 +131,14 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true, options: ['unsigned' => true, 'default' => 0])]
     private ?int $viewCount = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Notification::class, orphanRemoval: true)]
+    private Collection $notifications;
+
 
     public function __construct()
     {
         $this->bookmarks = new ArrayCollection();
+        $this->notifications = new ArrayCollection();
     }
 
     public function isEqualTo(UserInterface $user): bool
@@ -383,6 +390,36 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setViewCount(int $viewCount): self
     {
         $this->viewCount = $viewCount;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Notification>
+     */
+    public function getNotifications(): Collection
+    {
+        return $this->notifications;
+    }
+
+    public function addNotification(Notification $notification): self
+    {
+        if (!$this->notifications->contains($notification)) {
+            $this->notifications[] = $notification;
+            $notification->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNotification(Notification $notification): self
+    {
+        if ($this->notifications->removeElement($notification)) {
+            // set the owning side to null (unless already changed)
+            if ($notification->getUser() === $this) {
+                $notification->setUser(null);
+            }
+        }
 
         return $this;
     }

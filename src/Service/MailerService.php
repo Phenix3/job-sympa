@@ -37,11 +37,6 @@ class MailerService
 
     public function send(Email $email): void
     {
-        $this->enqueueMethod->enqueue(MailerInterface::class, 'send', [$email]);
-    }
-
-    public function sendNow(Email $email): void
-    {
         $this->mailer->send($email);
     }
 }

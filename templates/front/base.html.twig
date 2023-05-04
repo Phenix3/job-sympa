@@ -20,11 +20,10 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper">
-        {{ component('top_header') }}
+    <main id="main-wrapper">
+        {% include 'front/includes/top_header.html.twig' %}
         {% block breadcrumbs %}
             {{ apy_breadcrumb_trail_render() }}
-            {# {{ component('breadcrumb') }} #}
         {% endblock %}
         {% block alerts %}
             {% include 'front/includes/_flash.html.twig' %}
@@ -37,9 +36,9 @@
             {{ component('newsletter') }}
             {{ component('footer') }}
         {% endblock %}
-    </div>
+    </main>
 
-    {% block extra %}{% endblock %}
+    {% block extra %}{% endblock extra %}
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->

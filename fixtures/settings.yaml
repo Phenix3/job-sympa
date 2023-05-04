@@ -1,0 +1,7 @@
+App\Entity\Setting:
+  settting_1:
+    keyName: default_employer_avatar
+    value: 'img/avatar.png'
+  settting_site_logo:
+    keyName: site_logo
+    value: 'img/logo.png'

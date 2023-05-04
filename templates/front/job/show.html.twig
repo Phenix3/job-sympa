@@ -1,5 +1,5 @@
 {% extends 'front/base.html.twig' %}
-{% from 'front/includes/_macro.html.twig' import bookmark_button, skill %}
+{% from 'front/includes/_macro.html.twig' import bookmark_button, skill, apply_button %}
 
 {% block body %}
     <!-- ======================= Searchbar Banner ======================== -->
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="jbd-01-right text-right">
-                            <div class="jbl_button mb-2"><a href="#" class="btn btn-sm rounded theme-bg-light theme-cl fs-sm ft-medium" data-toggle="modal" data-target="#apply-form">Apply This Job</a></div>
+                            {{ apply_button(job) }}
                             <div class="jbl_button mb-2">
                                 <a href="javascript:void(0);" class="btn btn-sm btn-outline-danger rounded fs-sm ft-medium">
                                 {{ job.applications|length }} {{ 'ui.job_applications'|trans }}
@@ -244,12 +244,10 @@
     </div>
 </div>
 
-{% endblock %}
+{% endblock extra %}
 
 {% block js %}
-
 <script type="text/javascript">
     $('.jb-requirements').find('ul').addClass('list-style');
 </script>
-
 {% endblock %}

@@ -34,7 +34,7 @@ class UserAccountType extends AbstractType
             ])
             ->add('birth', DateTimeType::class, [
                 'attr' => [
-//                    'is' => 'date-time-picker'
+                   'is' => 'date-time-picker'
                 ],
                 'widget' => 'single_text',
                 'required' => false

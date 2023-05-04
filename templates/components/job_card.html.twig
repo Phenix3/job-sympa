@@ -28,7 +28,7 @@
         </div>
         <div class="job_grid_footer pb-4 px-3 d-flex align-items-center justify-content-between">
             <div class="df-1 text-muted"><i class="lni lni-wallet mr-1"></i>{{ job.salaryMin|format_currency('XAF') }} - {{ job.salaryMax|format_currency('XAF') }} </div>
-            <div class="df-1 text-muted"><i class="lni lni-timer mr-1"></i>{{ job.createdAt|carbon_date }}</div>
+            <div class="df-1 text-muted"><i class="lni lni-timer mr-1"></i>{{ job.publishedAt|carbon_date }}</div>
         </div>
     </div>
 </div>

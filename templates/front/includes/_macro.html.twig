@@ -13,3 +13,18 @@
 	    <span {{ react_component('BookmarkButton', {job, bookmarked, route, user, icon}) }}></span>
 	{% endif %}
 {% endmacro %}
+
+{% macro apply_button(job) %}
+	{% if app.user %}
+		{% set applied = job.isAppliedByUser(app.user) %}
+		<div class="jbl_button mb-2">
+			<a href="#" class="btn btn-sm rounded {{ applied ? 'bg-warning text-white disabled' : 'theme-bg-light theme-cl' }} fs-sm ft-medium" {% if not applied %} data-toggle="modal" data-target="#apply-form" {% endif %}>
+			{% if applied %}
+			<i class="lni lni-check"></i> {{ 'ui.buttons.applied'|trans }}
+			{% else %}
+			{{ 'ui.buttons.can_apply'|trans }}
+			{% endif %}
+			</a>
+		</div>
+	{% endif %}
+{% endmacro %}
