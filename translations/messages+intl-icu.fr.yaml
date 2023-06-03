@@ -1,14 +1,1 @@
-ui.job_responsibilities: null
-ui.about_company: null
-ui.company_name: null
-ui.address: null
-ui.company_about: null
-ui.job_summary: null
-ui.published_at: null
-ui.job_type: null
-ui.job_experience: null
-ui.job_location: null
-ui.job_salary: null
-ui.job_deadline: null
-ui.share: null
-ui.unnable_to_apply: null
+ui.buttons.applied: null

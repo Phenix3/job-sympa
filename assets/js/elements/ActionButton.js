@@ -9,7 +9,7 @@ export default class ActionButton extends HTMLElement {
     connectedCallback() {
 
         const csrfToken = this.getAttribute('data-csrf-token');
-        const id = csrfToken.substring(0, 10);
+        const id = csrfToken?.substring(0, 10);
 
         const formHtml = "\n<form action='" + this.getAttribute('data-uri') + "' method='POST' name='delete_item' style='display:none' id='"+id+"'>\n" +
             "<input type='hidden' name='_method' value='" + this.getAttribute('data-method') + "'>\n" +
@@ -33,7 +33,7 @@ export default class ActionButton extends HTMLElement {
     handleClick(e) {
         e.preventDefault();
         if (confirm('Are you sure you want to delete this element ?')) {
-            this.nextElementSibling.submit();
+            this.nextElementSibling?.submit();
         }
 
     }

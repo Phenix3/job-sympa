@@ -12,13 +12,13 @@
                 <div class="dashboard-inner">
                     <ul data-submenu-title="Main Navigation">
                         {% if is_granted('ROLE_CANDIDATE') %}
-                            <li class="{{ active_class('app_front_candidate_dashboard') }}"><a href="{{ path('app_front_candidate_dashboard') }}""><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
+                            <li class="{{ active_class('app_front_candidate_dashboard') }}"><a href="{{ path('app_front_candidate_dashboard') }}"><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
                             <li class="{{ active_class('app_front_candidate_manage_resume') }}"><a href="{{ path('app_front_candidate_manage_resume') }}"><i class="lni lni-files mr-2"></i>{{ 'ui.manage_resume'|trans }}</a></li>
                             <li class="{{ active_class('app_front_candidate_manage_resume') }}"><a href="{{ path('app_front_candidate_applications') }}"><i class="lni lni-briefcase mr-2"></i>{{ 'ui.applied_jobs'|trans }}</a></li>
                             <li class="{{ active_class('app_front_candidate_job_bookmarks') }}"><a href="{{ path('app_front_candidate_job_bookmarks') }}"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li>
                         {% elseif is_granted('ROLE_EMPLOYER') %}
                             <li class="{{ active_class('app_front_employer_dashboard') }}"><a href="{{ path('app_front_employer_dashboard') }}"><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
-                            <li class="{{ active_class('app_front_employer_post_job') }}"><a href="{{ path('app_front_employer_post_job') }}"><i class="lni lni-bookmark mr-2"></i>{{ 'ui.buttons.post_job'|trans }}</a></li>
+                            <li class="{{ active_class('app_front_user_job_new') }}"><a href="{{ path('app_front_user_job_new') }}"><i class="lni lni-bookmark mr-2"></i>{{ 'ui.buttons.post_job'|trans }}</a></li>
                             <li class="{{ active_class('app_front_employer_jobs') }}"><a href="{{ path('app_front_employer_jobs') }}"><i class="lni lni-bookmark mr-2"></i>{{ 'ui.buttons.manage_jobs'|trans }}</a></li>
                         {% endif %}
 

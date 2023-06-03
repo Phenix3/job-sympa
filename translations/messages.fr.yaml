@@ -88,6 +88,12 @@ ui.desc: Decroissant
 ui.trending_jobs: 'Trending Jobs'
 ui.all_popular_listed_jobs: 'Toutes les offres les plus populaires'
 ui.buttons.explore_more_jobs: "Explorer plus d'offres"
+ui.titles.contact: 'Contactez nous'
+ui.make_a_call: 'Applez nous'
+ui.drop_a_mail: 'Laissez nous un E-mail'
+ui.drop_a_mail_text: 'Fill out our form and we will contact you within 24 hours.'
+ui.popular_categories: 'Les categories populaire.'
+ui.browse_top_categories: 'Browse Top Categories'
 ui.home: Accueil
 ui.search: Rechercher
 ui.companies: Entreprises
@@ -95,15 +101,9 @@ ui.contact: Contact
 ui.buttons.dashboard: 'Tableau de board'
 ui.buttons.logout: Déconnexion
 ui.login: Connexion
-ui.titles.contact: 'Contactez nous'
-ui.make_a_call: 'Applez nous'
-ui.drop_a_mail: 'Laissez nous un E-mail'
-ui.drop_a_mail_text: 'Fill out our form and we will contact you within 24 hours.'
-ui.popular_categories: 'Les categories populaire.'
-ui.browse_top_categories: 'Browse Top Categories'
 ui.titles.job_search: 'Trouver le meilleur job de votre vie'
 ui.job_applications: Candidatures
-ui.job_description: Description du job
+ui.job_description: 'Description du job'
 ui.job_requirements: Exigences
 ui.years_of_experience: "Années d'expérience"
 ui.industry_type: "Type d'industrie"
@@ -143,17 +143,27 @@ ui.titles.sign_out: Déconnexion
 ui.descriptions.search: "Rechercher le job de vos reves des aujourd'hui"
 ui.keywords.search: 'Rechercher, job, offre, emploi'
 ui.mails.subjects.employer_job_applied: 'Une offre a ete poste pour votre annonce'
-ui.job_responsibilities: Responsabilites
-ui.about_company: A propos de l'entreprise
-ui.company_name: Nom de l'entreprise
-ui.address: Adresse
-ui.company_about: A propos de l'entreprise
-ui.job_summary: Resume de l'offre
-ui.published_at: Date de Publication
-ui.job_type: Type d'emploi
-ui.job_experience: Experience
-ui.job_location: Localisation du post
-ui.job_salary: Salaire du post
-ui.job_deadline: Date de fermeture
+'<i class="fa fa-home"></i>': '<i class="fa fa-home"></i>'
+alerts.job_delete_error: "Erreur lors de la suppression de l'offre d'emploi"
+alerts.job_deleted: "Offre d'emploi supprimee."
+ui.about_company: "A propos de l'entreprise"
+ui.actions: Actions
+ui.address: adresse
+ui.applications: Candidatures
+ui.buttons.can_apply: 'Peut postuler'
+ui.company_about: "A propos de l'entreprise"
+ui.company_name: "Nom de l'entreprise"
+ui.expired: Expire
+ui.job_deadline: "Date limite de l'offre"
+ui.job_experience: 'Experience du poste'
+ui.job_location: "Localisation de l'offre"
+ui.job_responsibilities: "Les responsabilites de l'offre"
+ui.job_salary: "Salaire de 'offre"
+ui.job_summary: "Resume de l'offre"
+ui.job_type: "Type d'emploi"
+ui.posted_date: 'Date de candidature'
+ui.published_at: 'Date de publication'
 ui.share: Partager
-ui.unnable_to_apply: Impossible de postuler
+ui.title: Titre
+ui.unnable_to_apply: 'Impossible de postuler'
+ui.buttons.applied: 'Deja candidat'

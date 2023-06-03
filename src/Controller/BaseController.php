@@ -4,19 +4,23 @@ namespace App\Controller;
 
 use App\Entity\User\Candidate;
 use App\Entity\User\Employer;
+use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Contracts\Service\Attribute\Required;
 
 /**
  * @method UserInterface|Candidate|Employer getUser()
  */
 class BaseController extends AbstractController
 {
-/**
+    private BasicSeoGenerator $basicSeoGenerator;
+
+    /**
      * Affiche la liste de erreurs sous forme de message flash.
      */
     protected function flashErrors(FormInterface $form): void
@@ -43,5 +47,16 @@ class BaseController extends AbstractController
         }
 
         return $this->redirectToRoute($route, $params);
+    }
+
+    #[Required]
+    public function setSeoGenerator(BasicSeoGenerator $basicSeoGenerator): void
+    {
+        $this->basicSeoGenerator = $basicSeoGenerator;
+    }
+
+    public function getSeoGenerator(): BasicSeoGenerator
+    {
+        return $this->basicSeoGenerator;
     }
 }

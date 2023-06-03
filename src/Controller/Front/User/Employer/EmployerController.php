@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Front\User;
+namespace App\Controller\Front\User\Employer;
 
 use App\Controller\BaseController;
 use App\Entity\Job\Application;
@@ -11,7 +11,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,7 +44,7 @@ class EmployerController extends BaseController
             return $this->redirectToRoute('app_front_employer_jobs');
         }
 
-        return $this->renderForm('front/user/employer/post_job.html.twig', compact('form'));
+        return $this->render('front/user/employer/post_job.html.twig', compact('form'));
     }
 
     #[Route('/jobs', name: 'jobs', methods: ['GET'])]
@@ -54,7 +53,8 @@ class EmployerController extends BaseController
         return $this->render('front/user/employer/jobs.html.twig', [
             'jobs' => $paginator->paginate(
                 $this->manager->getRepository(Job::class)->findAllForEmployerQuery($this->getUser()),
-                $request->query->getInt('page', 1)
+                $request->query->getInt('page', 1),
+                5
             ),
         ]);
     }

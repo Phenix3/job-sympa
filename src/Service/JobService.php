@@ -20,15 +20,28 @@ class JobService
         return $job;
     }
 
+
+    public function update(Job $job): Job
+    {
+        $this->repository->add($job, true);
+        // $this->dispatcher->dispatch(new JobPostedEvent($job));
+        return $job;
+    }
+
     public function toggleBookmark(int $id, UserInterface $user)
     {
         $job = $this->repository->findJobWithBookmarksQuery($id, $user)->getResult();
-        dump($job);
     }
 
     public function getRelatedJobs(Job $job, ?int $limit = 4)
     {
         return $this->repository->findRelatedJobs($job, $limit);
+    }
+
+    public function delete(Job $job): void
+    {
+        $this->repository->remove($job, true);
+        return;
     }
 
 }

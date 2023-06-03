@@ -2,15 +2,15 @@
 
 namespace App\Service;
 
-use App\Repository\ContactRequestRepository;
 use App\Dto\ContactRequestData;
-use Symfony\Component\Mailer\MailerInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use App\Entity\ContactRequest;
 use App\Exception\TooManyContactException;
-use Symfony\Component\Mime\Email;
+use App\Repository\ContactRequestRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 
 class ContactService
 {
@@ -21,6 +21,7 @@ class ContactService
 		$contactRequest = (new ContactRequest())
 			->setName($data->name)
 			->setEmail($data->email)
+			->setSubject($data->subject)
 			->setContent($data->content)
 			->setRawIp($request->getClientIp());
 		$lastRequest = $this->repository->findLastRequestForIp($contactRequest->getIp());

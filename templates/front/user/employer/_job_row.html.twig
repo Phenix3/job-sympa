@@ -1,14 +1,18 @@
 <tr>
     <td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm"><a href="{{ path('app_front_job_show', {id: job.id, slug: job.slug}) }}">{{ job.title }}</a></h4></div></td>
-    <td><div class="dash-filled"><span class="p-2 circle gray d-inline-flex align-items-center justify-content-center"><i class="lni lni-minus"></i></span></div></td>
+    {# <td><div class="dash-filled"><span class="p-2 circle gray d-inline-flex align-items-center justify-content-center"><i class="lni lni-minus"></i></span></div></td> #}
     <td>{{ job.createdAt|format_date }}</td>
     <td>{{ job.deadline|format_date }}</td>
     <td><a href="{{ path('app_front_employer_job_applications', {slug: job.slug}) }}" class="theme-bg text-light rounded px-3 py-2 ft-medium">Total {{ job.applications|length }}</a></td>
     <td>
         <div class="dash-action">
-            <a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-            <a href="javascript:void(0);" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center"><i class="lni lni-pencil"></i></a>
-            <a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+            <a href="{{ path('app_front_job_show', {id: job.id, slug: job.slug}) }}" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1">
+                <i class="lni lni-eye"></i>
+            </a>
+            <a href="{{ path('app_front_user_job_edit', {id: job.id}) }}" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center">
+                <i class="lni lni-pencil"></i>
+            </a>
+            <action-button data-uri="{{ path('app_front_user_job_delete', {id: job.id}) }}" data-csrf-token="{{ csrf_token('delete' ~ job.id) }}" data-method="DELETE" class="text-danger"><i class="lni lni-trash-can"></i></action-button>
         </div>
     </td>
 </tr>

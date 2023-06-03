@@ -3,21 +3,18 @@
 {% block content %}
     <div class="dashboard-widg-bar d-block">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12">
-                <div class="d-flex align-items-center p-3 alert alert-danger">
-                    Your listings will be automatically removed after 30 days.
-                </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 mx-auto">
                 <div class="mb-4 tbl-lg rounded overflow-hidden">
                     <div class="table-responsive bg-white">
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Filled</th>
-                                <th scope="col">Posted Date</th>
-                                <th scope="col">Expired</th>
-                                <th scope="col">Applications</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">{{ 'ui.title'|trans }}</th>
+                                {# <th scope="col">Filled</th> #}
+                                <th scope="col">{{ 'ui.posted_date'|trans }}</th>
+                                <th scope="col">{{ 'ui.expired'|trans }}</th>
+                                <th scope="col">{{ 'ui.applications'|trans }}</th>
+                                <th scope="col">{{ 'ui.actions'|trans }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -28,6 +25,7 @@
                         </table>
                     </div>
                 </div>
+                {{ knp_pagination_render(jobs) }}
             </div>
         </div>
 
