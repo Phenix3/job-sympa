@@ -6,7 +6,6 @@ use App\Controller\BaseController;
 use App\Entity\Job\Job;
 use App\Form\JobFormType;
 use App\Service\JobService;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,7 +34,7 @@ class JobController extends BaseController
         return $this->redirectBack('app_front_employer_jobs');
     }
 
-    #[Route('/post-job', name: 'new')]
+    #[Route('/new', name: 'new')]
     public function postJob(Request $request, JobService $jobService): RedirectResponse|Response
     {
         $job = new Job();
@@ -56,7 +55,7 @@ class JobController extends BaseController
     public function edit(Job $job, Request $request, JobService $jobService): RedirectResponse|Response
     {
         $this->getSeoGenerator()
-            ->setTitle('title')
+            ->setTitle('Edit job '.$job->getTitle())
             ->setDescription('')
             ;
 

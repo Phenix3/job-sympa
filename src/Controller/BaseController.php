@@ -55,6 +55,11 @@ class BaseController extends AbstractController
         $this->basicSeoGenerator = $basicSeoGenerator;
     }
 
+    /**
+     * Recupere une instance du Generateur de tag SEO
+     *
+     * @return BasicSeoGenerator
+     */
     public function getSeoGenerator(): BasicSeoGenerator
     {
         return $this->basicSeoGenerator;
