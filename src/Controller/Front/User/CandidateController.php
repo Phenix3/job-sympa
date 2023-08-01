@@ -5,15 +5,13 @@ namespace App\Controller\Front\User;
 use App\Controller\BaseController;
 use App\Entity\Job\Application;
 use App\Entity\Job\Job;
-use App\Entity\User\Candidate;
 use App\Entity\User\CandidateCvs;
+use App\Entity\User\Candidate;
 use App\Entity\User\JobBookmark;
-use App\Form\ChangePasswordFormType;
 use App\Form\User\CandidateAccountFormType;
 use App\Form\User\CandidateResumeFormType;
 use App\Service\BookmarkService;
 use App\Service\JobApplicationService;
-use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
@@ -21,8 +19,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\ChangePasswordFormType;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 
 #[Route('/candidate', name: 'app_front_candidate_')]
 #[IsGranted('ROLE_CANDIDATE')]
@@ -36,7 +36,7 @@ class CandidateController extends BaseController {
             private BasicSeoGenerator $seoGenerator,
             private EntityManagerInterface $manager
     ) {
-
+        
     }
 
     #[Route('/dashboard', name: 'dashboard')]
@@ -67,7 +67,7 @@ class CandidateController extends BaseController {
             return $this->redirectToRoute('app_front_candidate_dashboard');
         }
 
-        return $this->render('front/user/candidate/profile.html.twig', [
+        return $this->renderForm('front/user/candidate/profile.html.twig', [
                     'user' => $user,
                     'userAccountForm' => $userAccountForm
         ]);
@@ -94,7 +94,7 @@ class CandidateController extends BaseController {
             return $this->redirectToRoute('app_front_candidate_dashboard');
         }
 
-        return $this->render('front/user/change_password.html.twig', compact('form'));
+        return $this->renderForm('front/user/change_password.html.twig', compact('form'));
     }
 
     #[Route('/manage-resume', name: 'manage_resume', methods: ['GET', 'POST'])]
@@ -112,7 +112,7 @@ class CandidateController extends BaseController {
             return $this->redirectToRoute('app_front_candidate_manage_resume');
         }
 
-        return $this->render('front/user/candidate/manage_resume.html.twig', [
+        return $this->renderForm('front/user/candidate/manage_resume.html.twig', [
                     'resumes' => $this->manager->getRepository(CandidateCvs::class)->findForCandidateQuery($this->getUser())->getResult(),
                     'resumeForm' => $resumeForm
         ]);
@@ -164,7 +164,7 @@ class CandidateController extends BaseController {
         $jobBookmark = new JobBookmark();
         $jobBookmark->setUser(
             $this->getUser()
-        )
+        ) 
         ;
     }
 

@@ -150,7 +150,7 @@ ui.about_company: "A propos de l'entreprise"
 ui.actions: Actions
 ui.address: adresse
 ui.applications: Candidatures
-ui.buttons.can_apply: Candidater
+ui.buttons.can_apply: 'Peut postuler'
 ui.company_about: "A propos de l'entreprise"
 ui.company_name: "Nom de l'entreprise"
 ui.expired: Expire
@@ -158,7 +158,7 @@ ui.job_deadline: "Date limite de l'offre"
 ui.job_experience: 'Experience du poste'
 ui.job_location: "Localisation de l'offre"
 ui.job_responsibilities: "Les responsabilites de l'offre"
-ui.job_salary: 'Salaire pour offre'
+ui.job_salary: "Salaire de 'offre"
 ui.job_summary: "Resume de l'offre"
 ui.job_type: "Type d'emploi"
 ui.posted_date: 'Date de candidature'
@@ -166,3 +166,4 @@ ui.published_at: 'Date de publication'
 ui.share: Partager
 ui.title: Titre
 ui.unnable_to_apply: 'Impossible de postuler'
+ui.buttons.applied: 'Deja candidat'

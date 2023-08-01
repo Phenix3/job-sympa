@@ -14,15 +14,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('', name: 'app_front_user_')]
-class FrontUserController extends BaseController
+class UserController extends BaseController
 {
 	public function __construct(
 		private BasicSeoGenerator $seoGenerator,
 		private EntityManagerInterface $manager
 	) {}
 
-	#[Route('user/{id<\d+>}', name: 'show')]
-	#[Route('company/{id}', name: 'show_company')]
+	#[Route('user/{id}', name: 'show')]
 	#[Breadcrumb('<i class="fa fa-home"></i>', routeName: 'app_home')]
 	#[Breadcrumb('{user.username}')]
 	public function show(User $user)
