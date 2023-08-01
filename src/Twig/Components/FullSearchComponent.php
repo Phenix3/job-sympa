@@ -18,7 +18,7 @@ class FullSearchComponent
 {
     use DefaultActionTrait;
 
-    #[LiveProp(writable: true, exposed: ['page', 'query', 'categories', 'types', 'location', 'country', 'sort', 'direction'])]
+    #[LiveProp(writable: ['page', 'query', 'categories', 'types', 'location', 'country', 'sort', 'direction'], useSerializerForHydration: true)]
     public JobSearchData $jobSearchData;
 
     /**
