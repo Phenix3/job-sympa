@@ -41,7 +41,7 @@ class UserProfileAccountComponent extends AbstractController
     {
         $this->submitForm();
 
-        $user = $this->getFormInstance()->getData();
+        $user = $this->getForm()->getData();
 
         $manager->persist($user);
         $manager->flush();

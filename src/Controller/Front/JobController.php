@@ -38,25 +38,21 @@ class JobController extends BaseController
     }
 
     #[Route('/{id<\d+>}/bookmark', name: 'bookmark')]
-    public function toggleBookmark(int $id, JobRepository $jobRepository, BookmarkService $bookmarkService)
+    public function toggleBookmark(int $id, Request $request, JobRepository $jobRepository, BookmarkService $bookmarkService)
     {
         /** @var Job $job */
         $job = $jobRepository->findJobWithBookmarksQuery($id)->getOneOrNullResult();
 
-        if ($this->getUser()) {
-            $bookmarked = $bookmarkService->toggleBookmark($this->getUser(), $job);
+        $bookmarked = $bookmarkService->toggleBookmark($this->getUser(), $job);
+        // dd($request, $request->getPreferredFormat(), TurboBundle::STREAM_FORMAT);
 
-            return $this->json([
-                'job' => $job,
-                'bookmarks' => $job->getJobBookmarks()->count(),
-                'bookmarked' => $bookmarked
-            ]);
-        } else {
-            $data['error'] = 'Unauthorized to perform this action';
-            $data['bookmarked'] = false;
-
-            return $this->json($data, 401, []);
+        if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+            // dd($request);
+            $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+            return $this->render('front/job/_bookmarked.stream.html.twig', compact('job', 'bookmarks', 'bookmarked'));
         }
+
+        return $this->render('front/job/_bookmarked.stream.html.twig', compact('job', 'bookmarked'));
     }
 
     /**

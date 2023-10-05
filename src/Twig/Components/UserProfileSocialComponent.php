@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
+use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\ComponentWithFormTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
@@ -19,6 +20,7 @@ class UserProfileSocialComponent extends AbstractController
 {
     use DefaultActionTrait;
     use ComponentWithFormTrait;
+    use ComponentToolsTrait;
 
     #[LiveProp(writable: true, fieldName: 'user_profile_social')]
     public ?User $user = null;
@@ -31,9 +33,12 @@ class UserProfileSocialComponent extends AbstractController
     #[LiveAction()]
     public function save(EntityManagerInterface $manager): RedirectResponse
     {
+        $this->dispatchBrowserEvent('t:beforeSubmit');
+
         $this->submitForm();
 
-        $user = $this->getFormInstance()->getData();
+        $user = $this->getForm()->getData();
+        dump($user);
 
         $manager->persist($user);
         $manager->flush();

@@ -22,7 +22,8 @@ class UserAccountType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'help' => 'ui.form.help.email_change'
+                'help' => 'ui.form.help.email_change',
+                'help_attr' => ['class' => 'text-danger'],
             ])
             ->add('username', TextType::class)
             ->add('about', TextareaType::class)

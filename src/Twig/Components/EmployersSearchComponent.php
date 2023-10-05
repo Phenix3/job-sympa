@@ -16,7 +16,7 @@ class EmployersSearchComponent extends BaseController
 {
 	use DefaultActionTrait;
 
-	#[LiveProp(writable: true, exposed: ['name', 'page', 'categories', 'country', 'ceo'])]
+	#[LiveProp(writable: ['name', 'page', 'categories', 'country', 'ceo'], useSerializerForHydration: true)]
 	public EmployerSearchData $employerSearchData;
 
 	public function __construct(private EmployerRepository $repository, private PaginatorInterface $paginator)
@@ -24,7 +24,7 @@ class EmployersSearchComponent extends BaseController
 
 	public function getEmployers(): ?PaginationInterface
 	{
-        dump($this->employerSearchData);
+        // dump($this->employerSearchData);
 		return $this->paginator->paginate(
 			$this->repository->searchEmployersQuery($this->employerSearchData),
 			$this->employerSearchData->page ?: 1,

@@ -11,7 +11,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Leogout\Bundle\SeoBundle\Seo\Basic\BasicSeoGenerator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use function Symfony\Component\Translation\t;
 
 #[Route('', name: 'app_front_user_')]
 class UserController extends BaseController
@@ -45,6 +47,23 @@ class UserController extends BaseController
     {
     	return $this->render('front/user/companies.html.twig', [
     		'employerSearchData' => new EmployerSearchData()
+    	]);
+    }
+
+    #[Route('settings/edit', name: 'edit_settings')]
+    public function editSettings(Request $request): Response
+    {
+    	$data = \json_decode($request->getContent(), true, 512);
+    	dump($data);
+    	$user = $this->getUser();
+    	$user->setSocialAccounts($data['socialAccounts']);
+    	$this->manager->flush();
+
+    	$this->addFlash('success', 'alerts.social_accounts_edited');
+
+    	return $this->json([
+    		'message' => t('alerts.social_accounts_edited'),
+    		'status' => 201
     	]);
     }
 }

@@ -21,7 +21,7 @@ class RelatedJobsComponent
      */
     public function getRelatedJobs()
     {
-        dump($this->job);
+        // dump($this->job);
         return $this->jobService->getRelatedJobs($this->job, 4);
     }
 }

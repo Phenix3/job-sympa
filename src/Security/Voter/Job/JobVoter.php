@@ -23,7 +23,7 @@ class JobVoter extends Voter
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
-        return in_array($attribute, [self::EDIT, self::VIEW, self::CAN_APPLY])
+        return in_array($attribute, [self::EDIT, self::VIEW, self::CAN_APPLY, self::CAN_BOOKMARK])
             && $subject instanceof \App\Entity\Job\Job;
     }
 

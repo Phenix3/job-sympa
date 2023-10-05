@@ -6,11 +6,23 @@
 {% macro bookmark_button(job, icon = true) %}
 	{# icon = true|false permet d'afficher le bouton en icon simple ou en bouton #}
 	{% if is_granted('JOB_CAN_BOOKMARK', job) %}
-		{% set bookmarked = job.isBookmarkedByUser(app.user) %}
+		{# {% set bookmarked = job.isBookmarkedByUser(app.user) %}
 		{% set route = path('app_front_job_bookmark', {id: job.id}) %}
 		{% set user = app.user.id %}
-		{% set job = job.id %}
-	    <span {{ react_component('BookmarkButton', {job, bookmarked, route, user, icon}) }}></span>
+		{% set job = job.id %} #}
+	    {# <span {{ react_component('BookmarkButton', {job, bookmarked, route, user, icon}) }}></span> #}
+        {# <bookmark-button
+            data-bookmarked="{{ bookmarked }}"
+            data-user="{{ user }}"
+            data-job="{{ job }}"
+            data-icon="{{ icon }}"
+            data-route="{{ route }}"
+        ></bookmark-button> #}
+        <turbo-frame id="{{ 'job_bookmark_' ~ job.id }}">
+            <a href="{{ path('app_front_job_bookmark', {id: job.id}) }}" class="p-3 border rounded d-flex align-items-center justify-content-center bg-white" data-live-ignore="true">
+                <i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i>
+            </a>
+		</turbo-frame>
 	{% endif %}
 {% endmacro %}
 

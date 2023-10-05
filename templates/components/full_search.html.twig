@@ -172,7 +172,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         {% for job in computed.jobs %}
                             {# {{ component('search_job_card', {job: job}) }} #}
-                            {{ component('job_card_horizontal', {job: job}) }}
+                            {{ component('job_card_horizontal', {job: job, 'data-live-id': 'comp' ~ job.id}) }}
                         {% endfor %}
                     </div>
                 </div>

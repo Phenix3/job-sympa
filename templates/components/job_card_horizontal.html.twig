@@ -15,10 +15,10 @@
             </div>
         </div>
         <div class="text-center mlb-last">
-            <span>
+            <span data-live-ignore>
                 {{ bookmark_button(job, false) }}
             </span>
-            <span href="{{ path('app_front_job_show', {slug: job.slug, id: job.id}) }}">
+            <span class="text-danger">
                 {{ job.deadline|format_date }}
             </span>
         </div>

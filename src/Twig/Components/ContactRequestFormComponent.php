@@ -4,18 +4,18 @@ namespace App\Twig\Components;
 
 use App\Controller\BaseController;
 use App\Dto\ContactRequestData;
-use App\Service\ContactService;
 use App\Exception\TooManyContactException;
+use App\Form\ContactRequestFormType;
+use App\Service\ContactService;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
-use Symfony\UX\LiveComponent\DefaultActionTrait;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\UX\LiveComponent\ComponentWithFormTrait;
-use App\Form\ContactRequestFormType;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent('contact_request_form')]
 class ContactRequestFormComponent extends BaseController
@@ -23,7 +23,7 @@ class ContactRequestFormComponent extends BaseController
 	use DefaultActionTrait;
 	use ComponentWithFormTrait;
 
-	#[LiveProp(fieldName: 'data')]
+	#[LiveProp(fieldName: 'data', useSerializerForHydration: true)]
 	public ?ContactRequestData $contactRequestData = null;
 
 	protected function instantiateForm(): FormInterface
@@ -36,7 +36,7 @@ class ContactRequestFormComponent extends BaseController
 	{
 		$this->submitForm();
 
-		$data = $this->getFormInstance()->getData();
+		$data = $this->getForm()->getData();
 		try {
 			$contactService->send($data, $request);
 			$this->addFlash('success', 'ui.alerts.contact_request_success');

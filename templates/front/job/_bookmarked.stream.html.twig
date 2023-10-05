@@ -1,5 +1,7 @@
-<turbo-stream action="replace" target="job-bookmark-{{ job.id }}">
+<turbo-stream action="replace" target="{{ 'job_bookmark_' ~ job.id }}">
     <template>
-        <a href="{{ path('app_front_job_bookmark', {slug: job.slug, id: job.id}) }}" class="p-3 border circle d-flex align-items-center justify-content-center bg-white text-danger"><i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i></a>
+        <a href="{{ path('app_front_job_bookmark', {id: job.id}) }}" class="p-3 border rounded d-flex align-items-center justify-content-center bg-white {{ bookmarked ? 'text-danger' : '' }}">
+            <i class="lni lni-heart-filled position-absolute snackbar-wishlist"></i>
+        </a>
     </template>
 </turbo-stream>

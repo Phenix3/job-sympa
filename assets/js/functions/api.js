@@ -26,7 +26,7 @@ export async function jsonFetch(url, params = {}) {
             Accept: 'application/json',
             'X-Requested-With': 'XMLHttpRequest'
         },
-        // ...params
+        ...params
     }
 
     const response = await fetch(url, params)

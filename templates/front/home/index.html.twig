@@ -1,405 +1,607 @@
 {% extends 'front/base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}
+	Hello HomeController!
+{% endblock %}
 
-{% block breadcrumbs %}{% endblock %}
+{% block breadcrumbs %}
+{% endblock %}
 
 {% block body %}
-    <!-- ======================= Home Banner ======================== -->
-    <div class="home-banner margin-bottom-0" style="background:#eff6f2 url({{ asset('img/banner-6.png') }}) no-repeat;">
-        <div class="container">
-            <div class="row justify-content-start">
-                <div class="col-xl-6 col-lg-9 col-md-12 col-sm-12 col-12">
-                    <div class="banner_caption text-left mb-4">
-                        <h1 class="banner_title ft-bold mb-1">Get The <span class="theme-cl">Right Jobs</span><br>On Killore</h1>
-                        <p class="fs-md ft-regular">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-                    </div>
-                </div>
-                <div class="col-xl-9 col-lg-11 col-md-12 col-sm-12 col-12">
+	<!-- ======================= Home Banner ======================== -->
+	<div class="home-banner margin-bottom-0" style="background:#eff6f2 url({{ asset('img/banner-6.png') }}) no-repeat;">
+		<div class="container">
+			<div class="row justify-content-start">
+				<div class="col-xl-6 col-lg-9 col-md-12 col-sm-12 col-12">
+					<div class="banner_caption text-left mb-4">
+						<h1 class="banner_title ft-bold mb-1">
+							Trouvez votre voie vers le succès sur
+							<span class="theme-cl">
+								SonaJob
+							</span>
+						</h1>
+						<p class="fs-md ft-regular">
+							Trouvez votre emploi idéal avec Sonajob - La plateforme de recherche d'emploi intelligente
+						</p>
+					</div>
+				</div>
+				<div
+					class="col-xl-9 col-lg-11 col-md-12 col-sm-12 col-12">
+					{# {{ component('home_search') }} #}
+					<div class="top-searches-key">
+						<ul class="p-0 mt-4 align-items-center d-flex">
+							<li>
+								<span class="text-dark ft-medium medium">
+									Top Searches:
+								</span>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="">
+									WordPress
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="">
+									Magento
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="">
+									HTML5
+								</a>
+							</li>
+						</ul>
+					</div>
 
-                    {# {{ component('home_search') }} #}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ======================= Home Banner ======================== -->
 
-                    <div class="top-searches-key">
-                        <ul class="p-0 mt-4 align-items-center d-flex">
-                            <li><span class="text-dark ft-medium medium">Top Searches:</span></li>
-                            <li><a href="javascript:void(0);" class="">WordPress</a></li>
-                            <li><a href="javascript:void(0);" class="">Magento</a></li>
-                            <li><a href="javascript:void(0);" class="">HTML5</a></li>
-                        </ul>
-                    </div>
+	<!-- ======================= Job List ======================== -->
+	{{ component('popular_jobs') }}
+	<!-- ======================= Job List ======================== -->
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ======================= Home Banner ======================== -->
+	<!-- ======================= All category ======================== -->
+	{% include 'front/home/_latest_categories.html.twig' with {categories: latestCategories} %}
+	<!-- ======================= All category ======================== -->
 
-    <!-- ======================= Job List ======================== -->
-        {{ component('popular_jobs') }}
-        <!-- ======================= Job List ======================== -->
+	<!-- ======================= About Start ============================ -->
+		<section class="space"> <div class="container">
 
-        <!-- ======================= All category ======================== -->
-        {% include 'front/home/_latest_categories.html.twig' with {categories: latestCategories} %}
-        <!-- ======================= All category ======================== -->
+			<div class="row align-items-center justify-content-between">
+				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+					<div class="m-spaced">
+						<div class="position-relative">
+							<div class="mb-1">
+								<span class="theme-bg-light theme-cl px-2 py-1 rounded">
+									About Us
+								</span>
+							</div>
+							<h2 class="ft-bold mb-3">
+								Create and Build Your
+								<br>
+								Attractive Profile
+							</h2>
+							<p class="mb-2">
+								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+							</p>
+							<p class="mb-4">
+								At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+							</p>
+						</div>
+						<div class="position-relative row">
+							<div class="col-lg-4 col-md-4 col-4">
+								<h3 class="ft-bold theme-cl mb-0">
+									10k+
+								</h3>
+								<p class="ft-medium">
+									Active Jobs
+								</p>
+							</div>
+							<div class="col-lg-4 col-md-4 col-4">
+								<h3 class="ft-bold theme-cl mb-0">
+									12k+
+								</h3>
+								<p class="ft-medium">
+									Web Designers
+								</p>
+							</div>
+							<div class="col-lg-4 col-md-4 col-4">
+								<h3 class="ft-bold theme-cl mb-0">
+									07k+
+								</h3>
+								<p class="ft-medium">
+									Employers
+								</p>
+							</div>
+							<div class="col-lg-12 col-md-12 col-12 mt-3">
+								<a href="javascript:void(0);" class="btn btn-md theme-bg-light rounded theme-cl hover-theme">
+									See Details
+									<i class="lni lni-arrow-right-circle ml-2"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
 
-        <!-- ======================= About Start ============================ -->
-        <section class="space">
-            <div class="container">
+				<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+					<div class="position-relative">
+						<img src="{{ asset('img/img-1.png') }}" class="img-fluid" alt=""/>
+					</div>
+				</div>
+			</div>
 
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <div class="m-spaced">
-                            <div class="position-relative">
-                                <div class="mb-1"><span class="theme-bg-light theme-cl px-2 py-1 rounded">About Us</span></div>
-                                <h2 class="ft-bold mb-3">Create and Build Your<br>Attractive Profile</h2>
-                                <p class="mb-2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                                <p class="mb-4">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. </p>
-                            </div>
-                            <div class="position-relative row">
-                                <div class="col-lg-4 col-md-4 col-4">
-                                    <h3 class="ft-bold theme-cl mb-0">10k+</h3>
-                                    <p class="ft-medium">Active Jobs</p>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-4">
-                                    <h3 class="ft-bold theme-cl mb-0">12k+</h3>
-                                    <p class="ft-medium">Web Designers</p>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-4">
-                                    <h3 class="ft-bold theme-cl mb-0">07k+</h3>
-                                    <p class="ft-medium">Employers</p>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-12 mt-3">
-                                    <a href="javascript:void(0);" class="btn btn-md theme-bg-light rounded theme-cl hover-theme">See Details<i class="lni lni-arrow-right-circle ml-2"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+		</div>
+	</section>
+	<!-- ======================= About Start ============================ -->
 
-                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                        <div class="position-relative">
-                            <img src="{{ asset('img/img-1.png') }}" class="img-fluid" alt="" />
-                        </div>
-                    </div>
-                </div>
+	<!-- ======================= About Start ============================ -->
+	<section class="space pt-0">
+		<div class="container">
 
-            </div>
-        </section>
-        <!-- ======================= About Start ============================ -->
+			<div class="row align-items-center justify-content-between">
 
-        <!-- ======================= About Start ============================ -->
-        <section class="space pt-0">
-            <div class="container">
+				<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+					<div class="position-relative">
+						<img src="https://via.placeholder.com/900x1000" class="img-fluid" alt=""/>
+					</div>
+				</div>
 
-                <div class="row align-items-center justify-content-between">
+				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+					<div class="m-spaced">
+						<div class="position-relative">
+							<div class="mb-1">
+								<span class="theme-bg-light theme-cl px-2 py-1 rounded">
+									About Us
+								</span>
+							</div>
+							<h2 class="ft-bold mb-3">
+								Obtenez tous les détails
+								<br>
+								des emplois que vous recherchez.
+							</h2>
+							<p class="mb-3">
+								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+							</p>
+						</div>
+						<div class="position-relative row">
+							<div class="col-lg-12 col-md-12 col-12">
+								<div class="mb-3 mr-4 ml-lg-0 mr-lg-4">
+									<div class="d-flex align-items-center">
+										<div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
+											<i class="fas fa-check"></i>
+										</div>
+										<h6 class="mb-0 ml-3">
+											Full lifetime access
+										</h6>
+									</div>
+								</div>
+								<div class="mb-3 mr-4 ml-lg-0 mr-lg-4">
+									<div class="d-flex align-items-center">
+										<div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
+											<i class="fas fa-check"></i>
+										</div>
+										<h6 class="mb-0 ml-3">
+											20+ downloadable resources
+										</h6>
+									</div>
+								</div>
+								<div class="mb-3 mr-4 ml-lg-0 mr-lg-4">
+									<div class="d-flex align-items-center">
+										<div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
+											<i class="fas fa-check"></i>
+										</div>
+										<h6 class="mb-0 ml-3">
+											Certificate of completion
+										</h6>
+									</div>
+								</div>
+								<div class="mb-3 mr-4 ml-lg-0 mr-lg-4">
+									<div class="d-flex align-items-center">
+										<div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
+											<i class="fas fa-check"></i>
+										</div>
+										<h6 class="mb-0 ml-3">
+											Free Trial 7 Days
+										</h6>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-12 mt-4">
+								<a href="javascript:void(0);" class="btn btn-md theme-bg rounded text-white hover-theme">
+									Get Started
+									<i class="lni lni-arrow-right-circle ml-2"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                        <div class="position-relative">
-                            <img src="https://via.placeholder.com/900x1000" class="img-fluid" alt="" />
-                        </div>
-                    </div>
+			</div>
 
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <div class="m-spaced">
-                            <div class="position-relative">
-                                <div class="mb-1"><span class="theme-bg-light theme-cl px-2 py-1 rounded">About Us</span></div>
-                                <h2 class="ft-bold mb-3">Get All The Jobs Details<br>You're Looking For</h2>
-                                <p class="mb-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                            </div>
-                            <div class="position-relative row">
-                                <div class="col-lg-12 col-md-12 col-12">
-                                    <div class="mb-3 mr-4 ml-lg-0 mr-lg-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            <h6 class="mb-0 ml-3">Full lifetime access</h6>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 mr-4 ml-lg-0 mr-lg-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            <h6 class="mb-0 ml-3">20+ downloadable resources</h6>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 mr-4 ml-lg-0 mr-lg-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            <h6 class="mb-0 ml-3">Certificate of completion</h6>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 mr-4 ml-lg-0 mr-lg-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            <h6 class="mb-0 ml-3">Free Trial 7 Days</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-12 mt-4">
-                                    <a href="javascript:void(0);" class="btn btn-md theme-bg rounded text-white hover-theme">Get Started<i class="lni lni-arrow-right-circle ml-2"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+		</div>
+	</section>
+	<!-- ======================= About Start ============================ -->
 
-                </div>
+	<!-- ======================= Our Partner Start ============================ -->
+	<section class="p-0">
+		<div class="container">
 
-            </div>
-        </section>
-        <!-- ======================= About Start ============================ -->
+			<div class="row justify-content-center">
+				<div class="col-xl-5 col-lg-7 col-md-9 col-sm-12">
+					<div class="sec_title position-relative text-center mb-5">
+						<h6 class="text-muted mb-0">
+							Our Partners
+						</h6>
+						<h2 class="ft-bold">
+							We Have Worked with
+							<span class="theme-cl">
+								10,000+
+							</span>
+							Trusted Companies
+						</h2>
+					</div>
+				</div>
+			</div>
 
-        <!-- ======================= Our Partner Start ============================ -->
-        <section class="p-0">
-            <div class="container">
+			<div class="row justify-content-center">
 
-                <div class="row justify-content-center">
-                    <div class="col-xl-5 col-lg-7 col-md-9 col-sm-12">
-                        <div class="sec_title position-relative text-center mb-5">
-                            <h6 class="text-muted mb-0">Our Partners</h6>
-                            <h2 class="ft-bold">We Have Worked with <span class="theme-cl">10,000+</span> Trusted Companies</h2>
-                        </div>
-                    </div>
-                </div>
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                <div class="row justify-content-center">
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+				<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="empl-thumb text-center px-3 py-4">
+						<img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt=""/>
+					</div>
+				</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+			</div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
-                        <div class="empl-thumb text-center px-3 py-4">
-                            <img src="https://via.placeholder.com/300x80" class="img-fluid mx-auto" alt="" />
-                        </div>
-                    </div>
+		</div>
+	</section>
+	<!-- ======================= Our Partner Start ============================ -->
 
-                </div>
+	<!-- ======================= Blog Start ============================ -->
+	<section class="space min">
+		<div class="container">
 
-            </div>
-        </section>
-        <!-- ======================= Our Partner Start ============================ -->
+			<div class="row justify-content-center">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<div class="sec_title position-relative text-center mb-4">
+						<h6 class="text-muted mb-0">
+							Latest News
+						</h6>
+						<h2 class="ft-bold">
+							Pickup New Updates
+						</h2>
+					</div>
+				</div>
+			</div>
 
-        <!-- ======================= Blog Start ============================ -->
-        <section class="space min">
-            <div class="container">
+			<div
+				class="row justify-content-center">
 
-                <div class="row justify-content-center">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <div class="sec_title position-relative text-center mb-4">
-                            <h6 class="text-muted mb-0">Latest News</h6>
-                            <h2 class="ft-bold">Pickup New Updates</h2>
-                        </div>
-                    </div>
-                </div>
+				<!-- Single Item -->
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+					<div class="blg_grid_box">
+						<div class="blg_grid_thumb">
+							<a href="blog-detail.html">
+								<img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="">
+							</a>
+						</div>
+						<div class="blg_grid_caption">
+							<div class="blg_tag">
+								<span>
+									Marketing
+								</span>
+							</div>
+							<div class="blg_title">
+								<h4>
+									<a href="blog-detail.html">
+										How To Register &amp; Enrolled on SkillUp Step by Step?
+									</a>
+								</h4>
+							</div>
+							<div class="blg_desc">
+								<p>
+									At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+								</p>
+							</div>
+						</div>
+						<div class="crs_grid_foot">
+							<div class="crs_flex d-flex align-items-center justify-content-between br-top px-3 py-2">
+								<div class="crs_fl_first">
+									<div class="crs_tutor">
+										<div class="crs_tutor_thumb">
+											<a href="instructor-detail.html">
+												<img src="https://via.placeholder.com/500x500" class="img-fluid circle" width="35" alt="">
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="crs_fl_last">
+									<div class="foot_list_info">
+										<ul>
+											<li>
+												<div class="elsio_ic">
+													<i class="fa fa-eye text-success"></i>
+												</div>
+												<div class="elsio_tx">
+													10k Views
+												</div>
+											</li>
+											<li>
+												<div class="elsio_ic">
+													<i class="fa fa-clock text-warning"></i>
+												</div>
+												<div class="elsio_tx">
+													10 July 2021
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <div class="row justify-content-center">
+				<!-- Single Item -->
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+					<div class="blg_grid_box">
+						<div class="blg_grid_thumb">
+							<a href="blog-detail.html">
+								<img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="">
+							</a>
+						</div>
+						<div class="blg_grid_caption">
+							<div class="blg_tag">
+								<span>
+									Business
+								</span>
+							</div>
+							<div class="blg_title">
+								<h4>
+									<a href="blog-detail.html">
+										Let's Know How Skillup Work Fast and Secure?
+									</a>
+								</h4>
+							</div>
+							<div class="blg_desc">
+								<p>
+									At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+								</p>
+							</div>
+						</div>
+						<div class="crs_grid_foot">
+							<div class="crs_flex d-flex align-items-center justify-content-between br-top px-3 py-2">
+								<div class="crs_fl_first">
+									<div class="crs_tutor">
+										<div class="crs_tutor_thumb">
+											<a href="instructor-detail.html">
+												<img src="https://via.placeholder.com/500x500" class="img-fluid circle" width="35" alt="">
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="crs_fl_last">
+									<div class="foot_list_info">
+										<ul>
+											<li>
+												<div class="elsio_ic">
+													<i class="fa fa-eye text-success"></i>
+												</div>
+												<div class="elsio_tx">
+													10k Views
+												</div>
+											</li>
+											<li>
+												<div class="elsio_ic">
+													<i class="fa fa-clock text-warning"></i>
+												</div>
+												<div class="elsio_tx">
+													10 July 2021
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                    <!-- Single Item -->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                        <div class="blg_grid_box">
-                            <div class="blg_grid_thumb">
-                                <a href="blog-detail.html"><img src="https://via.placeholder.com/1200x800" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="blg_grid_caption">
-                                <div class="blg_tag"><span>Marketing</span></div>
-                                <div class="blg_title"><h4><a href="blog-detail.html">How To Register &amp; Enrolled on SkillUp Step by Step?</a></h4></div>
-                                <div class="blg_desc"><p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p></div>
-                            </div>
-                            <div class="crs_grid_foot">
-                                <div class="crs_flex d-flex align-items-center justify-content-between br-top px-3 py-2">
-                                    <div class="crs_fl_first">
-                                        <div class="crs_tutor">
-                                            <div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="https://via.placeholder.com/500x500" class="img-fluid circle" width="35" alt=""></a></div>
-                                        </div>
-                                    </div>
-                                    <div class="crs_fl_last">
-                                        <div class="foot_list_info">
-                                            <ul>
-                                                <li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">10k Views</div></li>
-                                                <li><div class="elsio_ic"><i class="fa fa-clock text-warning"></i></div><div class="elsio_tx">10 July 2021</div></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+				<!-- Single Item -->
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+					<div class="blg_grid_box">
+						<div class="blg_grid_thumb">
+							<a href="blog-detail.html">
+								<img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="">
+							</a>
+						</div>
+						<div class="blg_grid_caption">
+							<div class="blg_tag">
+								<span>
+									Accounting
+								</span>
+							</div>
+							<div class="blg_title">
+								<h4>
+									<a href="blog-detail.html">
+										How To Improove Digital Marketing for Fast SEO
+									</a>
+								</h4>
+							</div>
+							<div class="blg_desc">
+								<p>
+									At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+								</p>
+							</div>
+						</div>
+						<div class="crs_grid_foot">
+							<div class="crs_flex d-flex align-items-center justify-content-between br-top px-3 py-2">
+								<div class="crs_fl_first">
+									<div class="crs_tutor">
+										<div class="crs_tutor_thumb">
+											<a href="instructor-detail.html">
+												<img src="https://via.placeholder.com/500x500" class="img-fluid circle" width="35" alt="">
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="crs_fl_last">
+									<div class="foot_list_info">
+										<ul>
+											<li>
+												<div class="elsio_ic">
+													<i class="fa fa-eye text-success"></i>
+												</div>
+												<div class="elsio_tx">
+													10k Views
+												</div>
+											</li>
+											<li>
+												<div class="elsio_ic">
+													<i class="fa fa-clock text-warning"></i>
+												</div>
+												<div class="elsio_tx">
+													10 July 2021
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                    <!-- Single Item -->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                        <div class="blg_grid_box">
-                            <div class="blg_grid_thumb">
-                                <a href="blog-detail.html"><img src="https://via.placeholder.com/1200x800" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="blg_grid_caption">
-                                <div class="blg_tag"><span>Business</span></div>
-                                <div class="blg_title"><h4><a href="blog-detail.html">Let's Know How Skillup Work Fast and Secure?</a></h4></div>
-                                <div class="blg_desc"><p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p></div>
-                            </div>
-                            <div class="crs_grid_foot">
-                                <div class="crs_flex d-flex align-items-center justify-content-between br-top px-3 py-2">
-                                    <div class="crs_fl_first">
-                                        <div class="crs_tutor">
-                                            <div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="https://via.placeholder.com/500x500" class="img-fluid circle" width="35" alt=""></a></div>
-                                        </div>
-                                    </div>
-                                    <div class="crs_fl_last">
-                                        <div class="foot_list_info">
-                                            <ul>
-                                                <li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">10k Views</div></li>
-                                                <li><div class="elsio_ic"><i class="fa fa-clock text-warning"></i></div><div class="elsio_tx">10 July 2021</div></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+			</div>
 
-                    <!-- Single Item -->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                        <div class="blg_grid_box">
-                            <div class="blg_grid_thumb">
-                                <a href="blog-detail.html"><img src="https://via.placeholder.com/1200x800" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="blg_grid_caption">
-                                <div class="blg_tag"><span>Accounting</span></div>
-                                <div class="blg_title"><h4><a href="blog-detail.html">How To Improove Digital Marketing for Fast SEO</a></h4></div>
-                                <div class="blg_desc"><p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p></div>
-                            </div>
-                            <div class="crs_grid_foot">
-                                <div class="crs_flex d-flex align-items-center justify-content-between br-top px-3 py-2">
-                                    <div class="crs_fl_first">
-                                        <div class="crs_tutor">
-                                            <div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="https://via.placeholder.com/500x500" class="img-fluid circle" width="35" alt=""></a></div>
-                                        </div>
-                                    </div>
-                                    <div class="crs_fl_last">
-                                        <div class="foot_list_info">
-                                            <ul>
-                                                <li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">10k Views</div></li>
-                                                <li><div class="elsio_ic"><i class="fa fa-clock text-warning"></i></div><div class="elsio_tx">10 July 2021</div></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+		</div>
+	</section>
+	<!-- ======================= Blog Start ============================ -->
+	<!-- Log In Modal -->
+	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
+		<div class="modal-dialog modal-xl login-pop-form" role="document">
+			<div class="modal-content" id="loginmodal">
+				<div class="modal-headers">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span class="ti-close"></span>
+					</button>
+				</div>
 
-                </div>
+				<div class="modal-body p-5">
+					<div class="text-center mb-4">
+						<h2 class="m-0 ft-regular">
+							Login
+						</h2>
+					</div>
 
-            </div>
-        </section>
-        <!-- ======================= Blog Start ============================ -->
-        <!-- Log In Modal -->
-        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
-            <div class="modal-dialog modal-xl login-pop-form" role="document">
-                <div class="modal-content" id="loginmodal">
-                    <div class="modal-headers">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span class="ti-close"></span>
-                        </button>
-                    </div>
+					<form>
+						<div class="form-group">
+							<label>
+								User Name
+							</label>
+							<input type="text" class="form-control" placeholder="Username*">
+						</div>
 
-                    <div class="modal-body p-5">
-                        <div class="text-center mb-4">
-                            <h2 class="m-0 ft-regular">Login</h2>
-                        </div>
+						<div class="form-group">
+							<label>
+								Password
+							</label>
+							<input type="password" class="form-control" placeholder="Password*">
+						</div>
 
-                        <form>
-                            <div class="form-group">
-                                <label>User Name</label>
-                                <input type="text" class="form-control" placeholder="Username*">
-                            </div>
+						<div class="form-group">
+							<div class="d-flex align-items-center justify-content-between">
+								<div class="flex-1">
+									<input id="dd" class="checkbox-custom" name="dd" type="checkbox">
+									<label for="dd" class="checkbox-custom-label">
+										Remember Me
+									</label>
+								</div>
+								<div class="eltio_k2">
+									<a href="#" class="theme-cl">
+										Lost Your Password?
+									</a>
+								</div>
+							</div>
+						</div>
 
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" placeholder="Password*">
-                            </div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-md full-width theme-bg text-light fs-md ft-medium">
+								Login
+							</button>
+						</div>
 
-                            <div class="form-group">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="flex-1">
-                                        <input id="dd" class="checkbox-custom" name="dd" type="checkbox">
-                                        <label for="dd" class="checkbox-custom-label">Remember Me</label>
-                                    </div>
-                                    <div class="eltio_k2">
-                                        <a href="#" class="theme-cl">Lost Your Password?</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-md full-width theme-bg text-light fs-md ft-medium">Login</button>
-                            </div>
-
-                            <div class="form-group text-center mb-0">
-                                <p class="extra">Not a member?<a href="#et-register-wrap" class="text-dark"> Register</a></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Modal -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-{% endblock %}
+						<div class="form-group text-center mb-0">
+							<p class="extra">
+								Not a member?
+								<a href="#et-register-wrap" class="text-dark">
+									Register
+								</a>
+							</p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Modal -->
+</div>
+<!-- ============================================================== --><!-- End Wrapper -->
+<!-- ============================================================== -->{% endblock %}

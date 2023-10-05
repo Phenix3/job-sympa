@@ -15,9 +15,9 @@ class BookmarkButton extends HTMLElement {
     }
 
     connectedCallback() {
-        this.jobId = parseInt(this.getAttribute('job-id'));
-        this.bookmarks = parseInt(this.getAttribute('bookmarks'));
-        this.bookmarked = this.getAttribute('bookmarked');
+        this.jobId = parseInt(this.dataset.job);
+        this.bookmarks = parseInt(this.dataset.bookmarks);
+        this.bookmarked = this.dataset.bookmarked;
         this.color = this.bookmarked ? 'danger' : 'gray';
 
         // this.root.appendChild(link);

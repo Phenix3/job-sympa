@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use function Symfony\Component\String\u;
 
 #[ORM\Entity(repositoryClass: EmployerRepository::class)]
 #[ORM\Table("`user_employer`")]
@@ -52,7 +53,7 @@ class Employer extends User
     public function __serialize(): array
     {
       return [
-            $this->id, 
+            $this->id,
             $this->email
         ];
     }
@@ -64,7 +65,8 @@ class Employer extends User
 
     public function getProfileIdentifier(): string
     {
-        return 'employer-'.$this->getId();
+        $slug = u($this->getUsername())->ascii()->lower();
+        return 'employer-' . $slug . $this->getId();
     }
 
     public function getUserIdentifier(): string

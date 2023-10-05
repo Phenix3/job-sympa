@@ -1,8 +1,11 @@
-import React, {useState, useCallback} from 'react';
+import React, { useState, useCallback } from 'react';
+// import { unmountComponentAtNode } from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import retargetEvents from 'react-shadow-dom-retarget-events';
 import axios from 'axios';
 
 const BookmarkButton = (props) => {
-	console.log('Render');
+	// console.log('Props', props);
     const [bookmarked, setBookmarked] = useState(props.bookmarked);
 	const [bookmark, setBookmark] = useState(null);
 
@@ -17,7 +20,7 @@ const BookmarkButton = (props) => {
 				loadBookmark();
 				return;
 			}
-			console.log('Bookmark ', bookmark);
+			// console.log('Bookmark ', bookmark);
 			deleteBookmark(bookmark);
 		}
 	}, [bookmark, bookmarked]);
@@ -78,7 +81,7 @@ const BookmarkButton = (props) => {
 	}
 
 	const deleteBookmark = (data) => {
-		axios.post('/api/graphql', { 
+		axios.post('/api/graphql', {
 			query: `
 					mutation {
 					  deleteJobBookmark(input: {id: "${data.id}"}) {
@@ -89,7 +92,7 @@ const BookmarkButton = (props) => {
 					}
 				`
 		}).then(response => {
-			console.log(response);
+			// console.log(response);
 		}).catch(error => console.log(error));
 	}
 
@@ -109,6 +112,50 @@ const BookmarkButton = (props) => {
 	return <button type="button" className={classNames} onClick={handleClick}>
 			{icon} {label}
 		</button>;
+}
+
+export class BookmarkButtonElement extends HTMLElement {
+
+
+	constructor() {
+		super();
+        this.shadow = this.attachShadow({ mode: 'open' });
+	}
+
+    static get observedAttributes() {
+	    return ['data-bookmarked', 'data-job', 'data-user', 'icon', 'data-route', 'id'];
+	}
+
+    connectedCallback() {
+        // console.log('BookmarkButtonElement', this);
+        this.renderElement();
+    }
+
+    renderElement() {
+    	const { bookmarked, job, user, icon, route } = this.dataset;
+
+        // this.mountPoint = document.createElement('span');
+        // this.shadow.appendChild(this.mountPoint);
+
+        this.root = null;
+        try {
+        	this.root = createRoot(this.shadow);
+        	console.log('Error createRoot', e);
+        	this.root.render(<BookmarkButton bookmarked={bookmarked} job={job} user={user} icon={icon} route={route} />);
+        } catch (e) {
+        }
+        retargetEvents(this.shadow);
+    }
+
+    disconnectedCallback() {
+        console.log('UnmountComponent', this);
+        this.root.unmount();
+    }
+
+	attributeChangedCallback(name, oldValue, newValue) {
+	    // console.log(`The attribute ${name} was updated from ${oldValue} to ${newValue}`);
+	    this.renderElement();
+	}
 }
 
 export default BookmarkButton;

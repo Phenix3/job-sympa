@@ -35,7 +35,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @Vich\Uploadable()
  */
-abstract class User implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface 
+abstract class User implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface
 {
     use TimestampableEntity;
     use Notifiable;
@@ -330,10 +330,31 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getSocialAccounts(): array
     {
+        return SocialAccount::makeFromUser($this);
+        // return $this->socialAccounts;
+    }
+
+    public function getRawSocialAccounts(): array
+    {
         return $this->socialAccounts;
     }
 
     public function setSocialAccounts(?array $socialAccounts): self
+    {
+        $this->socialAccounts = array_filter(array_map(fn(mixed $sa) => [
+            'name' => is_array($sa) ? $sa['name'] : $sa->getName(),
+            'link' => is_array($sa) ? $sa['link'] : $sa->getLink(),
+        ], $socialAccounts), function(mixed $item) {
+            if (is_array($item)) {
+                return $item['name'] !== '' && $item['link'] !== '';
+            }
+            return $item->getName() !== '' && $item->getLink() !== '';
+        }, ARRAY_FILTER_USE_BOTH);
+
+        return $this;
+    }
+
+    public function setRawSocialAccounts(?array $socialAccounts): self
     {
         $this->socialAccounts = $socialAccounts;
 

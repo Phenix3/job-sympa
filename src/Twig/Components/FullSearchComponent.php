@@ -11,22 +11,30 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
+use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent('full_search')]
 class FullSearchComponent
 {
     use DefaultActionTrait;
+    use ComponentToolsTrait;
 
     #[LiveProp(writable: ['page', 'query', 'categories', 'types', 'location', 'country', 'sort', 'direction'], useSerializerForHydration: true)]
     public JobSearchData $jobSearchData;
+
+    public array $jobArr = [];
 
     /**
      * @param PaginatorInterface $paginator
      * @param JobRepository $jobRepository
      */
-    public function __construct(private PaginatorInterface $paginator, private JobRepository $jobRepository, private CategoryRepository $categoryRepository, private TypeRepository $typeRepository)
-    {
+    public function __construct(
+        private PaginatorInterface $paginator,
+        private JobRepository $jobRepository,
+        private CategoryRepository $categoryRepository,
+        private TypeRepository $typeRepository
+        ) {
     }
 
 
@@ -39,7 +47,8 @@ class FullSearchComponent
             $this->jobRepository->searchJobs($this->jobSearchData),
             $this->jobSearchData->page ?: 1
         );
-        dump($jobs);
+        $this->jobArr[] = $jobs->getItems();
+        // dump($this->jobArr);
         return $jobs;
     }
 
@@ -69,6 +78,7 @@ class FullSearchComponent
     public function next()
     {
         $this->jobSearchData->page += 1;
+        $this->dispatchBrowserEvent('DOMContentLoaded');
     }
 
     #[LiveAction()]
