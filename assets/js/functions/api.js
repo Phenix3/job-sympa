@@ -8,7 +8,7 @@ export const HTTP_NO_CONTENT = 204
 
 /**
  * @param {RequestInfo} url
- * @param params
+ * @param {RequestInit} params
  * @return {Promise<Object>}
  */
 export async function jsonFetch(url, params = {}) {

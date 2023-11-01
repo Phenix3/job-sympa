@@ -92,7 +92,7 @@ const BookmarkButton = (props) => {
 					}
 				`
 		}).then(response => {
-			// console.log(response);
+			console.log(response);
 		}).catch(error => console.log(error));
 	}
 
@@ -119,7 +119,7 @@ export class BookmarkButtonElement extends HTMLElement {
 
 	constructor() {
 		super();
-        this.shadow = this.attachShadow({ mode: 'open' });
+        // this.shadow = this.attachShadow({ mode: 'open' });
 	}
 
     static get observedAttributes() {
@@ -139,12 +139,12 @@ export class BookmarkButtonElement extends HTMLElement {
 
         this.root = null;
         try {
-        	this.root = createRoot(this.shadow);
-        	console.log('Error createRoot', e);
+        	this.root = createRoot(this);
         	this.root.render(<BookmarkButton bookmarked={bookmarked} job={job} user={user} icon={icon} route={route} />);
         } catch (e) {
+        	console.log('Error createRoot', e);
         }
-        retargetEvents(this.shadow);
+        // retargetEvents(this.shadow);
     }
 
     disconnectedCallback() {

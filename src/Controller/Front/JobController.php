@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front;
 
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use App\Controller\BaseController;
 use App\Dto\JobSearchData;
 use App\Entity\Job\Application;
@@ -11,7 +12,6 @@ use App\Form\Type\ApplicationType;
 use App\Repository\Job\JobRepository;
 use App\Service\BookmarkService;
 use App\Service\JobApplicationService;
-use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\PaginatorInterface;
@@ -44,15 +44,10 @@ class JobController extends BaseController
         $job = $jobRepository->findJobWithBookmarksQuery($id)->getOneOrNullResult();
 
         $bookmarked = $bookmarkService->toggleBookmark($this->getUser(), $job);
-        // dd($request, $request->getPreferredFormat(), TurboBundle::STREAM_FORMAT);
 
-        if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
-            // dd($request);
-            $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
-            return $this->render('front/job/_bookmarked.stream.html.twig', compact('job', 'bookmarks', 'bookmarked'));
-        }
-
-        return $this->render('front/job/_bookmarked.stream.html.twig', compact('job', 'bookmarked'));
+        return $this->json([
+            'bookmarked' => $bookmarked,
+        ]);
     }
 
     /**
@@ -84,6 +79,7 @@ class JobController extends BaseController
                 $applicationService->create($application);
                 if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
                     $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
                     return $this->render('front/job/_applied.stream.html.twig');
                 }
             }
@@ -92,25 +88,27 @@ class JobController extends BaseController
         return $this->render('front/job/show.html.twig', $data);
     }
 
-    #[Route("/search", name: 'search')]
+    #[Route('/search', name: 'search')]
     #[Breadcrumb('<i class="fa fa-home"></i>', routeName: 'app_home')]
     #[Breadcrumb('ui.titles.search')]
-    public function searchJobs(Request $request, PaginatorInterface $paginator, ?JobSearchData $jobSearchData = null): Response
+    public function searchJobs(Request $request, PaginatorInterface $paginator, JobSearchData $jobSearchData = null): Response
     {
         $this->seoGenerator
-            ->setTitle("ui.titles.search")
-            ->setDescription("ui.descriptions.search")
-            ->setKeywords("ui.keywords.search")
+            ->setTitle('ui.titles.search')
+            ->setDescription('ui.descriptions.search')
+            ->setKeywords('ui.keywords.search')
         ;
+
         // $jobSearchData = $jobSearchData ?: new JobSearchData();
         return $this->render('front/job/search.html.twig', compact('jobSearchData'));
     }
 
-    #[Route("/category/{id}", name: 'category')]
+    #[Route('/category/{id}', name: 'category')]
     public function category(Category $category): Response
     {
         $jobSearchData = new JobSearchData();
         $jobSearchData->categories = [$category->getId()];
+
         return $this->forward('App\Controller\Front\JobController::searchJobs', compact('jobSearchData'));
     }
 
@@ -125,6 +123,7 @@ class JobController extends BaseController
         $manager->flush();
 
         $this->addFlash('success', 'ui.alerts.application_posted');
+
         return $this->redirectToRoute('app_front_candidate_dashboard');
     }
 }

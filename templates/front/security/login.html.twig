@@ -11,6 +11,7 @@
 
                 <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 mx-auto">
                     <form class="border p-3 rounded" method="post" action="{{ path('app_login') }}">
+                    {# {{ form_start(form, {attr: {class: 'border p-3 rounded'}}) }} #}
                         <h2>Connexion</h2>
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         {% if error %}
@@ -29,11 +30,14 @@
                             <label for="password">{{ 'ui.form.password'|trans }}</label>
                             <input type="password" name="password" id="password" class="form-control" placeholder="Password*">
                         </div>
+                        {# {{ form_row(form.email) }} #}
+                        {# {{ form_row(form.password) }} #}
 
                         <div class="form-group">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="flex-1">
                                     <input id="dd" class="checkbox-custom" name="_remember_me" type="checkbox">
+                                    {# {{ form_widget(form._remember_me, {attr: {class: 'checkbox-custom'}}) }} #}
                                     <label for="dd" class="checkbox-custom-label">{{ 'ui.form.remember_me'|trans }}</label>
                                 </div>
                                 <div class="eltio_k2">
@@ -47,6 +51,7 @@
                                 {{ 'ui.buttons.login'|trans }}</button>
                         </div>
                     </form>
+                    {# {{ form_end(form) }} #}
                 </div>
             </div>
         </div>

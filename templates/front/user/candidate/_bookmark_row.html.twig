@@ -16,7 +16,15 @@
     <td>
         <div class="dash-action">
             <a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-            <a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+            <action-button
+                data-csrf-token="{{ csrf_token('delete' ~ bookmark.id) }}"
+                data-uri="{{ path('app_front_candidate_job_bookmarks_delete', {id: bookmark.id}) }}"
+                data-method="DELETE"
+                class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"
+            >
+                <i class="lni lni-trash-can"></i>
+            </action-button>
+            {# <a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a> #}
         </div>
     </td>
 </tr>

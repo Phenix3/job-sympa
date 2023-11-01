@@ -545,6 +545,9 @@
     "symfony/ux-react": {
         "version": "v2.4.0"
     },
+    "symfony/ux-toggle-password": {
+        "version": "v2.12.0"
+    },
     "symfony/ux-turbo": {
         "version": "v2.4.0"
     },

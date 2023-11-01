@@ -15,6 +15,7 @@
         "@symfony/ux-lazy-image": "file:vendor/symfony/ux-lazy-image/assets",
         "@symfony/ux-live-component": "file:vendor/symfony/ux-live-component/assets",
         "@symfony/ux-react": "file:vendor/symfony/ux-react/assets",
+        "@symfony/ux-toggle-password": "file:vendor/symfony/ux-toggle-password/assets",
         "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/assets",
         "@symfony/webpack-encore": "^3.1.0",
         "core-js": "^3.32.2",
@@ -59,7 +60,10 @@
         "slick-carousel": "^1.8.1",
         "snackbar": "^1.1.0",
         "stimulus-content-loader": "^4.2.0",
+        "stimulus-notification": "^2.2.0",
         "stimulus-read-more": "^4.1.0",
-        "stimulus-remote-rails": "^4.1.0"
+        "stimulus-remote-rails": "^4.1.0",
+        "stimulus-scroll-progress": "^4.1.0",
+        "stimulus-use": "^0.52.1"
     }
 }

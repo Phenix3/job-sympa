@@ -171,8 +171,8 @@
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         {% for job in computed.jobs %}
-                            {# {{ component('search_job_card', {job: job}) }} #}
-                            {{ component('job_card_horizontal', {job: job, 'data-live-id': 'comp' ~ job.id}) }}
+                            {{ component('search_job_card', {job: job}) }}
+                            {# {{ component('job_card_horizontal', {job}) }} #}
                         {% endfor %}
                     </div>
                 </div>
@@ -187,7 +187,6 @@
 
                                     {% if computed.jobs.paginationData.previous is defined %}
                                         <li class="page-item">
-                                            {# <a class="page-link" data-action="live#action" data-action-name="prevent|prev" rel="prev" href="{{ path(computed.jobs.route, computed.jobs.query|merge({(computed.jobs.paginatorOption('pageParameterName')): computed.jobs.paginationData.previous})) }}">&laquo;&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</a> #}
                                             <a class="page-link" data-action="live#action" data-action-name="prevent|prev" rel="prev" href="{{ path('app_front_job_search', computed.jobs.query|merge({(computed.jobs.paginatorOption('pageParameterName')): computed.jobs.paginationData.previous})) }}">&laquo;&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</a>
                                         </li>
                                     {% else %}
@@ -199,7 +198,6 @@
 
                                     {% if computed.jobs.paginationData.next is defined %}
                                         <li class="page-item">
-                                            {# <a class="page-link" data-action="live#action" data-action-name="prevent|next" rel="next" href="{{ path(computed.jobs.route, computed.jobs.query|merge({(computed.jobs.paginatorOption('pageParameterName')): computed.jobs.paginationData.next})) }}">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</a> #}
                                             <a class="page-link" data-action="live#action" data-action-name="prevent|next" rel="next" href="{{ path('app_front_job_search', computed.jobs.query|merge({(computed.jobs.paginatorOption('pageParameterName')): computed.jobs.paginationData.next})) }}">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</a>
                                         </li>
                                     {% else %}
@@ -210,6 +208,7 @@
                                 </ul>
                             </nav>
                         {% endif %}
+                        {# {{ knp_pagination_render(computed.jobs) }} #}
                     </div>
                 </div>
 

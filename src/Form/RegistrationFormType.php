@@ -55,12 +55,14 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'type' => PasswordType::class,
                 'first_options' => [
+                    'toggle' => true,
                     'label' => 'ui.form.type_password',
                     'constraints' => [
 //                        new NotCompromisedPassword()
                     ],
                 ],
                 'second_options' => [
+                    'toggle' => true,
                     'label' => 'ui.form.confirm_password',
                 ],
                 'mapped' => false,

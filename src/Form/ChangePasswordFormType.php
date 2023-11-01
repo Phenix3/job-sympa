@@ -25,6 +25,7 @@ class ChangePasswordFormType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options' => [
                     'attr' => ['autocomplete' => 'new-password'],
+                    'toggle' => true,
                     'constraints' => [
                         new NotBlank([
                             'message' => 'ui.validator.type_password',
@@ -39,6 +40,7 @@ class ChangePasswordFormType extends AbstractType
                     'label' => 'New password',
                 ],
                 'second_options' => [
+                    'toggle' => true,
                     'attr' => ['autocomplete' => 'new-password'],
                     'label' => 'Repeat Password',
                 ],
